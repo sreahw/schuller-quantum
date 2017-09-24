@@ -26,16 +26,16 @@
 \newif\ifnotoc\notocfalse
 \newif\ifemailadd\emailaddfalse
 \newif\iftoccontinuous\toccontinuousfalse
-\newif\ifnatbibsort\natbibsorttrue
+%\newif\ifnatbibsort\natbibsorttrue
 
-\DeclareOption{no-natbib-sort}{\natbibsortfalse}
+%\DeclareOption{no-natbib-sort}{\natbibsortfalse}
 \ProcessOptions\relax
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{epsfig}
 \RequirePackage{graphicx}
-\ifnatbibsort\RequirePackage[numbers,sort&compress]{natbib}\else\RequirePackage[numbers,compress]{natbib}\fi
+%\ifnatbibsort\RequirePackage[numbers,sort&compress]{natbib}\else\RequirePackage[numbers,compress]{natbib}\fi
 \RequirePackage{color}
 \RequirePackage[colorlinks=true
 ,urlcolor=blue
@@ -186,7 +186,7 @@
 
 
 
-{\raggedright\sffamily{Course delivered in the 2013/14 academic year by}\par}
+{\raggedright\sffamily{Course delivered in 2015 by}\par}
 \afterAuthorSpace
 
 
@@ -292,17 +292,20 @@
 
 \acknowledgments
 %\addcontentsline{toc}{section}{Acknowledgements}
-This set of lecture notes accompanies Frederic Schuller's course on the ``Geometric anatomy of theoretical physics'', taught in the academic year 2013/14 at the Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg.
+This set of lecture notes accompanies Frederic Schuller's course on Quantum Theory, taught in the summer of 2015 at the Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg as part of the Elite Graduate Programme.
 
 The entire course is hosted on YouTube at the following address:
 \begin{center}
-\url{www.youtube.com/playlist?list=PLPH7f_7ZlzxTi6kS4vCmv4ZKm9u8g5yic}
+\url{www.youtube.com/playlist?list=PLPH7f_7ZlzxQVx5jRjbfRGEzWY_upS5K6}
 \end{center}
 These lecture notes are not endorsed by Dr. Schuller or the University.
 
 While I have tried to correct typos and errors made during the lectures (some helpfully pointed out by YouTube commenters), I have also taken the liberty to add and/or modify some of the material at various points in the notes. Any errors that may result from this are, of course, mine.
 
-If you have any comments regarding these notes, feel free to get in touch.\\
+If you have any comments regarding these notes, feel free to get in touch. Visit my blog for the most up to date version of these notes
+\begin{center}
+\url{http://mathswithphysics.blogspot.com}
+\end{center}
 
 My gratitude goes to Dr. Schuller for lecturing this course and for making it available on YouTube.\\
 

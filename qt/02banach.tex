@@ -1,0 +1,278 @@
+
+Hilbert spaces are a spacial type of a more general class of spaces known as Banach spaces. We are interested in Banach spaces not just for the sake generality, but also because they naturally appear in Hilbert space theory. For instance, the space of bounded linear maps on a Hilbert space is not itself a Hilbert space, but only a Banach space.
+
+\subsection{Generalities on Banach spaces}
+
+We begin with some basis notions from metric space theory.
+
+\bd
+A \emph{metric space}\index{metric space} is a pair $(X,d)$, where $X$ is a set and $d$ is a \emph{metric} on $X$, that is, a map $d\cl X\times X \to \R$ satisfying
+\ben[label=(\roman*)]
+\item $d(x,x)\geq 0$ \hfill (non-negativity)
+\item $d(x,y) = 0\ \Leftrightarrow \ x=y$ \hfill (identity of indiscernibles)
+\item $d(x,y)=d(y,x)$ \hfill (symmetry)
+\item $d(x,z)\leq d(x,y)+d(y,z)$ \hfill (triangle inequality)
+\een
+for all $x,y,z\in X$.
+\ed
+
+\bd
+A sequence $\{x_n\}_{n\in \N}$ in a metric space $(X,d)$ is said to \emph{converge}\index{convergence} to an element $x\in X$, written $\displaystyle \lim_{n\to \infty}x_n=x$, if
+\bse
+\forall \, \varepsilon > 0 : \exists \, N \in \N : \forall \, n \geq N : \ d(x_n,x)<\varepsilon.
+\ese
+\ed
+
+A sequence in a metric space can converge to at most one element.
+
+\bd
+A \emph{Cauchy sequence}\index{Cauchy sequence} in a metric space $(X,d)$ is a sequence $\{x_n\}_{n\in \N}$ such that
+\bse
+\forall \, \varepsilon > 0 : \exists \, N \in \N : \forall \, n,m \geq N : \ d(x_n,x_m)<\varepsilon.
+\ese
+\ed
+Any convergent sequence is clearly a Cauchy sequence.
+
+\vbox{\bd
+A metric space $(X,d)$ is said to be \emph{complete}\index{completeness} if every Cauchy sequence converges to some $x\in X$.
+\ed
+A natural metric on a vector space is that induced by a norm.
+\bd
+A \emph{normed space}\index{normed space} is a (complex) vector space $(V,+,\cdot)$ equipped with a \emph{norm}, that is, a map $\|\cdot\|\cl V \to \R$ satisfying
+\ben[label=(\roman*)]
+\item $\|f\|\geq 0$ \hfill (non-negativity)
+\item $\|f\| = 0 \ \Leftrightarrow\ f=0$ \hfill (definiteness)
+\item $\|z\cdot f\|=|z|\|f\|$ \hfill (homogeneity/scalability)
+\item $\|f+g\|\leq \|f\|+\|g\|$ \hfill (triangle inequality/sub-additivity)
+\een
+for all $f,g\in V$ and all $z\in \C$.
+\ed}
+One we have a norm $\|\cdot\|$ on $V$, we can define a metric $d$ on $V$ by 
+\bse
+d(f,g) := \|f-g\|.
+\ese
+Then we say that the normed space $(V,\|\cdot\|)$ is \emph{complete} if the metric space $(V,d)$, where $d$ is the metric induced by $\|\cdot\|$, is complete. Note that we will usually suppress inessential information in the notation, for example writing $(V,\|\cdot\|)$ instead of $(V,+,\cdot,\|\cdot\|)$.
+
+\bd
+A \emph{Banach space}\index{Banach space} is a complete normed vector space.
+\ed
+
+\be
+The space $C^0_\C[0,1]:=\{f\cl [0,1]\to \C \mid f \text{ is continuous}\}$, where the continuity is with respect to the standard topologies on $[0,1]\subset \R$ and $\C$, is a Banach space. Let us show this in some detail.
+\ben[label=(\alph*)]
+\item First, define two operations $+,\cdot$ pointwise, that is, for any $x\in [0,1]$
+\bse
+(f+g)(x) := f(x)+g(x)\qquad \quad (z\cdot f)(x):=zf(x).
+\ese
+Suppose that $f,g\in C^0_\C[0,1]$, that is
+\bse
+\forall \, x_0\in [0,1]: \forall \, \varepsilon > 0 : \exists \, \delta > 0 : \forall \, x\in (x_0-\delta,x_0+\delta) : \ |f(x)-f(x_0)|<\varepsilon
+\ese
+and similarly for $g$. Fix $x_0\in[0,1]$ and $\varepsilon >0$. Then, there exist $\delta_1,\delta_2>0$ such that
+\bi{c}
+\forall \, x\in (x_0-\delta_1,x_0+\delta_1) : \ |f(x)-f(x_0)|<\tfrac{\varepsilon}{2}\\
+\forall \, x\in (x_0-\delta_2,x_0+\delta_2) : \ |g(x)-g(x_0)|<\tfrac{\varepsilon}{2}.
+\ei
+Let $\delta:=\min\{\delta_1,\delta_2\}$. Then, for all $x\in (x_0-\delta,x_0+\delta)$, we have
+\bi{rCl}
+|(f+g)(x)-(f+g)(x_0)| & := & |f(x)+g(x)-(f(x_0)+g(x_0))|\\
+ & = & |f(x)-f(x_0)+g(x)-g(x_0))|\\
+ & \leq & |f(x)-f(x_0)|+|g(x)-g(x_0))|\\
+& < & \tfrac{\varepsilon}{2}+\tfrac{\varepsilon}{2}\\
+& = & \varepsilon.
+\ei
+Since $x_0\in[0,1]$ was arbitrary, we have $f+g\in C^0_\C[0,1]$. Similarly, for any $z\in \C$ and $f\in C^0_\C[0,1]$, we also have $z\cdot f\in C^0_\C[0,1]$. It is immediate to check that the complex vector space structure of $\C$ implies that the operations
+\bi{rrClcrrCl}
++\cl & C^0_\C[0,1] \times C^0_\C[0,1] & \to & C^0_\C[0,1] &\quad \qquad & \cdot \cl &\C \times C^0_\C[0,1] & \to & C^0_\C[0,1]\\
+& (f,g) &\mapsto & f+g && & (z,f) & \mapsto & z\cdot f
+\ei
+make $(C^0_\C[0,1],+,\cdot)$ into a complex vector space.
+
+\item Since $[0,1]$ is closed and bounded, it is compact and hence every complex-valued continuous function $f\cl [0,1]\to \C$ is bounded, in the sense that
+\bse
+\sup_{x\in[0,1]}|f(x)| < \infty.
+\ese
+We can thus define a norm on $C^0_\C[0,1]$, called the \emph{supremum} (or \emph{infinity}) \emph{norm}, by
+\bse
+\|f\|_{\infty} := \sup_{x\in[0,1]}|f(x)| .
+\ese
+Let us show that this is indeed a norm on $(C^0_\C[0,1],+,\cdot)$ by checking that the four defining properties hold. Let $f,g\in C^0_\C[0,1]$ and $z\in \C$. Then
+\ben[label=(b.\roman*)]
+\item $\displaystyle \|f\|_{\infty}:= \sup_{x\in[0,1]}|f(x)| \geq 0$ since $|f(x)|\geq 0$ for all $x\in [0,1]$.
+\item $\displaystyle \|f\|_{\infty}=0\ \Leftrightarrow \sup_{x\in[0,1]}|f(x)| = 0$. By definition of supremum, we have
+\bse
+\forall \, x \in [0,1] : \ |f(x)|\leq \sup_{x\in[0,1]}|f(x)| = 0. 
+\ese
+But since we also have $|f(x)|\geq 0$ for all $x\in [0,1]$, $f$ is identically zero.
+\item $\displaystyle \|z\cdot f\|_{\infty} := \sup_{x\in[0,1]}|zf(x)| = \sup_{x\in[0,1]}|z||f(x)|=|z|\sup_{x\in[0,1]}|f(x)| = |z|\|f\|_{\infty}$.
+\item By using the triangle inequality for the modulus of complex numbers, we have
+\bi{rCl}
+\|f+g\|_{\infty} &:=& \sup_{x\in[0,1]}|(f+g)(x)|\\
+&=& \sup_{x\in[0,1]}|f(x)+g(x)|\\
+&\leq & \sup_{x\in[0,1]}(|f(x)|+|g(x)|)\\
+& = & \sup_{x\in[0,1]}|f(x)|\,+\sup_{x\in[0,1]}|g(x)|\\
+& = & \|f\|_{\infty}+\|g\|_{\infty}.
+\ei
+Hence, $(C^0_\C[0,1],\|\cdot\|_{\infty})$ is indeed a normed space.
+\een
+\item We now show that $C^0_\C[0,1]$ is complete. Let $\{f_n\}_{n\in \N}$ be a Cauchy sequence of functions in $C^0_\C[0,1]$, that is
+\bse
+\forall \, \varepsilon > 0 : \exists \, N \in \N : \forall \, n,m \geq N : \ \|f_n-f_m\|_{\infty} <\varepsilon.
+\ese
+We seek an $f\in C^0_\C[0,1]$ such that $\displaystyle \lim_{n\to\infty}f_n=f$. We will proceed in three steps.
+\ben[label=(c.\roman*)]
+\item Fix $y\in [0,1]$ and $\varepsilon >0$. By definition of supremum, we have
+\bse
+f_n(y) -f_m(y) \leq \sup_{x\in[0,1]}|f_n(x)-f_m(x)| =: \|f_n-f_m\|_{\infty}.
+\ese
+Hence, there exists $N\in \N$ such that
+\bse
+\forall \, n,m \geq N : \ f_n(y) -f_m(y)<\varepsilon,
+\ese
+that is, the sequence of complex numbers $\{f_n(y)\}_{n\in \N}$ is a Cauchy sequence. Since $\C$ is a complete metric space\footnote{The standard metric on $\C$ is induced by the modulus of complex numbers.}, there exists $z_y\in\C$ such that $\displaystyle \lim_{n\to \infty}f_n(y)=z_y$. 
+
+Thus, we can define a function
+\bi{rrCl}
+f\cl & [0,1] & \to & \C\\
+& x & \mapsto & z_x,
+\ei
+called the \emph{pointwise limit} of $f$, which by definition satisfies
+\bse
+\forall \, x \in [0,1] : \ \lim_{n\to \infty}f_n(x)=f(x).
+\ese
+Note that this does \emph{not} automatically imply that $\displaystyle \lim_{n\to \infty}f_n=f$, nor that $f\in C^0_\C[0,1]$, and hence we need to check separately that these do, in fact, hold.
+\item Let $\varepsilon>0$. By the triangle inequality for $\|\cdot\|_{\infty}$, we have
+\bi{rCl}
+\|f_n-f\|_{\infty} &=& \|f_n-f_m+f_m-f\|_{\infty}\\
+&\leq& \|f_n-f_m\|_{\infty}+\|f_m-f\|_{\infty}.
+\ei
+Since $\{f_n\}_{n\in\N}$ is Cauchy by assumption, there exists $N_1\in \N$ such that
+\bse
+\forall \, n,m\geq N : \ \|f_n-f_m\|_{\infty} < \tfrac{\varepsilon}{2}.
+\ese
+Moreover, since $f$ is the pointwise limit of $\{f_n\}_{n\in\N}$, for each $x\in[0,1]$ there exists $N_2\in \N$ such that
+\bse
+\forall \, m \geq N_2 : \ |f_m(x)-f(x)|<\tfrac{\varepsilon}{2}.
+\ese
+By definition of supremum, we have
+\bse
+\forall \, m \geq N_2 : \ \|f_m-f\|_{\infty}= \sup_{x\in[0,1]}|f_m(x)-f(x)|\leq\tfrac{\varepsilon}{2}.
+\ese
+Let $N:=\max\{N_1,N_2\}$. Then, for all $n,m\geq N$, we have
+\bi{c}
+\|f_n-f\|_{\infty} \leq \|f_n-f_m\|_{\infty}+\|f_m-f\|_{\infty} < \tfrac{\varepsilon}{2} + \tfrac{\varepsilon}{2} = \varepsilon.
+\ei
+Thus, $\displaystyle \lim_{n\to \infty}f_n = f$ and we call $f$ the \emph{uniform limit} of $\{f_n\}_{n\in\N}$.
+\item
+Finally, it remains to show that $f$ is continuous. To that end, let $x_0\in [0,1]$ and $\varepsilon>0$. For each $x\in [0,1]$, we have
+\bi{rCl}
+|f(x)-f(x_0)| & = & |f(x)-f_n(x)+f_n(x)-f_n(x_0)+f_n(x_0)-f(x_0)|\\
+ & \leq & |f(x)-f_n(x)|+|f_n(x)-f_n(x_0)|+|f_n(x_0)-f(x_0)|.
+\ei
+Since $f$ is the pointwise limit of $\{f_n\}_{n\in\N}$, for each $x\in[0,1]$ there exists $N\in \N$ such that
+\bse
+\forall \, n \geq N : \ |f(x)-f_n(x)|<\tfrac{\varepsilon}{3}.
+\ese
+In particular, we also have
+\bse
+\forall \, n \geq N : \ |f_n(x_0)-f(x_0)|<\tfrac{\varepsilon}{3}.
+\ese
+Moreover, since $f_n\in C^0_\C[0,1]$ by assumption, there exists $\delta>0$ such that
+\bse
+\forall \, x\in (x_0-\delta,x_0+\delta)  : \ |f_n(x)-f_n(x_0)|<\tfrac{\varepsilon}{3}.
+\ese
+Fix $n\geq N$. Then, it follows that for all $x\in (x_0-\delta,x_0+\delta)$, we have
+\bi{rCl}
+|f(x)-f(x_0)|  & \leq & |f(x)-f_n(x)|+|f_n(x)-f_n(x_0)|+|f_n(x_0)-f(x_0)|\\
+& < & \tfrac{\varepsilon}{3}+\tfrac{\varepsilon}{3}+\tfrac{\varepsilon}{3}\\
+& = & \varepsilon.
+\ei
+Since $x_0\in[0,1]$ was arbitrary, we have $f\in C^0_\C[0,1]$.
+\een
+\een
+This completes the proof that $(C^0_\C[0,1],\|\cdot\|_{\infty})$ is a Banach space.
+\ee
+
+\br
+The previous example shows that checking that something is a Banach space, and the completeness property in particular, can be quite tedious. However, in the following, we will typically be already working with a Banach (or Hilbert) space and hence, rather than having to check that the completeness property holds, we will instead be able to use it to infer the existence (within that space) of the limit of any Cauchy sequence.
+\er
+
+\subsection{Bounded linear operators}
+
+As usual in mathematics, once we introduce a new types of structure, we also want study maps between instances of those structures, with extra emphasis placed on the structure-preserving maps. We begin with linear maps from a normed space to a Banach space.
+
+\bd
+Let $(V,\|\cdot\|_V)$ be a normed space and $(W,\|\cdot\|_W)$ a Banach space. A linear map, also called a linear operator, $A\cl V\to W$ is said to be \emph{bounded} if
+\bse
+\sup_{f\in V}\frac{\|Af\|_W}{\|f\|_V} < \infty.
+\ese
+\ed
+Note that the quotient is not defined for $f=0$. Hence, to be precise, we should write $V\setminus\{0\}$ instead of just $V$. Let us agree that is what mean in the above definition. There are several equivalent characterisations of the boundedness property.
+
+\bp
+A linear operator $A\cl V\to W$ is bounded if, and only if, any of the following conditions are satisfied.
+\ben[label=(\roman*)]
+\item $\displaystyle \sup_{\|f\|_V=1}\|Af\|_W< \infty$
+\item $\exists \, k > 0 : \forall \, f\in V: \ \|f\|_V \leq 1\, \Rightarrow \, \|Af\|_W \leq k$
+\item $\exists \, k > 0 : \forall \, f\in V: \ \|Af\|_W\leq  k \|f\|_V$
+\item the map $A\cl V \to W$ is continuous with respect to the topologies induced by the respective norms on $V$ and $W$
+\item the map $A$ is continuous at $0\in V$. 
+\een
+\ep
+
+The first one of these follows immediately from the homogeneity of the norm. Indeed, suppose that $\|f\|_V\neq 1$. Then
+\bse
+\frac{\|Af\|_W}{\|f\|_V} = \|f\|_V^{-1}\|Af\|_W =\|A(\|f\|_V^{-1}\cdot f)\|_W = \|A\widetilde f\|_W 
+\ese
+where $\widetilde f:= \|f\|_V^{-1}\cdot f$ is such that $\|\widetilde f\|_V=1$. Hence, the boundedness property is equivalent to condition (\textit{i}) above. 
+
+\bd
+Let $A\cl V \to W$ be a bounded operator. The \emph{norm} of $A$ is defined as
+\bse
+\|A\|:=\sup_{\|f\|_V=1} \|Af\|_W.
+\ese
+\ed
+
+\be
+Let $\id_W\cl W\to W$ be the identity operator on a Banach space $W$. Then
+\bse
+\sup_{\|f\|_W=1}\|\id_Wf\|_W =\sup_{\|f\|_W=1}\|f\|_W = 1 <\infty.
+\ese
+Hence, $\id_W$ is a bounded operator and has unit norm.
+\ee
+
+\be
+Denote by $C^1_{\C}[0,1]$ the complex vector space of once continuously differentiable complex-valued functions on $[0,1]$. Since differentiability implies continuity, this is a vector subspace of $C^1_{\C}[0,1]$ and hence also a normed space with the supremum norm $\|\cdot\|_{\infty}$.
+
+
+\ee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
