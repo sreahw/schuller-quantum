@@ -44,7 +44,6 @@
 ,filecolor=blue
 ,linkcolor=blue
 ,menucolor=blue
-,pagecolor=blue
 ,linktocpage=true
 ,pdfproducer=medialab
 ,pdfa=true
@@ -448,22 +447,22 @@ My gratitude goes to Dr. Schuller for lecturing this course and for making it av
 
 
 %Caption of figure and table
-\def\fnum@figure{\textbf{\figurename\nobreakspace\thefigure}}
-\def\fnum@table{\textbf{\tablename\nobreakspace\thetable}}
+% \def\fnum@figure{\textbf{\figurename\nobreakspace\thefigure}}
+% \def\fnum@table{\textbf{\tablename\nobreakspace\thetable}}
 
 %redefining \@makecaption, to have captions with \small font size
 %taken from article.cls l.489--498
 %the only differences are the ``\small '' commands added on two lines
-\long\def\@makecaption#1#2{%
-  \vskip\abovecaptionskip
-  \sbox\@tempboxa{\small #1. #2}%
-  \ifdim \wd\@tempboxa >\hsize
-    \small #1. #2\par
-  \else
-    \global \@minipagefalse
-    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-  \fi
-  \vskip\belowcaptionskip}
+% \long\def\@makecaption#1#2{%
+%   \vskip\abovecaptionskip
+%   \sbox\@tempboxa{\small #1. #2}%
+%   \ifdim \wd\@tempboxa >\hsize
+%     \small #1. #2\par
+%   \else
+%     \global \@minipagefalse
+%     \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+%   \fi
+%   \vskip\belowcaptionskip}
 
 
 

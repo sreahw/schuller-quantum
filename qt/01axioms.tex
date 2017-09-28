@@ -23,10 +23,10 @@ An example would be the energies of the hydrogen atom
 \bi{rCl}
 \sigma(H) & =\ & 
 \begin{tikzpicture}[baseline={($ (current bounding box.center)- (0,-6pt) $)}]
-\foreach \i in {1,2,...,9}{
+\foreach \i in {1,2,...,9,10}{
 \draw[gray] (3-2/\i,0.1) -- (3-2/\i,-0.1);
 }
-\fill[lightgray]  (2.8,0.1) rectangle (5.5,-0.1);
+\fill[lightgray]  (2.79,0.1) rectangle (5.5,-0.1);
 \draw[->] (0,0)--(6,0);
 \draw (1,-0.1) node[below=2pt]{$-13.6$ eV};
 \draw (2.8,-0.1) node[below=2pt]{$0$ eV};
@@ -138,6 +138,7 @@ If our ideas of ``filtering states out'' is correct, then feeding the $x^\uparro
 
 \begin{center}
 \begin{tikzpicture}[scale=0.5]
+\draw (-2,2) -- (0,2);
 \draw (2,2) node {$\mathrm{SG}(z)$};
 \draw  (0,0) rectangle (4,4);
 \draw (4,3.5) -- (7,3.5) node[above,midway] {$z^\uparrow$};
@@ -206,13 +207,13 @@ A \emph{complex Hilbert space}\index{Hilbert space} is a tuple $(\mathcal{H},+,\
 \end{itemize}
 such that the triple $(\mathcal{H},+,\cdot)$ is a vector space over $\C$, and
 \begin{itemize}
-\item $\langle \cdot | \cdot \rangle$ is a \emph{sesqui-linear\footnote{sesqui is Latin for ``one and a half''.}} map $\langle \cdot | \cdot \rangle\cl\mathcal{H}\times \mathcal{H}\to \mathcal{H}$, i.e.\ a map satisfying
+\item $\langle \cdot | \cdot \rangle$ is a \emph{sesqui-linear\footnote{sesqui is Latin for ``one and a half''.}inner product}, i.e.\ a map $\langle \cdot | \cdot \rangle\cl\mathcal{H}\times \mathcal{H}\to \mathcal{H}$ satisfying
 \ben[label=(\roman*)]
-\item $\langle \varphi|\psi\rangle=\overline{\langle \psi|\varphi\rangle}$\hfill (Hermitian property)
-\item $\langle \varphi|z\psi_1+\psi_2\rangle=z\langle \varphi|\psi_1\rangle+\langle \varphi|\psi_2\rangle$ \hfill (linearity in the second slot)
+\item $\langle \varphi|\psi\rangle=\overline{\langle \psi|\varphi\rangle}$\hfill (conjugate symmetry/Hermitian property)
+\item $\langle \varphi|z\psi_1+\psi_2\rangle=z\langle \varphi|\psi_1\rangle+\langle \varphi|\psi_2\rangle$ \hfill (linearity in the second argument)
 \item $\langle \psi | \psi\rangle \geq 0$ and $\langle \psi|\psi\rangle = 0 \Leftrightarrow \psi = 0$ \hfill (positive-definiteness)
 \een
-for all $\phi,\psi_1,\psi_2\in\mathcal{H}$ and $z\in \C$,
+for all $\varphi,\psi_1,\psi_2\in\mathcal{H}$ and $z\in \C$,
 \end{itemize}
 and moreover
 \begin{itemize}
@@ -259,7 +260,7 @@ From now on, if there is no risk of confusion, we will write $A\varphi:=A(\varph
 \bd
 A linear map $A\cl\mathcal{D}_A\to \mathcal{H}$ is \emph{densely defined} if $\mathcal{D}_A$ is \emph{dense} in $\mathcal{H}$, i.e.\
 \bse
-\forall \, \psi\in \mathcal{H} : \exists \, \alpha \in \mathcal{D}_A : \forall \, \varepsilon >0 :\ \|\alpha-\psi\|<\varepsilon.
+\forall \, \psi\in \mathcal{H} : \forall \, \varepsilon >0: \exists \, \alpha \in \mathcal{D}_A  :\ \|\alpha-\psi\|<\varepsilon.
 \ese
 \ed
 

@@ -1,6 +1,5 @@
 \documentclass[a4paper,11pt]{article}
-\pdfoutput=1 % if your are submitting a pdflatex (i.e. if you have
-             % images in pdf, png or jpg format)
+\pdfoutput=1 % if your are submitting a pdflatex (i.e. if you have images in pdf, png or jpg format)
 
 
 \usepackage{imakeidx}
@@ -40,7 +39,7 @@
 \usepackage[retainorgcmds]{IEEEtrantools}
 \usepackage{etoolbox}
 %\usepackage{mathtools}
-\usepackage{emerald,xcolor,tikz,pgfplots}
+\usepackage{emerald,xcolor,tikz}
 \definecolor{lightergray}{rgb}{0.9,0.9,0.9}
 
 \usepackage{siunitx}
@@ -60,7 +59,8 @@
 \patchcmd{\@IEEEeqnarray}{\relax}{\relax\intertext@}{}{}
 \makeatother
 
-
+\renewcommand\Re{\operatorname{Re}}
+\renewcommand\Im{\operatorname{Im}}
 
 %\usepackage[upright]{fourier}
 %\newcommand{\tikzmark}[3][]{\tikz[overlay,remember picture,baseline] \node [anchor=base,#1](#2) {#3};}
@@ -99,11 +99,23 @@
 \newtheorem{proposition}[theorem]{Proposition}
 
 \theoremstyle{remark} % Define theorem styles here based on the remark style (used for remarks and notes)
-\newtheorem{example}[theorem]{Example}
 \newtheorem*{notation}{Notation}
-\newtheorem{remark}[theorem]{Remark}
 \newtheorem*{solution}{Solution}
 
+\newtheoremstyle{underline}% name
+{}        % Space above, empty = `usual value'
+{}              % Space below
+{}              % Body font
+{}    % Indent amount (empty = no indent, \parindent = para indent)
+{}              % Thm head font
+{.}             % Punctuation after thm head
+{1.5mm}         % Space after thm head: \newline = linebreak
+{{\underline{\textit{\thmname{#1}\thmnumber{ #2}}~\thmnote{(#3)}\unskip}}}  % Thm head spec
+
+\theoremstyle{remark}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
 
 %----------------------------------------------------------------------------------------
 %	HYPERLINKS
@@ -115,15 +127,16 @@
 \hypersetup{
 %draft, % Uncomment to remove all links (useful for printing in black and white)
 colorlinks=true, linkcolor=black, breaklinks=true,
-bookmarks=true,bookmarksnumbered=true,
+%bookmarks=true,
+bookmarksnumbered=true,
 %urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, % Link colors
-pdftitle={}, % PDF title
-pdfauthor={\textcopyright}, % PDF Author
+pdftitle={Schuller's Lectures on Quantum Theory}, % PDF title
+pdfauthor={Frederic P. Schuller, Simon Rea}, % PDF Author
 pdfsubject={}, % PDF Subject
 pdfkeywords={}, % PDF Keywords
 pdfencoding=unicode, %
 pdfstartview={FitH}, %
-pdfcreator={pdfLaTeX}, % PDF Creator
+pdfcreator={pdfLaTeX/Overleaf}, % PDF Creator
 }
 
 %dotted lines in contents
@@ -191,9 +204,13 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 % \input{qt/01axioms}
 % \newpage
 
-\setcounter{section}{1}
-\section{Banach spaces}
-\input{qt/02banach}
+% \section{Banach spaces}
+% \input{qt/02banach}
+% \newpage
+
+\setcounter{section}{2}
+\section{Separable Hilbert Spaces}
+\input{qt/03separable}
 \newpage
 
 % \section*{Further readings}

@@ -1,0 +1,311 @@
+
+
+\subsection{From Banach to Hilbert spaces}
+
+A Hilbert space is a vector space $(\mathcal{H},+,\cdot)$ equipped with a sesqui-linear inner product $\langle\cdot|\cdot\rangle$ which induces a norm $\|\cdot\|_{\mathcal{H}}$ with respect to which $\mathcal{H}$ is a Banach space. Note that by ``being induced by $\langle\cdot|\cdot\rangle$'' we specifically mean that the norm is defined as
+\bi{rrCl}
+\|\cdot\|\cl & V & \to & \R\\
+& f & \mapsto & \sqrt{\langle f|f\rangle}.
+\ei
+
+Recall that a sesqui-linear inner product on $\mathcal{H}$ is a map $\langle\cdot|\cdot\rangle\cl \mathcal{H} \times \mathcal{H} \to \mathcal{H}$ which is conjugate symmetric, linear in the second argument and positive-definite. Note that conjugate symmetry together with linearity in the second argument imply conjugate linearity in the first argument:
+\bi{rCl}
+\langle z\psi_1+\psi_2|\varphi\rangle & = & \overline{\langle \varphi| z\psi_1+\psi_2\rangle }\\
+& = & \overline{z\langle \varphi| \psi_1\rangle+\langle \varphi| \psi_2\rangle }\\
+& = & \overline{z}\overline{\langle \varphi| \psi_1\rangle}+\overline{\langle \varphi| \psi_2\rangle }\\
+& = & \overline{z}\langle \psi_1|\varphi\rangle+\langle \psi_2|\varphi\rangle .
+\ei
+
+Of course, since Hilbert spaces are a special case of Banach spaces, everything that we have learned about Banach spaces also applies to Hilbert paces. For instance, $\mathcal{L}(\mathcal{H},\mathcal{H})$, the collection of all bounded linear maps $\mathcal{H}\to \mathcal{H}$, is a Banach space with respect to the operator norm. In particular, the dual of a Hilbert space $\mathcal{H}$ is defined as $\mathcal{H}^*:=\mathcal{L}(\mathcal{H},\C)$.
+
+Since there is no obvious way to define an inner product on $\mathcal{L}(\mathcal{H},\mathcal{H})$ which induces the operator norm, $\mathcal{L}(\mathcal{H},\mathcal{H})$ is not a Hilbert space in general. However, we will now see that we can inherit an inner product on $\mathcal{H}^*$ from that on $\mathcal{H}$ which does induce the operator norm on $\mathcal{H}^*$, so that the dual of a Hilbert space is again a Hilbert space.
+
+First, in order to check that the norm induced by an inner product on $V$ is indeed a norm on $V$, we need one of the most important inequalities in mathematics.
+
+\bp[Cauchy-Schawrz inequality\footnote{Also known as the Cauchy-Bunyakovsky-Schwarz inequality in the Russian literature.}]\index{Cauchy-Schawrz inequality}
+Let $\langle\cdot|\cdot\rangle$ be a sesqui-linear inner product on $V$. Then, for any $f,g \in V$, we have
+\bse
+|\langle f|g\rangle|^2\leq \langle f|f\rangle \langle g|g\rangle .
+\ese
+\ep
+\bq
+If $f=0$ or $g=0$, then equality holds. Hence suppose that $f\neq 0$ and let
+\bse
+z:= \frac{\langle f|g\rangle}{\langle f|f\rangle} \in \C.
+\ese
+Then, by positive-definiteness of $\langle\cdot|\cdot\rangle$, we have
+\bi{rCl}
+0 & \leq & \langle zf-g|zf-g\rangle\\
+&  = & |z|^2\langle f|f\rangle -\overline{z}\langle f|g\rangle-z\langle g|f\rangle+\langle g|g\rangle\\
+&  = & \frac{|\langle f|g\rangle|^2}{\langle f|f\rangle^2}\langle f|f\rangle -\frac{\,\overline{\langle f|g\rangle}\,}{\langle f|f\rangle}\langle f|g\rangle-\frac{\langle f|g\rangle}{\langle f|f\rangle}\overline{\langle f|g\rangle}+\langle g|g\rangle\\
+&  = & \frac{|\langle f|g\rangle|^2}{\langle f|f\rangle} -\frac{|\langle f|g\rangle|^2}{\langle f|f\rangle} -\frac{|\langle f|g\rangle|^2}{\langle f|f\rangle} +\langle g|g\rangle\\
+&  = & -\frac{|\langle f|g\rangle|^2}{\langle f|f\rangle} +\langle g|g\rangle.
+\ei
+By rearranging, since $\langle f | f \rangle >0$, we obtain the desired inequality.
+\eq
+Note that, by defining $\|f\|:=\sqrt{\langle f | f \rangle }$, we can write the Cauchy-Schwarz inequality as
+\bse
+|\langle f | g \rangle | \leq \|f\|\|g\|.
+\ese
+\bp
+The induced norm on $V$ is a norm.
+\ep
+\bq
+Let $f,g\in V$ and $z\in \C$. Then
+\ben[label=(\roman*)]
+\item $\|f\|:= \sqrt{\langle f|f\rangle} \geq 0$
+\item $\|f\|=0\ \Leftrightarrow\ \|f\|^2=0\ \Leftrightarrow\ \langle f|f\rangle = 0\ \Leftrightarrow\ f =0$ by positive-definiteness
+\item $\|zf\|:= \sqrt{\langle zf|zf\rangle} = \sqrt{z\overline{z}\langle f|f\rangle} = \sqrt{|z|^2\langle f|f\rangle}=|z|\sqrt{\langle f|f\rangle}=:|z|\|f\|$
+\item Using the fact that $z+\overline{z} = 2\Re z$ and $\Re z\leq |z|$ for any $z\in \C$ and the Cauchy-Schwarz inequality, we have 
+\bi{rCl}
+\|f+g\|^2 & := & \langle f+g|f+g\rangle\\
+& = & \langle f|f\rangle +\langle f|g\rangle+\langle g|f\rangle+\langle g|g\rangle\\
+& = & \langle f|f\rangle +\langle f|g\rangle+\overline{\langle f|g\rangle}+\langle g|g\rangle\\
+& = & \langle f|f\rangle +2\Re\langle f|g\rangle+\langle g|g\rangle\\
+& \leq & \langle f|f\rangle +2|\langle f|g\rangle|+\langle g|g\rangle\\
+& \leq & \langle f|f\rangle +2\|f\|\|g\|+\langle g|g\rangle\\
+& = & (\|f\|+\|g\|)^2.
+\ei
+By taking the square root of both sides, we have $\|f+g\|\leq \|f\|+\|g\|$. \qedhere
+\een
+\eq
+
+Hence, we see that any inner product space (i.e.\ a vector space equipped with a sesqui-linear inner product) is automatically a normed space under the induced norm. It is only natural to wonder whether the converse also holds, that is, whether every norm is induced by some sesqui-linear inner product. Unfortunately, the answer is negative in general. The following theorem gives a necessary and sufficient condition for a norm to be induced by a sesqui-linear inner product and, in fact, by a unique such.
+
+\bt[Jordan-von Neumann]
+Let $V$ be a vector space. A norm $\|\cdot\|$ on $V$ is induced by a sesqui-linear inner product $\langle\cdot|\cdot\rangle$ on $V$ if, and only if, the parallelogram identity
+\bse
+\|f+g\|^2+\|f-g\|^2=2\|f\|^2+2\|g\|^2
+\ese
+holds for all $f,g\in V$, in which case, $\langle\cdot|\cdot\rangle$ is determined by the polarisation identity
+\bi{rCl}
+\langle f  |  g\rangle & = & \frac{1}{4} \sum_{k=0}^3\mathrm{i}^k\|f+\mathrm{i}^{4-k}g\|^2\\
+& = & \frac{1}{4} (\|f+g\|^2-\|f-g\|^2+\mathrm{i}\|f-\mathrm{i}g\|^2 -\|f+\mathrm{i}g\|^2).
+\ei
+\et
+
+\bq
+\begin{itemize}
+\item[($\Rightarrow$)] If $\|\cdot\|$ is induced by $\langle\cdot|\cdot\rangle$, then by direct computation
+\bi{rCl}
+\|f+g\|^2+\|f-g\|^2 & := & \langle f+g|f+g\rangle + \langle f-g|f-g\rangle\\
+& = & \langle f|f\rangle +\langle f|g\rangle+\langle g|f\rangle+\langle g|g\rangle\\
+&  & \negmedspace {} + \langle f|f\rangle -\langle f|g\rangle-\langle g|f\rangle+\langle g|g\rangle\\
+& = & 2\langle f|f\rangle + 2\langle g|g\rangle\\
+& =: & 2\|f\|^2+2\|g\|^2,
+\ei
+so the parallelogram identity is satisfied. We also have
+\bi{rCl}
+\|f+g\|^2-\|f-g\|^2 & := & \langle f+g|f+g\rangle - \langle f-g|f-g\rangle\\
+& = & \langle f|f\rangle +\langle f|g\rangle+\langle g|f\rangle+\langle g|g\rangle\\
+&  & \negmedspace {} - \langle f|f\rangle +\langle f|g\rangle+\langle g|f\rangle-\langle g|g\rangle\\
+& = & 2\langle f|g\rangle+2\langle g|f\rangle
+\ei
+and
+\bi{rCl}
+\mathrm{i}\|f-\mathrm{i}g\|^2-\mathrm{i}\|f+\mathrm{i}g\|^2 & := & \mathrm{i}\langle f-\mathrm{i}g|f-\mathrm{i}g\rangle - \mathrm{i}\langle f+\mathrm{i}g|f+\mathrm{i}g\rangle\\
+& = & \mathrm{i}\langle f|f\rangle +\langle f|g\rangle-\langle g|f\rangle+\mathrm{i}\langle g|g\rangle\\
+&  & \negmedspace {} - \mathrm{i} \langle f|f\rangle +\langle f|g\rangle-\langle g|f\rangle-\mathrm{i}\langle g|g\rangle\\
+& = & 2\langle f|g\rangle-2\langle g|f\rangle.
+\ei
+Therefore
+\bse
+\|f+g\|^2-\|f-g\|^2+\mathrm{i}\|f-\mathrm{i}g\|^2 -\|f+\mathrm{i}g\|^2 = 4\langle f|g\rangle.
+\ese
+that is, the inner product is determined by the polarisation identity. 
+\item[($\Leftarrow$)] Suppose that $\|\cdot\|$ satisfies the parallelogram identity. Define $\langle\cdot|\cdot\rangle$ by
+\bse
+\langle f  |  g\rangle := \frac{1}{4} (\|f+g\|^2-\|f-g\|^2+\mathrm{i}\|f-\mathrm{i}g\|^2-\mathrm{i}\|f+\mathrm{i}g\|^2).
+\ese
+We need to check that this satisfies the defining properties of a sesqui-linear inner product.
+\ben[label=(\roman*)]
+\item For conjugate symmetry
+\bi{rCl}
+\overline{\langle f  |  g\rangle} &=& \tfrac{1}{4} \bigl(\,\overline{\|f+g\|^2-\|f-g\|^2+\mathrm{i}\|f-\mathrm{i}g\|^2-\mathrm{i}\|f+\mathrm{i}g\|^2}\,\bigr)\\
+& := & \tfrac{1}{4} (\|f+g\|^2-\|f-g\|^2-\mathrm{i}\|f-\mathrm{i}g\|^2+\mathrm{i}\|f+\mathrm{i}g\|^2)\\
+& = & \tfrac{1}{4} (\|f+g\|^2-\|f-g\|^2-\mathrm{i}\|(-\mathrm{i})(\mathrm{i}f+g)\|^2+\mathrm{i}\|\mathrm{i}(-\mathrm{i}f+g)\|^2)\\
+& = & \tfrac{1}{4} (\|g+f\|^2-\|g-f\|^2-\mathrm{i}(|-\mathrm{i}|)^2\|g+\mathrm{i}f\|^2+\mathrm{i}(|\mathrm{i}|)^2\|g-\mathrm{i}f\|^2)\\
+& = & \tfrac{1}{4} (\|g+f\|^2-\|g-f\|^2-\mathrm{i}\|g+\mathrm{i}f\|^2+\mathrm{i}\|g-\mathrm{i}f\|^2)\\
+& =: & \langle g | f \rangle
+\ei
+
+\item We will now show linearity in the second argument. This is fairly non-trivial and quite lengthy.%\footnote{We adapt and take inspiration from answers to a question on \href{https://math.stackexchange.com/questions/21792/norms-induced-by-inner-products-and-the-parallelogram-law}{Math.StackExhange}.}
+We will focus on additivity first. We have
+\bi{c}
+\langle f | g+h \rangle  :=  \frac{1}{4} (\|f+g+h\|^2-\|f-g-h\|^2+\mathrm{i}\|f-\mathrm{i}g-\mathrm{i}h\|^2-\mathrm{i}\|f+\mathrm{i}g+\mathrm{i}h\|^2).
+\ei
+Consider the real part of $\langle f | g+h \rangle $. By successive applications of the parallelogram identity, we find
+\bi{rCl}
+\Re\langle f | g + h \rangle & = & \tfrac{1}{4} (\|f+g+h\|^2-\|f-g-h\|^2)\\
+& = & \tfrac{1}{4} (\|f+g+h\|^2+\|f+g-h\|^2-\|f+g-h\|^2-\|f-g-h\|^2)\\
+& = & \tfrac{1}{4} (2\|f+g\|^2+2\|h\|^2-2\|f-h\|^2-2\|g\|^2)\\
+& = & \tfrac{1}{4} (2\|f+g\|^2+2\|f\|^2+2\|h\|^2-2\|f-h\|^2-2\|f\|^2-2\|g\|^2)\\
+& = & \tfrac{1}{4} (2\|f+g\|^2+\|f+h\|^2+\|f-h\|^2-2\|f-h\|^2-\|f+g\|^2-\|f-g\|^2)\\
+& = & \tfrac{1}{4} (\|f+g\|^2+\|f+h\|^2-\|f-h\|^2-\|f-g\|^2)\\
+& = & \Re\langle f | g  \rangle+\Re\langle f | h \rangle.
+\ei
+Replacing $g$ and $h$ with $-\mathrm{i}g$ and $-\mathrm{i}h$ respectively, we obtain
+\bse
+\Im \langle f | g + h \rangle = \Im\langle f | g  \rangle+\Im\langle f | h \rangle.
+\ese
+Hence, we have
+\bi{rCl}
+\langle f | g + h \rangle & = & \Re\langle f | g + h \rangle+\mathrm{i}\Im\langle f | g + h \rangle\\
+& = & \Re\langle f | g  \rangle+\Re\langle f | h \rangle+\mathrm{i}(\Im\langle f | g  \rangle+\Im\langle f | h \rangle)\\
+& = & \Re\langle f | g  \rangle+\mathrm{i}\Im\langle f | g  \rangle +\Re\langle f | h \rangle+\mathrm{i}\Im\langle f | h \rangle\\
+& = & \langle f | g  \rangle+\langle f | h \rangle,
+\ei
+which proves additivity.
+
+For scaling invariance, we will proceed in several steps.
+\ben[label=(\alph*)]
+\item First, note that
+\bse
+\langle f | 0 \rangle := \tfrac{1}{4} (\|f\|^2-\|f\|^2+\mathrm{i}\|f\|^2-\mathrm{i}\|f\|^2) = 0
+\ese
+and hence $\langle f | 0g \rangle = 0\langle f | g \rangle$ holds.
+\item Suppose that $\langle f | ng \rangle = n\langle f | g \rangle$ for some $n\in \N$. Then, by additivity
+\bi{rCl}
+\langle f | (n+1)g \rangle & = & \langle f | ng+g \rangle\\
+& = & \langle f | ng \rangle + \langle f | g \rangle\\
+& = & n\langle f | g \rangle + \langle f | g \rangle\\
+& = & (n+1)\langle f | g \rangle.
+\ei
+Hence, by induction on $n$ with base case (a), we have
+\bse
+\forall \, n \in \N : \ \langle f | ng \rangle = n\langle f | g \rangle.
+\ese
+\item Note that by additivity
+\bse
+\langle f | g \rangle + \langle f | -g \rangle = \langle f | g -g\rangle = \langle f | 0 \rangle \stackrel{(\mathrm{a})}{=} 0.
+\ese
+Hence $\langle f | -g \rangle = -\langle f | g \rangle$.
+\item Then, for any $n\in \N$
+\bse
+\langle f | {-ng} \rangle \stackrel{(\mathrm{c})}{=} -\langle f | ng \rangle \stackrel{(\mathrm{b})}{=} -n\langle f | g \rangle
+\ese
+and thus
+\bse
+\forall \, n \in \Z : \ \langle f | ng \rangle = n\langle f | g \rangle.
+\ese
+\item Now note that for any $m\in \Z\setminus\{0\}$
+\bse
+m\langle f | \tfrac{1}{m}g \rangle \stackrel{(\mathrm{d})}{=} \langle f | m\tfrac{1}{m} g \rangle = \langle f | g \rangle
+\ese
+and hence, by dividing by $m$, we have $\langle f | \frac{1}{m} g \rangle = \frac{1}{m}\langle f | g \rangle$.
+\item Therefore, for any $r=\tfrac{n}{m}\in \Q$, we have
+\bse
+\langle f | r g \rangle = \langle f | \tfrac{n}{m} g \rangle \stackrel{(\mathrm{d})}{=}  n\langle f | \tfrac{1}{m}g \rangle \stackrel{(\mathrm{e})}{=}  \tfrac{n}{m}\langle f | g \rangle = r\langle f | g \rangle
+\ese
+and hence
+\bse
+\forall \, r \in \Q : \ \langle f | rg \rangle = r\langle f | g \rangle.
+\ese
+\item Before we turn to $\R$, we need to show that $|\langle f | g \rangle | \leq \sqrt{2}\|f\|\|g\|$. Note that here we \emph{cannot} invoke the Cauchy-Schwarz inequality (which would provide a better estimate) since we don't know that $\langle \cdot | \cdot \rangle$ is an inner product yet. First, consider the real part of $\langle f | g \rangle$.
+\bi{rCl}
+\Re \langle f | g \rangle & = & \tfrac{1}{4} (\|f+g\|^2-\|f-g\|^2)\\
+& = &  \tfrac{1}{4} (2\|f+g\|^2-\|f+g\|^2-\|f-g\|^2)\\
+& = &  \tfrac{1}{4} (2\|f+g\|^2-2\|f\|^2-2\|g\|^2)\\
+& \leq &  \tfrac{1}{4} (2(\|f\|+\|g\|)^2-2\|f\|^2-2\|g\|^2)\\
+& = &  \tfrac{1}{4} (2\|f\|^2+4\|f\|\|g\|+2\|g\|^2-2\|f\|^2-2\|g\|^2)\\
+& = &  \|f\|\|g\|.
+\ei
+Replacing $g$ with $-\mathrm{i}g$ and noting that $\|-\mathrm{i}g\|=|-\mathrm{i}|\|g\|=\|g\|$, we also have 
+\bse
+\Im \langle f | g \rangle \leq \|f\|\|g\|.
+\ese
+Hence, we find
+\bi{rCl}
+| \langle f | g \rangle | & = & |\Re \langle f | g \rangle+\mathrm{i}\Im \langle f | g \rangle|\\
+& = & \sqrt{(\Re \langle f | g \rangle)^2+(\Im \langle f | g \rangle)^2}\\
+& \leq & \sqrt{(\|f\|\|g\|)^2+(\|f\|\|g\|)^2}\\
+& = &  \sqrt{2}\|f\|\|g\|.
+\ei
+
+\item Let $r\in \R$. Since $\R$ is the completion of $\Q$ (equivalently, $\Q$ is dense in $\R$), there exists a sequence $\{r_n\}_{n\in\N}$ in $\Q$ which converges to $r$. Let $\varepsilon >0$. Then, there exist $N_1,N_2\in\N$ such that
+\bi{rCl}
+\forall \, n \geq N_1 &:& \ |r_n-r|<\frac{\varepsilon}{2\sqrt{2}\|f\|\|g\|}\\
+\forall \, n,m \geq N_2 &:& \ |r_n-r_m|<\frac{\varepsilon}{2\sqrt{2}\|f\|\|g\|}.
+\ei
+Let $N:=\max\{N_1,N_2\}$ and fix $m\geq N$. Then, for all $n\geq N$, we have
+\bi{rCl}
+| r_n\langle f | g \rangle - \langle f | rg \rangle | & = & | r_n\langle f | g \rangle - r_m\langle f | g \rangle+ r_m\langle f | g \rangle- \langle f | rg \rangle | \\
+ & \stackrel{(\mathrm{f})}{=} & | r_n\langle f | g \rangle - r_m\langle f | g \rangle+ \langle f | r_m g \rangle- \langle f | rg \rangle | \\
+ & = & | (r_n-r_m)\langle f | g \rangle + \langle f | (r_m-r) g \rangle | \\
+ & \leq & | (r_n-r_m)\langle f | g \rangle | + | \langle f | (r_m-r) g \rangle | \\
+ & \stackrel{(\mathrm{g})}{\leq} & \sqrt{2}|r_n-r_m| \| f \| \| g \| + \sqrt{2}\| f \| \| (r_m-r)g \| \\
+ & = & \sqrt{2}|r_n-r_m| \| f \| \| g \| + \sqrt{2}|r_m-r|\| f \| \| g \| \\
+ & < & \sqrt{2} \frac{\varepsilon}{2\sqrt{2}\|f\|\|g\|} \| f \| \| g \| +  \sqrt{2} \frac{\varepsilon}{2\sqrt{2}\|f\|\|g\|} \| f \| \| g \|\\
+& = & \varepsilon,
+\ei
+that is, $\displaystyle \lim_{n\to\infty} r_n \langle f | g \rangle = \langle f | rg \rangle$.
+
+\item Hence, for any $r\in \R$, we have
+\bse
+r\langle f | g \rangle = \Bigl(\lim_{\,n\to\infty}r_n\Bigr) \langle f | g \rangle = \lim_{n\to\infty} r_n \langle f | g \rangle \stackrel{(\mathrm{h})}{=} \langle f | rg \rangle  
+\ese
+and thus
+\bse
+\forall \, r \in \R : \ r\langle f | g \rangle = \langle f | rg \rangle  .
+\ese
+
+\item We now note that
+\bi{rCl}
+\langle f  | \mathrm{i} g\rangle & := & \tfrac{1}{4} (\|f+\mathrm{i}g\|^2-\|f-\mathrm{i}g\|^2+\mathrm{i}\|f-\mathrm{i}^2g\|^2-\mathrm{i}\|f+\mathrm{i}^2g\|^2)\\
+& = & \tfrac{1}{4} \mathrm{i} \, (-\mathrm{i}\|f+\mathrm{i}g\|^2+\|f-\mathrm{i}g\|^2+\mathrm{i}\|f+g\|^2-\|f-g\|^2)\\
+& =: & \mathrm{i}\langle f  | g\rangle
+\ei
+and hence $ \langle f  | \mathrm{i} g\rangle= \mathrm{i}\langle f  | g\rangle$.
+
+\item Let $z\in \C$. By additivity, we have
+\bi{rCl}
+\langle f  | z g\rangle & = & \langle f  | (\Re z + \mathrm{i}\Im z) g\rangle\\
+& = & \langle f  | (\Re z) g\rangle+ \langle f  | \mathrm{i}(\Im z )g\rangle\\
+& \stackrel{(\mathrm{j})}{=} & \langle f  | (\Re z) g\rangle+ \mathrm{i}\langle f  | (\Im z) g\rangle\\
+& \stackrel{(\mathrm{i})}{=} & \Re z\langle f  | g\rangle+ \mathrm{i}\Im z \langle f  |  g\rangle\\
+& = & (\Re z+ \mathrm{i}\Im z)\langle f  |  g\rangle\\
+& = & z\langle f  |  g\rangle,
+\ei
+which shows scaling invariance in the second argument.
+\een
+Combining additivity and scaling invariance in the second argument yields linearity in the second argument.
+\item For positive-definiteness
+\bi{rCl}
+\langle f | f \rangle & := & \tfrac{1}{4} (\|f+f\|^2-\|f-f\|^2+\mathrm{i}\|f-\mathrm{i}f\|^2-\mathrm{i}\|f+\mathrm{i}f\|^2)\\
+& = & \tfrac{1}{4} (4\|f\|^2+\mathrm{i}|1-\mathrm{i}|^2\|f\|^2-\mathrm{i}|1+\mathrm{i}|^2\|f\|^2)\\
+& = & \tfrac{1}{4} (4+\mathrm{i}|1-\mathrm{i}|^2-\mathrm{i}|1+\mathrm{i}|^2)\|f\|^2\\
+& = & \tfrac{1}{4} (4+2\mathrm{i}-2\mathrm{i})\|f\|^2\\
+& = & \|f\|^2.
+\ei
+Thus, $\langle f | f \rangle\geq 0$ and $\langle f | f \rangle = 0 \ \Leftrightarrow \ f=0$.
+\een
+Hence, $\langle \cdot| \cdot \rangle$ is indeed a sesqui-linear inner product. Note that, from part (iii) above, we have
+\bse
+\sqrt{\langle f | f \rangle}=\|f\|.
+\ese
+That is, the inner product $\langle \cdot| \cdot \rangle$ does induce the norm from which we started, and this completes the proof.\qedhere
+\end{itemize}
+\eq
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
