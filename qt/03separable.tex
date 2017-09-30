@@ -1,6 +1,6 @@
 
 
-\subsection{From Banach to Hilbert spaces}
+\subsection{Relationship between norms and inner products}
 
 A Hilbert space is a vector space $(\mathcal{H},+,\cdot)$ equipped with a sesqui-linear inner product $\langle\cdot|\cdot\rangle$ which induces a norm $\|\cdot\|_{\mathcal{H}}$ with respect to which $\mathcal{H}$ is a Banach space. Note that by ``being induced by $\langle\cdot|\cdot\rangle$'' we specifically mean that the norm is defined as
 \bi{rrCl}
@@ -16,9 +16,8 @@ Recall that a sesqui-linear inner product on $\mathcal{H}$ is a map $\langle\cdo
 & = & \overline{z}\langle \psi_1|\varphi\rangle+\langle \psi_2|\varphi\rangle .
 \ei
 
-Of course, since Hilbert spaces are a special case of Banach spaces, everything that we have learned about Banach spaces also applies to Hilbert paces. For instance, $\mathcal{L}(\mathcal{H},\mathcal{H})$, the collection of all bounded linear maps $\mathcal{H}\to \mathcal{H}$, is a Banach space with respect to the operator norm. In particular, the dual of a Hilbert space $\mathcal{H}$ is defined as $\mathcal{H}^*:=\mathcal{L}(\mathcal{H},\C)$.
-
-Since there is no obvious way to define an inner product on $\mathcal{L}(\mathcal{H},\mathcal{H})$ which induces the operator norm, $\mathcal{L}(\mathcal{H},\mathcal{H})$ is not a Hilbert space in general. However, we will now see that we can inherit an inner product on $\mathcal{H}^*$ from that on $\mathcal{H}$ which does induce the operator norm on $\mathcal{H}^*$, so that the dual of a Hilbert space is again a Hilbert space.
+Of course, since Hilbert spaces are a special case of Banach spaces, everything that we have learned about Banach spaces also applies to Hilbert paces. For instance, $\mathcal{L}(\mathcal{H},\mathcal{H})$, the collection of all bounded linear maps $\mathcal{H}\to \mathcal{H}$, is a Banach space with respect to the operator norm. In particular, the dual of a Hilbert space $\mathcal{H}$ is just $\mathcal{H}^*:=\mathcal{L}(\mathcal{H},\C)$.
+We will see that the operator norm on $\mathcal{H}^*$ is such that there exists an inner product on $\mathcal{H}$ which induces it, so that the dual of a Hilbert space is again a Hilbert space.
 
 First, in order to check that the norm induced by an inner product on $V$ is indeed a norm on $V$, we need one of the most important inequalities in mathematics.
 
@@ -48,7 +47,7 @@ Note that, by defining $\|f\|:=\sqrt{\langle f | f \rangle }$, we can write the 
 |\langle f | g \rangle | \leq \|f\|\|g\|.
 \ese
 \bp
-The induced norm on $V$ is a norm.
+The induced norm\index{induced norm} on $V$ is a norm.
 \ep
 \bq
 Let $f,g\in V$ and $z\in \C$. Then
@@ -72,15 +71,15 @@ By taking the square root of both sides, we have $\|f+g\|\leq \|f\|+\|g\|$. \qed
 
 Hence, we see that any inner product space (i.e.\ a vector space equipped with a sesqui-linear inner product) is automatically a normed space under the induced norm. It is only natural to wonder whether the converse also holds, that is, whether every norm is induced by some sesqui-linear inner product. Unfortunately, the answer is negative in general. The following theorem gives a necessary and sufficient condition for a norm to be induced by a sesqui-linear inner product and, in fact, by a unique such.
 
-\bt[Jordan-von Neumann]
-Let $V$ be a vector space. A norm $\|\cdot\|$ on $V$ is induced by a sesqui-linear inner product $\langle\cdot|\cdot\rangle$ on $V$ if, and only if, the parallelogram identity
+\bt[Jordan-von Neumann]\index{Jordan-von Neumann theorem}
+Let $V$ be a vector space. A norm $\|\cdot\|$ on $V$ is induced by a sesqui-linear inner product $\langle\cdot|\cdot\rangle$ on $V$ if, and only if, the parallelogram identity\index{parallelogram identity}
 \bse
 \|f+g\|^2+\|f-g\|^2=2\|f\|^2+2\|g\|^2
 \ese
-holds for all $f,g\in V$, in which case, $\langle\cdot|\cdot\rangle$ is determined by the polarisation identity
+holds for all $f,g\in V$, in which case, $\langle\cdot|\cdot\rangle$ is determined by the polarisation identity\index{polarisation identity}
 \bi{rCl}
 \langle f  |  g\rangle & = & \frac{1}{4} \sum_{k=0}^3\mathrm{i}^k\|f+\mathrm{i}^{4-k}g\|^2\\
-& = & \frac{1}{4} (\|f+g\|^2-\|f-g\|^2+\mathrm{i}\|f-\mathrm{i}g\|^2 -\|f+\mathrm{i}g\|^2).
+& = & \frac{1}{4} (\|f+g\|^2-\|f-g\|^2+\mathrm{i}\|f-\mathrm{i}g\|^2 -\mathrm{i}\|f+\mathrm{i}g\|^2).
 \ei
 \et
 
@@ -110,7 +109,7 @@ and
 \ei
 Therefore
 \bse
-\|f+g\|^2-\|f-g\|^2+\mathrm{i}\|f-\mathrm{i}g\|^2 -\|f+\mathrm{i}g\|^2 = 4\langle f|g\rangle.
+\|f+g\|^2-\|f-g\|^2+\mathrm{i}\|f-\mathrm{i}g\|^2 -\mathrm{i}\|f+\mathrm{i}g\|^2 = 4\langle f|g\rangle.
 \ese
 that is, the inner product is determined by the polarisation identity. 
 \item[($\Leftarrow$)] Suppose that $\|\cdot\|$ satisfies the parallelogram identity. Define $\langle\cdot|\cdot\rangle$ by
@@ -286,6 +285,417 @@ Hence, $\langle \cdot| \cdot \rangle$ is indeed a sesqui-linear inner product. N
 That is, the inner product $\langle \cdot| \cdot \rangle$ does induce the norm from which we started, and this completes the proof.\qedhere
 \end{itemize}
 \eq
+
+\br
+Our proof of linearity is based on the hints given in Section 6.1, Exercise 27, from \textit{Linear Algebra} (4th Edition) by Friedberg, Insel, Spence. Other proofs of the Jordan-von Neumann theorem can by found in
+\begin{itemize}
+\item Kadison, Ringrose, \textit{Fundamentals of the Theory of Operator Algebras: Volume I: Elementary Theory}, American Mathematical Society 1997
+\item Kutateladze, \textit{Fundamentals of Functional Analysis}, Springer 1996.
+\end{itemize}
+\er
+
+\br
+Note that, often in the more mathematical literature, a sesqui-linear inner product is defined to be linear in the \emph{first} argument rather than the second. In that case, the polarisation identity takes the form
+\bi{rCl}
+\langle f  |  g\rangle & = & \frac{1}{4} \sum_{k=0}^3\mathrm{i}^k\|f+\mathrm{i}^{k}g\|^2\\
+& = & \frac{1}{4} (\|f+g\|^2-\|f-g\|^2+\mathrm{i}\|f+\mathrm{i}g\|^2 -\mathrm{i}\|f-\mathrm{i}g\|^2).
+\ei
+\er
+
+\be
+Consider $C_{\C}^0[0,1]$ and let $f(x)=x$ and $g(x)=1$. Then
+\bse
+\|f\|_{\infty} = 1, \qquad \|g\|_{\infty} = 1, \qquad \|f+g\|_{\infty}=2,\qquad \|f-g\|_{\infty}=1
+\ese
+and hence
+\bse
+\|f+g\|_{\infty}^2+ \|f-g\|^2_{\infty}=5\neq 4 =2\|f\|_{\infty}^2  +2 \|g\|_{\infty}^2.
+\ese
+Thus, by the Jordan-von Neumann theorem, there is no inner product on $C_{\C}^0[0,1]$ which induces the supremum norm. Therefore, $(C_{\C}^0[0,1],\|\cdot\|_{\infty})$ cannot be a Hilbert space.
+\ee
+
+\bp
+Let $\mathcal{H}$ be a Hilbert space. Then, $\mathcal{H}^*$ is a Hilbert space.
+\ep
+\bq
+We already know that $\mathcal{H}^*:=\mathcal{L}(\mathcal{H},\C)$ is a Banach space. The norm on $\mathcal{H}^*$ is just the usual operator norm
+\bse
+\|f\|_{\mathcal{H}^*}:=\sup_{\varphi\in\mathcal{H}}\frac{|f(\varphi)|}{\|\varphi\|_{\mathcal{H}}}
+\ese
+where, admittedly somewhat perversely, we have reversed our previous notation for the dual elements. Since the modulus is induced by the standard inner product on $\C$, i.e.\ $|z|=\sqrt{z\overline{z}}$, it satisfies the parallelogram identity. Hence, we have
+\bi{rCl}
+\|f_1+f_2\|^2_{\mathcal{H}^*}+\|f_1-f_2\|^2_{\mathcal{H}^*} & := &\biggl(\sup_{\,\varphi\in\mathcal{H}}\frac{|(f_1+f_2)(\varphi)|}{\|\varphi\|_{\mathcal{H}}}\biggr)^{\negmedspace 2} +\biggl(\sup_{\,\varphi\in\mathcal{H}}\frac{|(f_1-f_2)(\varphi)|}{\|\varphi\|_{\mathcal{H}}}\biggr)^{\negmedspace 2} \\
+ & = &\sup_{\varphi\in\mathcal{H}}\frac{|(f_1+f_2)(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} +\sup_{\varphi\in\mathcal{H}}\frac{|(f_1-f_2)(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} \\
+& = & \sup_{\varphi\in\mathcal{H}}\frac{|f_1(\varphi)+f_2(\varphi)|^2+|f_1(\varphi)-f_2(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} \\
+& = & \sup_{\varphi\in\mathcal{H}}\frac{2|f_1(\varphi)|^2+2|f_2(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} \\
+ & = & 2\sup_{\varphi\in\mathcal{H}}\frac{|f_1(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} +2\sup_{\varphi\in\mathcal{H}}\frac{|f_2(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} \\
+ & =: & 2\|f_1\|^2_{\mathcal{H}^*}+2\|f_2\|^2_{\mathcal{H}^*},
+\ei
+where several steps are justified by the fact that the quantities involved are non-negative. Hence, by the Jordan-von Neumann theorem, the inner product on $\mathcal{H}^*$ defined by the polarisation identity induces $\|\cdot\|_{\mathcal{H}^*}$. Hence, $\mathcal{H}^*$ is a Hilbert space.
+\eq
+
+The following useful fact is an immediate application of the Cauchy-Schwarz inequality.
+
+\bp
+Inner products on a vector space are sequentially continuous.
+\ep
+
+\bq
+Let $\langle\cdot|\cdot\rangle$ be an inner product on $V$. Fix $\varphi\in V$ and let $\displaystyle\lim_{n\to \infty}\psi_n=\psi$. Then
+\bi{rCl}
+|\langle\varphi|\psi_n\rangle-\varphi|\psi\rangle| & = & |\langle\varphi|\psi_n-\psi\rangle|\\
+& \leq & \|\varphi\|\|\psi_n-\psi\|
+\ei
+and hence $\displaystyle\lim_{n\to \infty}\langle\varphi|\psi_n\rangle=\langle\varphi|\psi\rangle$.
+\eq
+
+
+\subsection[Hamel versus Schauder]{Hamel versus Schauder\protect\footnote{\emph{Not} a boxing competition. \begin{tikzpicture}[baseline={($ (current bounding box.center)- (0,-7pt) $)}]\includegraphics[scale=0.05]{graphics/boxe}\end{tikzpicture} }}
+
+Choosing a basis on a vector space is normally regarded as mathematically inelegant. The reason for this is that most statements about vector spaces are much clearer and, we maintain, aesthetically pleasing when expressed without making reference to a basis. However, in addition to the fact that some statements are more easily and usefully written in terms of a basis, bases provide a convenient way to specify the elements of a vector space in terms of components.
+The notion of basis for a vector space that you most probably met in your linear algebra course is more properly know as Hamel basis.
+
+\bd
+A \emph{Hamel basis}\index{Hamel basis} of a vector space $V$ is a subset $\mathcal{B}\subseteq V$ such that
+\ben[label=(\roman*)]
+\item any finite subset $\{e_1,\ldots,e_n\}\subseteq \mathcal{B}$ is \emph{linearly independent}, i.e.\
+\bse
+\sum_{i=1}^n\lambda^ie_i = 0 \ \Rightarrow \ \lambda^1=\cdots = \lambda^n=0
+\ese
+\item the set $\mathcal{B}$ is a \emph{generating} (or \emph{spanning}) \emph{set} for $V$. That is, for any element $v\in V$, there exist a finite subset $\{e_1,\ldots,e_n\}\subseteq \mathcal{B}$ and $\lambda^1,\ldots,\lambda^n\in\C$ such that
+\bse
+v = \sum_{i=1}^n\lambda^ie_i.
+\ese
+Equivalently, by defining the \emph{linear span} of a subset $U\subseteq V$ as
+\bse
+\lspan U := \biggl\{\sum_{i=1}^n\lambda^iu_i\ \Big|\ \lambda^1,\ldots,\lambda^n\in\C,\, u_1,\ldots,u_n\in U \text{ and } n\geq 1\biggr\},
+\ese
+i.e.\ the set of all finite linear combinations of elements of $U$ with complex coefficients, we can restate this condition simply as $V = \lspan \mathcal{B}$.
+\een
+\ed
+Given a basis $\mathcal{B}$, one can show that for each $v\in V$ the $\lambda^1,\ldots,\lambda^n$ appearing in (ii) above are uniquely determined. They are called the \emph{components} of $v$ with respect to $\mathcal{B}$. 
+
+One can also show that if a vector space admits a finite Hamel basis $\mathcal{B}$, then any other basis of $V$ is also finite and, in fact, of the same cardinality as $\mathcal{B}$.
+
+\bd
+If a vector space $V$ admits a finite Hamel basis, then it is said to be \emph{finite-dimensional} and its \emph{dimension} is $\dim V := |\mathcal{B}|$. Otherwise, it is said to be \emph{infinite-dimensional} and we write $\dim V = \infty$.
+\ed
+
+\bt
+Every vector space admits a Hamel basis.
+\et
+
+For a proof of (a slightly more general version of) this theorem, we refer the interested reader to Dr Schuller's \emph{Lectures on the Geometric Anatomy of Theoretical Physics}.
+\medskip
+
+
+Note that the proof that every vector space admits a Hamel basis relies on the axiom of choice and, hence, it is non-constructive. By a corollary to Baire's category theorem, a Hamel basis on a Banach space is either finite or \emph{uncountably} infinite. Thus, while every Banach space admits a Hamel basis, such bases on infinite-dimensional Banach spaces are difficult to construct explicitly and, hence, not terribly useful to express vectors in terms of components and perform computations. Thankfully, we can use the extra structure of a Banach space to define a more useful type of basis.
+
+\bd
+Let $(W,\|\cdot\|)$ be a Banach space. A \emph{Schauder basis}\index{Schauder basis} of $W$ is a sequence $\{e_n\}_{n\in \N}$ in $W$ such that, for any $f\in W$, there exists a unique sequence $\{\lambda^n\}_{n\in \N}$ in $\C$ such that
+\bse
+f = \lim_{n\to \infty} \sum_{i=0}^n\lambda^ie_i =: \sum_{i=0}^{\infty}\lambda^ie_i
+\ese
+or, by explicitly using the definition of limit in $W$,
+\bse
+\lim_{n\to \infty} \, \biggl\|f-\sum_{i=0}^n\lambda^ie_i\biggr\|.
+\ese
+\ed
+
+\noindent We note the following points.
+\begin{itemize}
+\item Since Schauder bases require a notion of convergence, they can only be defined on a vector space equipped with a (compatible) topological structure, of which Banach spaces are a special case.
+\item Unlike Hamel bases, Schauder bases need not exist.
+\item Since the convergence of a series may depend on the order of its terms, Schauder bases must be considered as ordered bases. Hence, two Schauder bases that merely differ in the ordering of their elements are different bases, while permuting the elements of a Schauder basis doesn't necessarily  yield another Schauder basis.
+\item The uniqueness requirement in the definition immediately implies that the zero vector cannot be an element of a Schauder basis. 
+\item Schauder bases satisfy a stronger linear independence property than Hamel bases, namely
+\bse
+\sum_{i=0}^{\infty}\lambda^ie_i = 0 \ \Rightarrow \ \forall \, i\in \N:\lambda^i = 0.
+\ese
+\item At the same time, they satisfy a weaker spanning condition. Rather than the linear span of the basis being equal to $W$, we only have that it is dense in $W$. Equivalently,
+\bse
+W = \overline{\lspan\{e_n\mid n\in \N\}} ,
+\ese
+where the \emph{topological closure} $\overline{U}$ of a subset $U\subseteq W$ is defined as
+\bse
+\overline{U} := \bigl\{ \lim_{n\to\infty}u_n \mid \forall \, n \in \N : u_n\in U \bigr\}.
+\ese
+\end{itemize}
+
+\bd
+A Schauder basis $\{e_n\}_{n\in \N}$ of $(W,\|\cdot\|)$ is said to be \emph{normalised} if
+\bse
+\forall \, n\in \N : \ \|e_n\|=1.
+\ese
+\ed
+
+Multiplying an element of a Schauder basis by a complex number gives again a Schauder basis (not the same one, of course). Since Schauder bases do not contain the zero vector, any Schauder basis $\{e_n\}_{n\in \N}$ gives rise to a normalised Schauder basis $\{\widetilde e_n\}_{n\in \N}$ by defining
+\bse
+\widetilde e_n := \frac{e_n}{\|e_n\|}.
+\ese
+
+\subsection{Separable Hilbert spaces and unitary maps}
+
+Separability is a topological property. Namely, a topological space is said to be separable if it contains a dense subset which is also countable. A Banach space is said to be separable if it is separable as a topological space with the topology induced by the norm. Similarly, a Hilbert space is said to be separable if it is separable as a topological space with the topology induced by the norm induced in turn by the inner product.
+
+For infinite-dimensional Hilbert spaces, there is a much more useful characterisation of separability, which we will henceforth take as our definition.
+
+\bp
+An infinite-dimensional Hilbert space is separable if, and only if, it admits an orthonormal Schauder basis. That is, a Schauder basis $\{e_n\}_{n\in \N}$ such that
+\bse
+\forall \, i,j\in \N : \ \langle e_i | e_j \rangle = \delta_{ij} := \begin{cases} 1 & \text{if } i = j\\ 0 & \text{if } i\neq j\end{cases}.
+\ese
+\ep
+
+\begin{wrapfigure}{r}{0cm}
+\includegraphics[width=1.7cm]{graphics/goose}
+\end{wrapfigure}
+
+Whether this holds for Banach spaces or not was a famous open problem in functional analysis, problem 153 from the Scottish book. It was solved in 1972, more that three decades after it was first posed, when Swedish mathematician Enflo constructed an infinite-dimensional separable Banach space which lacks a Schauder basis. That same year, he was awarded a live goose\footnoteurl{https://en.wikipedia.org/wiki/Per_Enflo#Basis_problem_of_Banach}{} for his effort.
+
+\br
+The \emph{Kronecker symbol} $\delta_{ij}$ appearing above does not represent the components of the identity map on $\mathcal{H}$. Instead, $\delta_{ij}$ are the components of the sesqui-linear form $\langle\cdot|\cdot\rangle$, which is a map $\mathcal{H}\times \mathcal{H}\to \C$, unlike $\id_{\mathcal{H}}$ which is a map $\mathcal{H}\to\mathcal{H}$. If not immediately understood, this remark may be safely ignored.
+\er
+
+\br
+In finite-dimensions, since every vector space admits (by definition) a finite Hamel basis, every inner product space admits an orthonormal basis by the Gram-Schmidt orthonormalisation process.
+\er
+
+From now on, we will only consider orthonormal Schauder bases, sometimes also called Hilbert bases, and just call them bases. 
+
+\bl
+Let $\mathcal{H}$ be a Hilbert space with basis $\{e_n\}_{n\in \N}$. The unique sequence in the expansion of $\psi\in\mathcal{H}$ in terms of this basis is $\{\langle e_n | \psi \rangle\}_{n\in \N}$.
+\el
+\bq
+By using the continuity of the inner product, we have
+\bi{rCl}
+\langle e_i | \psi \rangle & = & \biggl\langle e_i \, \bigg| \, \sum_{j=0}^{\infty}\lambda^je_j \biggr\rangle\\
+& = & \biggl\langle e_i \, \bigg| \, \lim_{n\to\infty}\sum_{j=0}^{n}\lambda^je_j \biggr\rangle\\
+& = & \lim_{n\to\infty}\biggl\langle e_i \, \bigg| \, \sum_{j=0}^{n}\lambda^je_j \biggr\rangle\\
+& = & \lim_{n\to\infty}\sum_{i=0}^{n}\lambda^j  \langle e_i | e_j \rangle\\
+& = & \lim_{n\to\infty}\sum_{i=0}^{n} \lambda^j \delta_{ij}\\
+& = & \lambda^i,
+\ei
+which is what we wanted.
+\eq
+
+While we have already used the term orthonormal, let us note that this means both orthogonal and normalised. Two vectors $\varphi,\psi\in\mathcal{H}$ are said to be \emph{orthogonal} if $\langle\varphi|\psi\rangle =0$, and a subset of $\mathcal{H}$ is called orthogonal if its elements are pairwise orthogonal.
+
+\bl[Pythagoras' theorem]
+Let $\mathcal{H}$ be a Hilbert space and let $\{\psi_0,\ldots,\psi_n\}\subset \mathcal{H}$ be a finite orthogonal set. Then
+\bse
+\biggl\|\sum_{i=0}^n \psi_i\biggr\|^2 = \sum_{i=0}^n \|\psi_i\|^2.
+\ese
+\el
+
+\bq
+Using the pairwise orthogonality of $\{\psi_0,\ldots,\psi_n\}$, we simply calculate 
+\bse
+\biggl\|\sum_{i=0}^n \psi_i\biggr\|^2:=  \biggl\langle\sum_{i=0}^n \psi_i \, \bigg| \, \sum_{j=0}^n \psi_j \biggr\rangle=   \sum_{i=0}^n\langle \psi_i | \psi_i \rangle+ \sum_{i\neq j}\langle \psi_i | \psi_j \rangle =: \sum_{i=0}^n \|\psi_i\|^2. \qedhere
+\ese
+% \bse
+% \begin{split}
+% \biggl\|\sum_{i=0}^n \psi_i\biggr\|^2&:=  \biggl\langle\sum_{i=0}^n \psi_i \, \bigg| \, \sum_{j=0}^n \psi_j \biggr\rangle\\
+% & =   \sum_{i=0}^n\langle \psi_i | \psi_i \rangle+ \sum_{i\neq j}\langle \psi_i | \psi_j \rangle \\
+% &=: \sum_{i=0}^n \|\psi_i\|^2. \qedhere
+% \end{split}
+% \ese
+\eq
+
+\br An insightful way to study a structure in mathematics is to consider maps between different instances $A$, $B$, $C,\ldots$ of that structure, and especially the structure-preserving maps. If a certain structure-preserving map $A\to B$ is invertible and its inverse is also structure-preserving, then both these maps are generically called \emph{isomorphisms} and $A$ and $B$ are said to be \emph{isomorphic} instances of that structure. Isomorphic instances of a structure are essentially the \emph{same} instance of that structure, just dressed up in different ways.
+Typically, there are infinitely many concrete instances of any given structure. The highest form of understanding of a structure that we can hope to achieve is that of a classification of its instances up to isomorphism. That is, we would like to know how many different, non-isomorphic instances of a given structure there are.
+
+In linear algebra, the structure of interest is that of vector space over some field $\mathbb{F}$. The structure-preserving maps are just the linear maps and the isomorphisms are the linear bijections (whose inverses are automatically linear). Finite-dimensional vector spaces over $\mathbb{F}$ are completely classified by their dimension, i.e.\ there is essentially only one vector space over $\mathbb{F}$ for each $n\in \N$, and $\mathbb{F}^n$ is everyone's favourite.  Assuming the axiom of choice,
+infinite-dimensional vector spaces over $\mathbb{F}$ are classified in the  same way, namely, there is, up to linear isomorphism, only one vector space over $\mathbb{F}$ for each infinite cardinal.
+
+Of course, one could do better and also classify the base fields themselves. The classification of finite fields (i.e.\ fields with a finite number of elements) was achieved in 1893 by Moore, who proved that the order (i.e.\ cardinality) of a finite field is necessarily a power of some prime number, and there is only one finite field of each order, up to appropriate notion of isomorphism. The classification of infinite fields remains an open problem.
+
+A classification with far-reaching implications in physics is that of finite-dimensional, semi-simple, complex Lie algebras, which is discussed in some detail in Dr Schuller's \textit{Lectures on the Geometric Anatomy of Theoretical Physics.}
+\er
+
+The structure-preserving maps between Hilbert spaces are those that preserve both the vector space structure and the inner product. The Hilbert space isomorphisms are called unitary maps.
+
+
+\bd
+Let $\mathcal{H}$ and $\mathcal{G}$ be Hilbert spaces. A bounded bijection $U\in\mathcal{L}(\mathcal{H},\mathcal{G})$ is called a \emph{unitary map}\index{unitary map} (or \emph{unitary operator}) if
+\bse
+\forall \, \psi,\varphi\in\mathcal{H} : \
+\langle U \psi|U\varphi \rangle_{\mathcal{G}}=\langle \psi|\varphi \rangle_{\mathcal{H}}.
+\ese
+If there exists a unitary map $\mathcal{H}\to\mathcal{G}$, then $\mathcal{H}$ and $\mathcal{G}$ are said to be \emph{unitarily equivalent} and we write $\mathcal{H}\cong_{\mathrm{Hil}}\mathcal{G}$.
+\ed
+
+There are a number of equivalent definitions of unitary maps (we will later see one involving adjoints) and, in fact, our definition is fairly redundant. 
+
+\bp
+Let $U\cl\mathcal{H}\to\mathcal{G}$ be a surjective map which preserves the inner product. Then, $U$ is a unitary map.  
+\ep
+
+\bq
+\ben[label=(\roman*)]
+\item First, let us check that $U$ is linear. Let $\psi,\varphi\in \mathcal{H}$ and $z\in \C$. Then
+\bi{rCl}
+\|U(z\psi+\varphi)-zU\psi-U\varphi\|_{\mathcal{G}}^2 & = &  \langle U(z\psi+\varphi)-zU\psi-U\varphi|U(z\psi+\varphi)-zU\psi-U\varphi\rangle_{\mathcal{G}}\\
+& = &  \langle U(z\psi+\varphi)|U(z\psi+\varphi)\rangle_{\mathcal{G}}
++ |z|^2\langle U\psi|U\psi\rangle_{\mathcal{G}}
++\langle U\varphi|U\varphi\rangle_{\mathcal{G}}\\
+&& \negmedspace{} -z\langle U(z\psi+\varphi)|U\psi\rangle_{\mathcal{G}}
+-\langle U(z\psi+\varphi)|U\varphi\rangle_{\mathcal{G}}
++\overline{z}\langle U\psi|U\varphi\rangle_{\mathcal{G}}\\
+&& \negmedspace{} -\overline{z}\langle U\psi|U(z\psi+\varphi)\rangle_{\mathcal{G}}-\langle U\varphi|U(z\psi+\varphi)\rangle_{\mathcal{G}} + z\langle U\varphi|U\psi\rangle_{\mathcal{G}}\\
+& = &  \langle z\psi+\varphi|z\psi+\varphi\rangle_{\mathcal{H}}
++ |z|^2\langle \psi|\psi\rangle_{\mathcal{H}}
++\langle \varphi|\varphi\rangle_{\mathcal{H}}\\
+&& \negmedspace{} -z\langle z\psi+\varphi|\psi\rangle_{\mathcal{H}}
+-\langle z\psi+\varphi|\varphi\rangle_{\mathcal{H}}
++\overline{z}\langle \psi|\varphi\rangle_{\mathcal{H}}\\
+&& \negmedspace{} -\overline{z}\langle \psi|z\psi+\varphi\rangle_{\mathcal{H}}
+-\langle \varphi|z\psi+\varphi\rangle_{\mathcal{H}}
++ z\langle \varphi|\psi\rangle_{\mathcal{H}}\\
+& = & 2|z|^2\langle \psi|\psi\rangle_{\mathcal{H}}
++\overline{z} \langle \psi|\varphi\rangle_{\mathcal{H}}
++z \langle\varphi |\psi\rangle_{\mathcal{H}}
++2\langle \varphi|\varphi\rangle_{\mathcal{H}}\\
+&& \negmedspace{} -|z|^2\langle \psi|\psi\rangle_{\mathcal{H}}
+-z\langle \varphi|\psi\rangle_{\mathcal{H}}
+-\overline{z}\langle \psi|\varphi\rangle_{\mathcal{H}}
+-\langle \varphi|\varphi\rangle_{\mathcal{H}}
++\overline{z}\langle \psi|\varphi\rangle_{\mathcal{H}}\\
+&& \negmedspace{} -|z|^2\langle \psi|\psi\rangle_{\mathcal{H}}
+-\overline{z}\langle \psi|\varphi\rangle_{\mathcal{H}}
+-z\langle \varphi|\psi\rangle_{\mathcal{H}}
+-\langle \varphi|\varphi\rangle_{\mathcal{H}}
++ z\langle \varphi|\psi\rangle_{\mathcal{H}}\\
+& = & 0.
+\ei
+Hence $\|U(z\psi+\varphi)-zU\psi-U\varphi\|_{\mathcal{G}}=0$, and thus
+\bse
+U(z\psi+\varphi)=zU\psi+U\varphi.
+\ese
+
+\item For boundedness, simply note that since for any $\psi\in\mathcal{H}$
+\bse
+\|U\psi\|_{\mathcal{G}} := \sqrt{\langle U \psi|U\psi \rangle_{\mathcal{G}}} = \sqrt{\langle \psi|\psi \rangle_{\mathcal{H}}} =:\|\psi\|_{\mathcal{H}},
+\ese
+we have
+\bse
+\sup_{\psi\in\mathcal{H}}\frac{\|U\psi\|_{\mathcal{G}}}{\|\psi\|_{\mathcal{H}}} = 1 < \infty.
+\ese
+Hence $U$ is bounded and, in fact, has unit operator norm.
+\item Finally, recall that a linear map is injective if, and only if, its kernel is trivial. Suppose that $\psi\in\ker U$. Then, we have
+\bse
+\langle \psi|\psi \rangle_{\mathcal{H}} = \langle U \psi|U\psi \rangle_{\mathcal{G}}=\langle 0|0 \rangle_{\mathcal{G}}= 0 .
+\ese
+Hence, by positive-definiteness, $\psi=0$ and thus $U$ is injective.
+Since $U$ is also surjective by assumption, it satisfies our definition of unitary map.
+\een
+\eq
+Note that a map $U\cl\mathcal{H}\to\mathcal{G}$ is called an \emph{isometry}\index{isometry} if
+\bse
+\forall \, \psi \in \mathcal{H} : \ \|U\psi\|_{\mathcal{G}} = \|\psi\|_{\mathcal{H}}.
+\ese
+Linear isometries are, of course, the structure-preserving maps between normed spaces. We have shown that every unitary map is an isometry has unit operator norm, whence the name \emph{unitary operator}. 
+
+\be
+Consider the set of all \emph{square-summable} complex sequences
+\bse
+\ell^2(\N) := \biggl\{ a\cl \N \to \C \ \Big| \ \sum_{i=0}^{\infty}|a_i|^2< \infty\biggr\}.
+\ese
+We define addition and scalar multiplication of sequences termwise, that is, for all $n\in \N$ and all complex numbers $z\in \C$,
+\bi{rCl}
+(a+b)_n & := & a_n+b_n \\
+(z\cdot a)_n & := & z a_n .
+\ei
+These are, of course, just the discrete analogues of pointwise addition and scalar multiplication of maps. The triangle inequality and homogeneity of the modulus, together with the vector space structure of $\C$, imply that $(\ell^2(\N),+,\cdot)$ is a complex vector space.
+
+The standard inner product on $\ell^2(\N)$ is
+\bse
+\langle a | b \rangle_{\ell^2} := \sum_{i=0}^{\infty}\overline{a}_ib_i.
+\ese
+This inner product induces the norm
+\bse
+\|a\|_{\ell^2}:=\sqrt{\langle a | a \rangle_{\ell^2}} = \sqrt{\sum_{i=0}^{\infty}|a_i|^2},
+\ese
+with respect to which $\ell^2(\N)$ is complete. Hence,  $(\ell^2(\N),+,\cdot,\langle \cdot | \cdot \rangle_{\ell^2})$ is a Hilbert space.
+
+Consider the sequence of sequences $\{e_n\}_{n\in \N}$ where
+\bi{rCl}
+e_0 & = & (1,0,0,0,\ldots)\\
+e_1 & = & (0,1,0,0,\ldots)\\
+e_2 & = & (0,0,1,0,\ldots)\\
+ & \vdots &
+\ei
+i.e.\, we have $(e_n)_m=\delta_{nm}$. Each $a\in \ell^2(\N)$ can be written uniquely as
+\bse
+a = \sum_{i=0}^{\infty}\lambda^ie_i,
+\ese
+where $\lambda^i = \langle e_i|a \rangle_{\ell^2}= a_i$. The sequences $e_n$ are clearly square-summable and, in fact, they are orthonormal with respect to $\langle \cdot | \cdot \rangle_{\ell^2}$
+\bse
+\langle e_n|e_m\rangle_{\ell^2} := \sum_{i=0}^{\infty}\overline{(e_n)}_i(e_m)_i = \sum_{i=0}^{\infty}\delta_{ni}\delta_{mi} = \delta_{nm}.
+\ese
+\ee
+Hence, the sequence $\{e_n\}_{n\in \N}$ is an orthonormal Schauder basis of $\ell^2(\N)$, which is therefore an infinite-dimensional separable Hilbert space. 
+
+\bt[Classification of separable Hilbert spaces]
+Every infinite-dimensional separable Hilbert space is unitarily equivalent to $\ell^2(\N)$.
+\et
+
+\bq
+Let $\mathcal{H}$ be a separable Hilbert space with basis $\{e_n\}_{n\in \N}$. Consider the map
+\bi{rrCl}
+U\cl &\mathcal{H}&\to&\ell^2(\N)\\
+& \psi & \mapsto & \{\langle e_n|\psi\rangle_{\mathcal{H}}\}_{n\in \N}.
+\ei
+Note that, for any $\psi\in \mathcal{H}$, the sequence $\{\langle e_n|\psi\rangle_{\mathcal{H}}\}_{n\in \N}$ is indeed square-summable since
+we have 
+\bi{rCl}
+\|\psi \|_{\mathcal{H}}^2 & = & \biggl\| \sum_{i=0}^{\infty}\langle e_i|\psi\rangle_{\mathcal{H}}e_i \biggr\|_{\mathcal{H}}^2 \\
+& = & \biggl\|\lim_{n\to\infty} \sum_{i=0}^{n}\langle e_i|\psi\rangle_{\mathcal{H}}e_i \biggr\|_{\mathcal{H}}^2 \\
+\pagebreak
+& = & \lim_{n\to\infty} \biggl\| \sum_{i=0}^{n}\langle e_i|\psi\rangle_{\mathcal{H}}e_i \biggr\|_{\mathcal{H}}^2 \\
+& = & \lim_{n\to\infty}\sum_{i=0}^{n}\| \langle e_i|\psi\rangle_{\mathcal{H}}e_i\|_{\mathcal{H}}^2 \\
+& = & \lim_{n\to\infty}\sum_{i=0}^{n} |\langle e_i|\psi\rangle_{\mathcal{H}}|^2 \|e_i\|_{\mathcal{H}}^2 \\
+& = &\sum_{i=0}^{\infty}|\langle e_i|\psi\rangle_{\mathcal{H}}|^2,
+\ei
+where we have used Pythagoras' theorem and the orthonormality  of the basis. Hence, since $\|\psi\|_{\mathcal{H}}$ is finite, we have 
+\bse
+\sum_{i=0}^{\infty}|\langle e_i|\psi\rangle_{\mathcal{H}}|^2 < \infty.
+\ese
+
+By our previous proposition, in order to show that $U$ is a unitary map, it suffices to show that it is surjective and preserves the inner product. For surjectivity, let $\{a_n\}_{n\in \N}$ be a complex square-summable sequence. Then, by elementary analysis, we know that $\displaystyle\lim_{n\to\infty}|a_n|=0$. This implies that, for any $\varepsilon>0$, there exists $N\in\N$ such that
+\bse
+\forall \, n\geq m\geq N : \ \sum_{i=m}^n|a_i|^2<\varepsilon.
+\ese
+Then, for all $n,m\geq N$ (without loss of generality, assume $n> m$), we have
+\bi{c}
+\biggl\|\sum_{i=0}^{n}a_ie_i-\sum_{j=0}^{m}a_je_j \biggr\|_{\mathcal{H}}^2  =  \biggl\|\sum_{i=m}^{n}a_ie_i\biggr\|_{\mathcal{H}}^2
+ =  \sum_{i=m}^{n}|a_i|^2\|e_i\|_{\mathcal{H}}^2
+ =  \sum_{i=m}^{n}|a_i|^2 < \varepsilon.
+\ei
+That is, $\bigl\{\sum_{i=0}^{n}a_ie_i\bigr\}_{n\in \N}$ is a Cauchy sequence in $\mathcal{H}$. Hence, by completeness, there exists $\psi\in\mathcal{H}$ such that
+\bse
+\psi = \sum_{i=0}^{\infty}a_ie_i
+\ese
+and we have $U\psi = \{a_n\}_{n\in \N}$, so $U$ is surjective. Moreover, we have
+\bi{rCl}
+\langle\psi|\varphi\rangle_{\mathcal{H}} & = & 
+\biggl\langle \sum_{i=0}^{\infty}\langle e_i|\psi\rangle_{\mathcal{H}}e_i\,\bigg|\, \sum_{j=0}^{\infty}\langle e_j|\varphi\rangle_{\mathcal{H}}e_j\biggr\rangle_{\!\mathcal{H}}\\
+& = & 
+ \sum_{j=0}^{\infty} \sum_{j=0}^{\infty}\overline{\langle e_i|\psi\rangle}_{\mathcal{H}}\langle e_j|\varphi\rangle_{\mathcal{H}}\langle e_i|e_j\rangle_{\!\mathcal{H}} \\
+& = & 
+ \sum_{j=0}^{\infty} \sum_{j=0}^{\infty}\overline{\langle e_i|\psi\rangle}_{\mathcal{H}}\langle e_j|\varphi\rangle_{\mathcal{H}}\delta_{ij} \\
+& = & 
+ \sum_{j=0}^{\infty} \overline{\langle e_i|\psi\rangle}_{\mathcal{H}}\langle e_i|\varphi\rangle_{\mathcal{H}}\\
+& =: & 
+\big\langle \{\langle e_n|\psi\rangle_{\mathcal{H}}\}_{n\in\N} \big| \{\langle e_n|\varphi\rangle_{\mathcal{H}}\}_{n\in\N}\big\rangle_{\ell^2}\\
+& =: & 
+\langle U\psi | U \varphi \rangle_{\ell^2} .
+\ei
+Hence $U$ preserves the inner product, and it is therefore a unitary map.
+\eq
+
+
+
 
 
 

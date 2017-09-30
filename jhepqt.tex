@@ -59,6 +59,8 @@
 \patchcmd{\@IEEEeqnarray}{\relax}{\relax\intertext@}{}{}
 \makeatother
 
+\usepackage{wrapfig}
+
 \renewcommand\Re{\operatorname{Re}}
 \renewcommand\Im{\operatorname{Im}}
 
@@ -112,7 +114,7 @@
 {1.5mm}         % Space after thm head: \newline = linebreak
 {{\underline{\textit{\thmname{#1}\thmnumber{ #2}}~\thmnote{(#3)}\unskip}}}  % Thm head spec
 
-\theoremstyle{remark}
+\theoremstyle{underline}
 
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{example}[theorem]{Example}
@@ -122,6 +124,13 @@
 %---------------------------------------------------------------------------------------
 %clever cross-references
 %\usepackage[noabbrev,capitalize]{cleveref}
+
+
+\makeatletter
+\newcommand\footnoteurl@[2]{#2\footnote{\url@{#1}}}
+\DeclareRobustCommand{\footnoteurl}{\hyper@normalise\footnoteurl@}
+\makeatother
+
 
 \usepackage{hyperref}
 \hypersetup{
@@ -190,9 +199,9 @@ pdfcreator={pdfLaTeX/Overleaf}, % PDF Creator
 
 \begin{document} 
 
-% \rule{0cm}{2cm}\\
-% \includegraphics[width=14cm]{graphics/faulogo}
-% \maketitle 
+\rule{0cm}{2cm}\\
+\includegraphics[width=14cm]{graphics/faulogo}
+\maketitle 
 
 % \section*{Introduction}
 % \addcontentsline{toc}{section}{Introduction}
@@ -213,11 +222,11 @@ pdfcreator={pdfLaTeX/Overleaf}, % PDF Creator
 \input{qt/03separable}
 \newpage
 
-% \section*{Further readings}
-% \addcontentsline{toc}{section}{Further readings}
-% \input{biblio}
-% \newpage
+\section*{Further readings}
+\addcontentsline{toc}{section}{Further readings}
+\input{biblio}
+\newpage
 
-% \printindex
+\printindex
 
 \end{document}
