@@ -1,0 +1,349 @@
+
+\subsection{Projectors}
+
+Projectors play a key role in quantum theory, as you can see from Axioms 2 and 5.
+
+\bd
+Let $\mathcal{H}$ be a separable Hilbert space. Fix a unit vector $e\in\mathcal{H}$ (that is, $\|e\|=1$) and let $\psi\in \mathcal{H}$. The \emph{projection}\index{projection} of $\psi$ to $e$ is
+\bse
+\psi_{\myparallel} := \langle e| \psi \rangle e
+\ese
+while the \emph{orthogonal complement} of $\psi$ is
+\bse
+\psi_{\perp}:=\psi-\psi_{\myparallel}.
+\ese
+\ed
+We can extend these definitions to a countable orthonormal subset $\{e_i\}_{i\in \N}\subset\mathcal{H}$, i.e.\ a subset of $\mathcal{H}$ whose elements are pairwise orthogonal and have unit norm. Note that $\{e_i\}_{i\in \N}$ need not be a basis of $\mathcal{H}$.
+
+\bp
+Let $\psi\in \mathcal{H}$ and let $\{e_i\}_{i\in \N}\subset \mathcal{H}$ be an orthonormal subset. Then
+\ben[label=(\alph*)]
+\item we can write $\psi = \psi_{\myparallel}+\psi_{\perp}$, where
+\bse
+\psi_{\myparallel}:= \sum_{i=0}^{\infty}\langle e_i | \psi \rangle e_i, \qquad \psi_{\perp} :=\psi-\psi_{\myparallel}
+\ese
+and we have
+\bse
+\forall \, i\in \N : \ \langle \psi_{\perp} | e_i\rangle = 0.
+\ese
+\item Pythagoras' theorem holds:
+\bse
+\|\psi\|^2 = \|\psi_{\myparallel}\|^2+\|\psi_{\perp}\|^2.
+%+ \sum_{i\in I} |\langle e_i | \psi \rangle|^2.
+\ese
+Note that this is an extension to the finite-dimensional case.
+\item for any $\gamma\in\lspan\{e_i\mid i\in \N\}$, we have the estimate
+\bse
+\|\psi-\gamma\| \geq \|\psi_{\perp}\|
+\ese
+with equality if, and only if, $\gamma =\psi_{\myparallel}$.
+\een
+\ep
+
+\bq
+First consider the case of a finite orthonormal subset $\{e_0,\ldots,e_n\}\subset \mathcal{H}$.
+\ben[label=(\alph*)]
+\item Let $\psi_{\myparallel}$ and $\psi_{\perp}$ be defined as in the proposition. Then $\psi_{\myparallel}+\psi_{\perp}=\psi$ and 
+\bi{rCl}
+\langle \psi_{\perp} | e_i\rangle & = & \biggl\langle \psi-\sum_{j=0}^{n}\langle e_j | \psi \rangle e_j \,\bigg|\, e_i\biggr\rangle \\
+& = & \langle \psi | e_i\rangle- \sum_{j=0}^{n}\overline{\langle e_j | \psi \rangle} \langle e_j | e_i \rangle \\
+& = & \langle \psi | e_i\rangle- \sum_{j=0}^{n}\langle\psi| e_j  \rangle \delta_{ji}\\
+& = & \langle \psi | e_i\rangle- \langle \psi | e_i\rangle\\
+& = & 0
+\ei
+for all $0\leq i \leq n$.
+\item From part (a), we have
+\bse
+\langle \psi_{\perp} | \psi_{\myparallel}\rangle = \biggl\langle\psi_{\perp} \,\bigg|\,  \sum_{i=0}^{n}\langle e_i | \psi \rangle e_i \biggr\rangle = \sum_{i=0}^{n}\langle e_i | \psi \rangle \langle \psi_{\perp} | e_i\rangle = 0.
+\ese
+Hence, by (the finite-dimensional) Pythagoras' theorem
+\bse
+\|\psi\|^2 = \|\psi_{\myparallel}+\psi_{\perp}\|^2= \|\psi_{\myparallel}\|^2+\|\psi_{\perp}\|^2.
+\ese
+\item Let $\gamma\in\lspan\{e_i\mid 0\leq i\leq n \}$. Then $\gamma = \sum_{i=0}^n\gamma_ie_i$ for some $\gamma_0,\ldots,\gamma_n\in\C$. Hence
+\bi{rCl}
+\|\psi-\gamma \|^2 & = & \|\psi_{\perp}+\psi_{\myparallel}-\gamma \|^2\\
+& = & \biggl\|\psi_{\perp}+\sum_{i=0}^n\langle e_i | \psi \rangle e_i -\sum_{i=0}^n\gamma_ie_i \biggr\|^2\\
+& = & \biggl\|\psi_{\perp}+\sum_{i=0}^n(\langle e_i | \psi \rangle -\gamma_i)e_i \biggr\|^2\\
+& = & \|\psi_{\perp}\|^2+\sum_{i=0}^n|\langle e_i | \psi \rangle -\gamma_i|^2
+\ei
+and thus $\|\psi-\gamma\| \geq \|\psi_{\perp}\|$ since $|\langle e_i | \psi \rangle -\gamma_i|^2>0$ for all $0\leq i\leq n$. Moreover, we have equality if, and only if, $|\langle e_i | \psi \rangle -\gamma_i|=0$ for all $0\leq i\leq n$, that is $\gamma = \psi_{\myparallel}$.
+\een
+
+To extend this to a countably infinite orthonormal set $\{e_i\}_{i\in \N}$, note that by part (b) and Bessel's inequality, we have
+
+\bse
+\biggl\|\sum_{i=0}^n\langle e_i | \psi \rangle e_i\biggr\|^2 = \sum_{i=0}^n|\langle e_i | \psi \rangle|^2 \leq \|\psi\|^2.
+\ese
+Since $|\langle e_i | \psi \rangle|^2\geq 0$, the sequence of partial sums $\bigl\{\sum_{i=0}^n|\langle e_i | \psi \rangle|^2\bigr\}_{n\in \N}$ is monotonically increasing and bounded from above by $\|\psi\|$. Hence, it converges and this implies that 
+\bse
+\psi_{\myparallel}:=\sum_{i=0}^{\infty}\langle e_i | \psi \rangle e_i
+\ese
+exists as an element of $\mathcal{H}$. The extension to the countably infinite case then follows by continuity of the inner product.
+\eq
+
+\subsection{Closed linear subspaces}
+
+We will often be interested in looking at linear subspaces of a Hilbert space $\mathcal{H}$, i.e.\ subsets $\mathcal{M}\subseteq\mathcal{H}$ such that
+\bse
+\forall \, \psi,\varphi\in\mathcal{M}:\forall \, z\in \C : \ z\psi+\varphi\in \mathcal{M}.
+\ese
+Note that while every linear subspace $\mathcal{M}\subset \mathcal{H}$ inherits the inner product on $\mathcal{H}$ to become an inner product space, it may fail to be complete with respect to this inner product. In other words, non every linear subspace of a Hilbert space is necessarily a sub-Hilbert space.
+
+The following definitions are with respect to the norm topology on a normed space and can, of course, be given more generally on an arbitrary topological space.
+
+\bd
+Let $\mathcal{H}$ be a normed space. A subset $\mathcal{M}\subset \mathcal{H}$ is said to be \emph{open}\index{open set} if
+\bse
+\forall \, \psi \in \mathcal{M} : \exists \, r>0 : \forall \, \varphi\in \mathcal{H} : \ \|\psi-\varphi\|<\varepsilon \, \Rightarrow\, \varphi\in\mathcal{M}.
+\ese
+\ed
+Equivalently, by defining the \emph{open ball} of radius $r>0$ and centre $\psi\in\mathcal{H}$
+\bse
+B_r(\psi) := \{\varphi\in\mathcal{H}\mid\|\psi-\varphi\|<r\},
+\ese
+we can define $\mathcal{M}\subset \mathcal{H}$ to be open if
+\bse
+\forall \, \psi \in \mathcal{M} : \exists \, r>0 :B_r(\psi)\subseteq\mathcal{M}.
+\ese
+
+\bd
+A subset $\mathcal{M}\subset \mathcal{H}$ is said to be \emph{closed}\index{closed set} if its complement $\mathcal{H}\setminus \mathcal{M}$ is open.
+\ed
+
+\bp
+A closed subset $\mathcal{M}$ of a complete normed space $\mathcal{H}$ is complete.
+\ep
+
+\bq
+Let $\{\psi_n\}_{n\in \N}$ be a Cauchy sequence in the closed subset $\mathcal{M}$. Then, $\{\psi_n\}_{n\in \N}$ is also a Cauchy sequence in $\mathcal{H}$, and hence it converges to some $\psi\in\mathcal{H}$ since $\mathcal{H}$ is complete. 
+We want to show that, in fact, $\psi\in\mathcal{M}$. Suppose, for the sake of contradiction, that $\psi\notin\mathcal{M}$, i.e.\ $\psi\in\mathcal{H}\setminus\mathcal{M}$. Since $\mathcal{M}$ is closed, $\mathcal{H}\setminus \mathcal{M}$ is open. Hence, there exists $r>0$ such that
+\bse
+\forall \, \varphi\in\mathcal{H}:\ \|\varphi -\psi\|< r \, \Rightarrow \, \varphi \in \mathcal{H}\setminus \mathcal{M}.
+\ese
+However, since $\psi$ is the limit of $\{\psi_n\}_{n\in \N}$, there exists $N\in \N$ such that
+\bse
+\forall \, n\geq N : \ \|\psi_n-\psi\|<r.
+\ese
+Hence, for all $n\geq N$, we have $\psi_n \in  \mathcal{H}\setminus \mathcal{M}$, i.e.\  $\psi_n \notin\mathcal{M}$, contradicting the fact that  $\{\psi_n\}_{n\in \N}$ is a sequence in $\mathcal{M}$. Thus, we must have $\psi\in\mathcal{M}$.
+\eq
+
+\bc
+A closed linear subspace $\mathcal{M}$ of a Hilbert space $\mathcal{H}$ is a sub-Hilbert space with the inner product on $\mathcal{H}$. Moreover, if $\mathcal{H}$ is separable, then so is $\mathcal{M}$.
+\ec
+Knowing that a linear subspace of a Hilbert space is, in fact, a sub-Hilbert space can be very useful. For instance, we know that there exists an orthonormal basis for the linear subspace.
+Note that the converse to the corollary does not hold: a sub-Hilbert space need not be a closed linear subspace.
+
+\subsection{Orthogonal projections}
+
+\bd
+Let $\mathcal{M}\subseteq \mathcal{H}$ be a (not necessarily closed) linear subspace of $\mathcal{H}$. The set
+\bse
+\mathcal{M}^{\perp}:=\{\psi\in\mathcal{H}\mid \forall \,\varphi\in \mathcal{M} : \langle \varphi | \psi \rangle =0\}
+\ese
+is called the \emph{orthogonal complement}\index{orthogonal complement} of $\mathcal{M}$ in $\mathcal{H}$.
+\ed
+
+\bp
+Let $\mathcal{M}\subseteq\mathcal{H}$ be a linear subspace of $\mathcal{H}$. Then, $\mathcal{M}^{\perp}$ is a closed linear subspace of $\mathcal{H}$.
+\ep
+
+\bq
+Let $\psi_1,\psi_2\in\mathcal{M}^{\perp}$ and $z\in \C$. Then, for all $\varphi\in\mathcal{M}$
+\bse
+\langle\varphi|z\psi_1+\psi_2\rangle = z\langle\varphi|\psi_1\rangle +\langle\varphi|\psi_2\rangle =0 
+\ese
+and hence $z\psi_1+\psi_2\in\mathcal{M}$. Thus, $\mathcal{M}^{\perp}$ is a linear subspace of $\mathcal{H}$. It remains to be shown that it is also closed. Define the maps
+\bi{rrCl}
+f_{\varphi}\cl & \mathcal{H} & \to & \C\\
+&\psi & \mapsto & \langle \varphi | \psi \rangle .
+\ei
+Then, we can write
+\bse
+\mathcal{M}^{\perp} = \bigcap_{\varphi\in\mathcal{M}}\preim_{f_{\varphi}}(\{0\}).
+\ese
+Since the inner product is continuous (in each slot), the maps $f_{\varphi}$ are continuous. Hence, the pre-images of closed sets are closed. As the singleton $\{0\}$ is closed in the standard topology on $\C$, the sets $\preim_{f_{\varphi}}(\{0\})$ are closed for all $\varphi\in \mathcal{M}$. Thus, $\mathcal{M}^{\perp}$ is closed since arbitrary intersections of closed sets are closed.
+\eq
+
+Note that by Pythagoras' theorem, we have the decomposition
+\bse
+\mathcal{H}=\mathcal{M}\oplus\mathcal{M}^{\perp}:=\{\psi+\varphi\mid\psi\in\mathcal{M},\varphi\in\mathcal{M}^{\perp}\}
+\ese
+for any closed linear subspace $\mathcal{M}$.
+\bd
+Let $\mathcal{M}$ be a closed linear subspace of a separable Hilbert space $\mathcal{H}$ and fix some orthonormal basis of $\mathcal{M}$. The map
+\bi{rrCl}
+\mathrm{P}_{\!\mathcal{M}} \cl & \mathcal{H} & \to & \mathcal{M}\\
+& \psi & \mapsto & \psi_{\myparallel}
+\ei
+is called the \emph{orthogonal projector} to $\mathcal{M}$.
+\ed
+
+\bp
+Let $\mathrm{P}_{\!\mathcal{M}} \cl  \mathcal{H}  \to  \mathcal{M}$ be an orthogonal projector to $\mathcal{M}\subseteq\mathcal{H}$. Then
+\ben[label=(\roman*)]
+\item $\mathrm{P}_{\!\mathcal{M}}\circ \mathrm{P}_{\!\mathcal{M}} = \mathrm{P}_{\!\mathcal{M}}$, sometimes also written as $\mathrm{P}_{\!\mathcal{M}}^2=\mathrm{P}_{\!\mathcal{M}}$
+\item $\forall \, \psi,\varphi \in \mathcal{H}: \ \langle\mathrm{P}_{\!\mathcal{M}}\psi | \varphi \rangle =\langle\psi | \mathrm{P}_{\!\mathcal{M}}\varphi \rangle $
+\item $\mathrm{P}_{\!\mathcal{M}^{\perp}}\psi = \psi_{\perp}$
+\item $\mathrm{P}_{\!\mathcal{M}}\in \mathcal{L}(\mathcal{H},\mathcal{M})$.
+\een
+\ep
+
+\bq
+Let $\{e_i\}_{i\in I}$ and $\{e_i\}_{i\in J}$ be bases of $\mathcal{M}$ and $\mathcal{M}^{\perp}$ respectively, where $I,J$ are either finite or countably infinite, such that $\{e_i\}_{i\in I\cup J}$ is a basis of $\mathcal{H}$ (in the latter case, we think of $I$ as having a definite ordering).
+\ben[label=(\roman*)]
+\item Let $\psi\in\mathcal{H}$. Then
+\bi{rCl}
+\mathrm{P}_{\!\mathcal{M}}(\mathrm{P}_{\!\mathcal{M}} \psi )& := & \mathrm{P}_{\!\mathcal{M}}\biggl(\sum_{\,i\in I}\langle e_i|\psi\rangle e_i\biggr)\\
+& ;= & \sum_{j\in I}\biggl\langle e_j \,\bigg|\, \sum_{i\in I}\langle e_i|\psi\rangle e_i\biggr\rangle e_j\\
+& = & \sum_{j\in I}\sum_{i\in I}\langle e_i|\psi\rangle\langle e_j |  e_i \rangle e_j\\
+& = & \sum_{i\in I}\langle e_i|\psi\rangle e_i\\
+& =: & \mathrm{P}_{\!\mathcal{M}} \psi.
+\ei
+\item Let $\psi,\varphi\in\mathcal{H}$. Then
+\bi{rCl}
+\langle\mathrm{P}_{\!\mathcal{M}}\psi | \varphi \rangle &:=& \biggl\langle  \sum_{i\in I}\langle e_i|\psi\rangle e_i \,\bigg|\,\varphi\biggr\rangle  \\
+& = &  \sum_{i\in I} \overline{\langle e_i|\psi\rangle} \langle e_i |  \varphi \rangle \\
+& = &  \sum_{i\in I} \langle e_i |  \varphi \rangle \langle \psi|e_i\rangle \\
+&=& \biggl\langle \psi \,\bigg|\,\sum_{i\in I}\langle e_i|\varphi\rangle e_i \biggr\rangle  \\
+&=:& \langle\psi | \mathrm{P}_{\!\mathcal{M}}\varphi \rangle.
+\ei
+\item Let $\psi\in \mathcal{H}$. Then
+\bse
+\mathrm{P}_{\!\mathcal{M}}\psi +\mathrm{P}_{\!\mathcal{M}^{\perp}}\psi = \sum_{i\in I}\langle e_i|\psi\rangle e_i+\sum_{i\in J}\langle e_i|\psi\rangle e_i = \sum_{i\in I\cup J}\langle e_i|\psi\rangle e_i = \psi.
+\ese
+Hence
+\bse
+\mathrm{P}_{\!\mathcal{M}^{\perp}}\psi =\psi-\mathrm{P}_{\!\mathcal{M}}\psi = \psi-\psi_{\myparallel} =: \psi_{\perp}.
+\ese
+\item Let $\psi\in \mathcal{H}$. Then, by Pythagoras' theorem,
+\bse
+\sup_{\psi\in\mathcal{H}}\frac{\|\mathrm{P}_{\!\mathcal{M}}\psi\|}{\|\psi\|} = \sup_{\psi\in\mathcal{H}}\frac{\|\psi_{\myparallel}\|}{\|\psi\|} =  \sup_{\psi\in\mathcal{H}}\frac{\|\psi\|-\|\psi_{\perp}\|}{\|\psi\|} \leq 1 <\infty \qedhere
+\ese
+\een
+\eq
+
+Quite interesting, and heavily used, is the converse.
+
+\bt
+Let $\mathrm{P}\in\mathcal{L}(\mathcal{H},\mathcal{H})$ have the properties
+\ben[label=(\roman*)]
+\item $\mathrm{P}\circ \mathrm{P} = \mathrm{P}$
+\item $\forall \, \psi,\varphi\in\mathcal{H} : \ \langle \mathrm{P} \psi | \varphi \rangle = \langle \psi | \mathrm{P} \varphi \rangle$.
+\een
+Then, the range $ \mathrm{P}(\mathcal{H})$ of $ \mathrm{P}$ is closed and 
+\bse
+ \mathrm{P} =  \mathrm{P}_{ \mathrm{P}(\mathcal{H})}.
+\ese
+In other words, every projector is the orthogonal projector to some closed linear subspace.
+\et
+
+\subsection{Riesz representation theorem, bras and kets}
+
+Let $\mathcal{H}$ be a Hilbert space. Consider again the map
+\bi{rrCl}
+f_{\varphi}\cl & \mathcal{H} & \to & \C\\
+&\psi & \mapsto & \langle \varphi | \psi \rangle .
+\ei
+for $\varphi\in \mathcal{H}$. The linearity in the second argument of the inner product implies that this map is linear. Moreover, by the Cauchy-Schwarz inequality, we have
+\bse
+\sup_{\psi\in  \mathcal{H}}\frac{|f_{\varphi}(\psi)|}{\|\psi\|} = \sup_{\psi\in  \mathcal{H}}\frac{|\langle \varphi | \psi \rangle|}{\|\psi\|} \leq \sup_{\psi\in  \mathcal{H}}\frac{\|\varphi \|\| \psi \|}{\|\psi\|} = \|\varphi\|<\infty.
+\ese
+Hence, $f_{\varphi}\in\mathcal{L}(\mathcal{H},\C)=:\mathcal{H}^*$. Therefore, to every element of $\varphi$ of $\mathcal{H}$, there is associated an element $f_{\varphi}$ in the dual space $\mathcal{H}^*$. In fact, the converse is also true.
+
+\bt[Riesz representation]
+Every $f\in\mathcal{H}^*$ is of the form $f_{\varphi}$ for a unique $\varphi\in\mathcal{H}$.
+\et
+
+\bq
+First, suppose that $f=0$, i.e.\ $f$ is the zero functional on $\mathcal{H}$. Then, clearly, $f=f_0$ with $0\in\mathcal{H}$. Hence, suppose that $f\neq 0$. Since, $\ker f := \preim_f(\{0\})$ is a closed linear subspace, we can write
+\bse
+\mathcal{H} = \ker f \oplus (\ker f)^{\perp}.
+\ese
+As $f\neq 0$, there exists some $\psi\in \mathcal{H}$ such that $\psi\notin\ker f$. Hence, $\ker f \neq \mathcal{H}$, and thus $(\ker f)^{\perp}\neq\{0\}$. Let $\xi\in(\ker f)^{\perp}\setminus\{0\}$ and assume, w.l.o.g., that $\|\xi\|=1$. Define
+\bse
+\varphi:= \overline{f(\xi)}\xi\in(\ker f)^{\perp}.
+\ese
+Then, for any $\psi\in\mathcal{H}$, we have
+\bi{rCl}
+f_{\varphi}(\psi)-f(\psi) & := & \langle \varphi | \psi \rangle -f(\psi)\\
+& := & \langle \overline{f(\xi)}\xi | \psi \rangle -f(\psi)\langle \xi | \xi \rangle \\
+& = & \langle \xi |f(\xi) \psi \rangle -\langle \xi | f(\psi)\xi \rangle\\
+& = & \langle \xi |f(\xi) \psi - f(\psi)\xi \rangle.
+\ei
+Note that 
+\bse
+f(f(\xi) \psi - f(\psi)\xi )= f(\xi) f(\psi) - f(\psi)f(\xi) = 0,
+\ese
+that is, $f(\xi) \psi - f(\psi)\xi\in\ker f$. Since $\xi\in(\ker f)^{\perp}$, we have
+\bse
+\langle \xi |f(\xi) \psi - f(\psi)\xi \rangle = 0
+\ese
+and hence $f_{\varphi}(\psi)=f(\psi)$ for all $\psi\in\mathcal{H}$, i.e.\ $f = f_{\varphi}$. For uniqueness, suppose that
+\bse
+f = f_{\varphi_1} = f_{\varphi_2}
+\ese
+for some $\varphi_1,\varphi_1\in\mathcal{H}$. Then, for any $\psi\in\mathcal{H}$, 
+\bi{rCl}
+0 & = & f_{\varphi_1} (\psi)- f_{\varphi_2}(\psi)\\
+& = &  \langle \varphi_1 | \psi \rangle- \langle \varphi_2 | \psi \rangle\\
+& = &  \langle \varphi_1-\varphi_2 | \psi \rangle
+\ei
+and hence, $\varphi_1=\varphi_2$ by positive-definiteness.
+\eq
+
+Therefore, the so-called \emph{Riesz map}\index{Riesz map}
+\bi{rrCl}
+R\cl & \mathcal{H}& \to & \mathcal{H}^*\\
+& \varphi & \mapsto & f_{\varphi} \equiv \langle \varphi |\,\cdot\,\rangle
+\ei
+is a linear isomorphism, and $ \mathcal{H}$ and $ \mathcal{H}^*$ be identified with one another as vector spaces.
+This lead Dirac to suggest the following notation for the elements of the dual space
+\bse
+f_{\varphi} \equiv \langle \varphi |.
+\ese
+Correspondingly, he wrote $|\psi\rangle$ for the element $\psi\in\mathcal{H}$. Since $ \langle \,\cdot\, |\,\cdot\,\rangle$ is ``a bracket'', the first half $ \langle \,\cdot\,|$ is called a \emph{bra}\index{bras and kets}, while the second half $ |\,\cdot\,\rangle$ is called a \emph{ket} (nobody knows where the missing \emph{c} is). With this notation, we have
+\bse
+f_{\varphi} (\psi) \equiv \langle \varphi | (|\psi\rangle) \equiv \langle \varphi | \psi\rangle.
+\ese
+The notation makes evident the fact that, for any $\varphi,\psi\in\mathcal{H}$, we can always consider the inner product $ \langle \varphi | \psi\rangle\in\C$ as the result of applying $f_{\varphi}\in\mathcal{H}^*$ to $\psi\in \mathcal{H}$.
+
+The advantage of this notation is that some formul{\ae} become more intuitive and hence are more easily memorised. For a concrete example, consider
+\bi{rCl}
+\psi &=& \sum_{i=0}^{\infty}\langle e_i | \psi \rangle e_i
+\ei
+where $\{e_n\}_{n\in\N}$ is a basis of $\mathcal{H}$. This becomes
+\bi{rCl}
+|\psi \rangle &=& \sum_{i=0}^{\infty}\langle e_i | \psi \rangle |e_i\rangle.
+\intertext{By allowing the scalar multiplication of kets also from the right, defined to yield the same result as that on the left, we have}
+ &=& \sum_{i=0}^{\infty}|e_i\rangle\langle e_i | \psi \rangle .
+\intertext{``Quite obviously'', we can bracket this as}
+ &=& \biggl(\sum_{\,i=0}^{\infty}|e_i\rangle\langle e_i |\biggr) |\psi \rangle ,
+ \intertext{where by ``quite obviously'', we mean that we have a suppressed tensor product (see section 8 of the \emph{Lectures on the Geometric Anatomy of Theoretical Physics} for more details on tensors)}
+ &=& \biggl(\sum_{\,i=0}^{\infty}|e_i\rangle\otimes\langle e_i |\biggr) |\psi \rangle .
+  \intertext{Then, the sum in the round brackets is an element of $\mathcal{H}\otimes\mathcal{H}^*$. While $\mathcal{H}\otimes\mathcal{H}^*$ is isomorphic to $\End(\mathcal{H})$, its elements are maps $\mathcal{H}^*\times\mathcal{H}\to\C$. Hence, one needs to either make this isomorphism explicit or, equivalently, }
+ &=& \biggl(\sum_{\,i=0}^{\infty}|e_i\rangle\otimes\langle e_i |\biggr) \bigl(\,\cdot\, , |\psi \rangle \bigr).
+\ei
+All of this to be able to write
+\bse
+\sum_{\,i=0}^{\infty}|e_i\rangle\langle e_i | = \id_{\mathcal{H}}
+\ese
+and hence interpret the expansion of $|\psi\rangle$ in terms of the basis as the ``insertion'' of an identity
+\bse
+|\psi\rangle = \id_{\mathcal{H}}|\psi\rangle =  \biggl(\sum_{\,i=0}^{\infty}|e_i\rangle\langle e_i |\biggr) |\psi \rangle = \sum_{i=0}^{\infty}\langle e_i | \psi \rangle |e_i\rangle.
+\ese
+But the original expression was already clear in the first place, without the need to add hidden tensor products and extra rules. Of course, part of the appeal of this notation is that one can intuitively think of something like $|e_i\rangle\langle e_i |$ as a map $\mathcal{H}\to\mathcal{H}$, by imagining that the bra on the right acts on a ket in $\mathcal{H}$, thereby producing a complex number which becomes the coefficient of the remaining ket
+\bse
+\bigl(|e_i\rangle\langle e_i |\bigr) |\psi\rangle=|e_i\rangle\langle e_i |\psi\rangle =\langle e_i |\psi\rangle |e_i\rangle.
+\ese
+The major drawback of this notation, and the reason why we will \emph{not} adopt it, is that in many places (for instance, if we consider self-adjoint operators, or Hermitian operators) this notation doesn't produce inconsistencies only if certain conditions are satisfied. While these conditions will indeed be satisfied most of times, it becomes extremely confusing to formulate conditions on our objects by using a notation that only makes sense if the objects already satisfy conditions.
+
+Of course, as this notation is heavily used in physics and related applied sciences, it is necessary to be able to recognise it and become fluent in it.  But note that it does \emph{not} make things clearer. If anything, it makes things more complicated.
+
+
+
+
+
+
+
+

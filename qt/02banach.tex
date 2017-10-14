@@ -239,7 +239,7 @@ Let $A\cl V \to W$ be a bounded operator. The \emph{operator norm}\index{operato
 \be
 Let $\id_W\cl W\to W$ be the identity operator on a Banach space $W$. Then
 \bse
-\sup_{\|f\|_W=1}\|\id_Wf\|_W =\sup_{\|f\|_W=1}\|f\|_W = 1 <\infty.
+\sup_{f\in W}\frac{\|\id_Wf\|_W}{\|f\|_W} =\sup_{f\in W}1 = 1 <\infty.
 \ese
 Hence, $\id_W$ is a bounded operator and has unit norm.
 \ee
@@ -546,19 +546,19 @@ Let $\varepsilon >0$ and let $\varphi\in V^*$. Since $\{f_n\}_{n\in \N}$ converg
 \bse
 \forall \, n\geq N : \ \|f_n-f\|_V<\frac{\varepsilon}{\|\varphi\|}.
 \ese
-Then, for any $n\geq N$, we have
+Then, since $\varphi\in V^*$ is bounded, we have
 \bi{rCl}
-\|\varphi f_n-\varphi f\|_W & = & \|\varphi ( f_n-f)\|_W\\
+|\varphi (f_n)-\varphi (f)| & = & |\varphi ( f_n-f)|\\
 & \leq & \|\varphi\|\|f_n-f\|_V\\
 &<& \|\varphi\|\frac{\varepsilon}{\|\varphi\|}\\
 & = & \varepsilon
 \ei
-since $\varphi$ is bounded. Hence, $\displaystyle  \lim_{n\to \infty} \varphi(f_n) = \varphi(f)$. That is, $\displaystyle  \wlim_{n\to \infty} f_n = f$.
+for any $n\geq N$. Hence, $\displaystyle  \lim_{n\to \infty} \varphi(f_n) = \varphi(f)$. That is, $\displaystyle  \wlim_{n\to \infty} f_n = f$.
 \eq
 
 \subsection{Extension of bounded linear operators}
 
-Note that, so far, we have only considered bounded linear maps $A\cl\mathcal{D}_A\to W$ where $\mathcal{D}_A$ is the whole of $V$, rather than a subspace thereof. The reason for this is that we will only consider densely defined linear maps in general, and any bounded linear map from a dense subspace of $V$ can be extended to a bounded linear map from the whole of $V$. Moreover, the extension is unique. This is the content of the so-called BLT\footnote{Bounded Linear Transformation, \emph{not} Bacon, Lettuce, Tomato. \begin{tikzpicture}[baseline={($ (current bounding box.center)- (0,-7pt) $)}]\includegraphics[scale=0.12]{graphics/blt}\end{tikzpicture}} theorem.
+Note that, so far, we have only considered bounded linear maps $A\cl\mathcal{D}_A\to W$ where $\mathcal{D}_A$ is the whole of $V$, rather than a subspace thereof. The reason for this is that we will only consider densely defined linear maps in general, and any bounded linear map from a dense subspace of $V$ can be extended to a bounded linear map from the whole of $V$. Moreover, the extension is unique. This is the content of the so-called BLT\footnote{Bounded Linear Transformation, \emph{not} Bacon, Lettuce, Tomato. \begin{tikzpicture}[baseline={($ (current bounding box.center)- (0,-8pt) $)}]\includegraphics[scale=0.12]{graphics/blt}\end{tikzpicture}} theorem.
 
 \bl
 Let $(V,\|\cdot\|)$ be a normed space and let $\mathcal{D}_A$ be a dense subspace of $V$. Then, for any $f\in V$, there exists a sequence $\{\alpha_n\}_{n\in \N}$ in $\mathcal{D}_A$ which converges to $f$.
@@ -570,7 +570,7 @@ Let $f\in V$. Clearly, there exists a sequence $\{f_n\}_{n\in \N}$ in $V$ which 
 \ese
 Since $\mathcal{D}_A$ is dense in $V$ and each $f_n\in V$, we have
 \bse
-\forall \, n\in \N : \exists\, \alpha_n\in\mathcal{D}_A : \ \|\alpha_n-f_n\|<\tfrac{\varepsilon}{2}.\\[7pt]
+\forall \, n\in \N : \exists\, \alpha_n\in\mathcal{D}_A : \ \|\alpha_n-f_n\|<\tfrac{\varepsilon}{2}.\\[8pt]
 \ese
 The sequence $\{\alpha_n\}_{n\in \N}$ is a sequence in $\mathcal{D}_A$ and we have
 \bi{rCl}

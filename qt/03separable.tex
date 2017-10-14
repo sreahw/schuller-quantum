@@ -434,14 +434,14 @@ Multiplying an element of a Schauder basis by a complex number gives again a Sch
 \widetilde e_n := \frac{e_n}{\|e_n\|}.
 \ese
 
-\subsection{Separable Hilbert spaces and unitary maps}
+\subsection{Separable Hilbert spaces}
 
-Separability is a topological property. Namely, a topological space is said to be separable if it contains a dense subset which is also countable. A Banach space is said to be separable if it is separable as a topological space with the topology induced by the norm. Similarly, a Hilbert space is said to be separable if it is separable as a topological space with the topology induced by the norm induced in turn by the inner product.
+Separability is a topological property. A topological space is said to be separable if it contains a dense subset which is also countable. A Banach space is said to be separable if it is separable as a topological space with the topology induced by the norm. Similarly, a Hilbert space is said to be separable if it is separable as a topological space with the topology induced by the norm induced in turn by the inner product.
 
 For infinite-dimensional Hilbert spaces, there is a much more useful characterisation of separability, which we will henceforth take as our definition.
 
 \bp
-An infinite-dimensional Hilbert space is separable if, and only if, it admits an orthonormal Schauder basis. That is, a Schauder basis $\{e_n\}_{n\in \N}$ such that
+An infinite-dimensional Hilbert space is separable\index{separability} if, and only if, it admits an orthonormal Schauder basis. That is, a Schauder basis $\{e_n\}_{n\in \N}$ such that
 \bse
 \forall \, i,j\in \N : \ \langle e_i | e_j \rangle = \delta_{ij} := \begin{cases} 1 & \text{if } i = j\\ 0 & \text{if } i\neq j\end{cases}.
 \ese
@@ -473,7 +473,7 @@ By using the continuity of the inner product, we have
 & = & \biggl\langle e_i \, \bigg| \, \lim_{n\to\infty}\sum_{j=0}^{n}\lambda^je_j \biggr\rangle\\
 & = & \lim_{n\to\infty}\biggl\langle e_i \, \bigg| \, \sum_{j=0}^{n}\lambda^je_j \biggr\rangle\\
 & = & \lim_{n\to\infty}\sum_{i=0}^{n}\lambda^j  \langle e_i | e_j \rangle\\
-& = & \lim_{n\to\infty}\sum_{i=0}^{n} \lambda^j \delta_{ij}\\
+& = & \sum_{i=0}^{\infty} \lambda^j \delta_{ij}\\
 & = & \lambda^i,
 \ei
 which is what we wanted.
@@ -502,7 +502,24 @@ Using the pairwise orthogonality of $\{\psi_0,\ldots,\psi_n\}$, we simply calcul
 % \ese
 \eq
 
-\br An insightful way to study a structure in mathematics is to consider maps between different instances $A$, $B$, $C,\ldots$ of that structure, and especially the structure-preserving maps. If a certain structure-preserving map $A\to B$ is invertible and its inverse is also structure-preserving, then both these maps are generically called \emph{isomorphisms} and $A$ and $B$ are said to be \emph{isomorphic} instances of that structure. Isomorphic instances of a structure are essentially the \emph{same} instance of that structure, just dressed up in different ways.
+\bc
+Let $\psi \in \mathcal{H}$ and let $\{e_n\}_{n\in \N}$ be a basis of $\mathcal{H}$. Then
+\bse
+\|\psi\|^2 = \sum_{i=0}^{\infty}|\langle e_i | \psi\rangle|^2.
+\ese
+\ec
+
+\bq
+By continuity of the norm, we have
+\bse
+\|\psi\|^2 = \lim_{n\to\infty}\biggl\|\sum_{i=0}^n\langle e_i | \psi\rangle e_i\biggr\|^2 = \lim_{n\to\infty}\sum_{i=0}^n|\langle e_i | \psi\rangle |^2\|e_i\|^2 =  \sum_{i=0}^{\infty}|\langle e_i | \psi\rangle|^2.\qedhere
+\ese
+\eq
+
+
+\subsection{Unitary maps}
+
+An insightful way to study a structure in mathematics is to consider maps between different instances $A$, $B$, $C,\ldots$ of that structure, and especially the structure-preserving maps. If a certain structure-preserving map $A\to B$ is invertible and its inverse is also structure-preserving, then both these maps are generically called \emph{isomorphisms} and $A$ and $B$ are said to be \emph{isomorphic} instances of that structure. Isomorphic instances of a structure are essentially the \emph{same} instance of that structure, just dressed up in different ways.
 Typically, there are infinitely many concrete instances of any given structure. The highest form of understanding of a structure that we can hope to achieve is that of a classification of its instances up to isomorphism. That is, we would like to know how many different, non-isomorphic instances of a given structure there are.
 
 In linear algebra, the structure of interest is that of vector space over some field $\mathbb{F}$. The structure-preserving maps are just the linear maps and the isomorphisms are the linear bijections (whose inverses are automatically linear). Finite-dimensional vector spaces over $\mathbb{F}$ are completely classified by their dimension, i.e.\ there is essentially only one vector space over $\mathbb{F}$ for each $n\in \N$, and $\mathbb{F}^n$ is everyone's favourite.  Assuming the axiom of choice,
@@ -511,7 +528,7 @@ infinite-dimensional vector spaces over $\mathbb{F}$ are classified in the  same
 Of course, one could do better and also classify the base fields themselves. The classification of finite fields (i.e.\ fields with a finite number of elements) was achieved in 1893 by Moore, who proved that the order (i.e.\ cardinality) of a finite field is necessarily a power of some prime number, and there is only one finite field of each order, up to appropriate notion of isomorphism. The classification of infinite fields remains an open problem.
 
 A classification with far-reaching implications in physics is that of finite-dimensional, semi-simple, complex Lie algebras, which is discussed in some detail in Dr Schuller's \textit{Lectures on the Geometric Anatomy of Theoretical Physics.}
-\er
+
 
 The structure-preserving maps between Hilbert spaces are those that preserve both the vector space structure and the inner product. The Hilbert space isomorphisms are called unitary maps.
 
@@ -542,7 +559,7 @@ Let $U\cl\mathcal{H}\to\mathcal{G}$ be a surjective map which preserves the inne
 && \negmedspace{} -z\langle U(z\psi+\varphi)|U\psi\rangle_{\mathcal{G}}
 -\langle U(z\psi+\varphi)|U\varphi\rangle_{\mathcal{G}}
 +\overline{z}\langle U\psi|U\varphi\rangle_{\mathcal{G}}\\
-&& \negmedspace{} -\overline{z}\langle U\psi|U(z\psi+\varphi)\rangle_{\mathcal{G}}-\langle U\varphi|U(z\psi+\varphi)\rangle_{\mathcal{G}} + z\langle U\varphi|U\psi\rangle_{\mathcal{G}}\\
+&& \negmedspace{} -\overline{z}\langle U\psi|U(z\psi+\varphi)\rangle_{\mathcal{G}}-\langle U\varphi|U(z\psi+\varphi)\rangle_{\mathcal{G}} + z\langle U\varphi|U\psi\rangle_{\mathcal{G}}\pagebreak\\
 & = &  \langle z\psi+\varphi|z\psi+\varphi\rangle_{\mathcal{H}}
 + |z|^2\langle \psi|\psi\rangle_{\mathcal{H}}
 +\langle \varphi|\varphi\rangle_{\mathcal{H}}\\
@@ -586,8 +603,8 @@ Hence $U$ is bounded and, in fact, has unit operator norm.
 \bse
 \langle \psi|\psi \rangle_{\mathcal{H}} = \langle U \psi|U\psi \rangle_{\mathcal{G}}=\langle 0|0 \rangle_{\mathcal{G}}= 0 .
 \ese
-Hence, by positive-definiteness, $\psi=0$ and thus $U$ is injective.
-Since $U$ is also surjective by assumption, it satisfies our definition of unitary map.
+Hence, by positive-definiteness, $\psi=0$ and thus, $U$ is injective.
+Since $U$ is also surjective by assumption, it satisfies our definition of unitary map.\qedhere
 \een
 \eq
 Note that a map $U\cl\mathcal{H}\to\mathcal{G}$ is called an \emph{isometry}\index{isometry} if
@@ -637,6 +654,7 @@ where $\lambda^i = \langle e_i|a \rangle_{\ell^2}= a_i$. The sequences $e_n$ are
 Hence, the sequence $\{e_n\}_{n\in \N}$ is an orthonormal Schauder basis of $\ell^2(\N)$, which is therefore an infinite-dimensional separable Hilbert space. 
 
 \bt[Classification of separable Hilbert spaces]
+\label{thm:classhilbert}
 Every infinite-dimensional separable Hilbert space is unitarily equivalent to $\ell^2(\N)$.
 \et
 
@@ -648,18 +666,8 @@ U\cl &\mathcal{H}&\to&\ell^2(\N)\\
 \ei
 Note that, for any $\psi\in \mathcal{H}$, the sequence $\{\langle e_n|\psi\rangle_{\mathcal{H}}\}_{n\in \N}$ is indeed square-summable since
 we have 
-\bi{rCl}
-\|\psi \|_{\mathcal{H}}^2 & = & \biggl\| \sum_{i=0}^{\infty}\langle e_i|\psi\rangle_{\mathcal{H}}e_i \biggr\|_{\mathcal{H}}^2 \\
-& = & \biggl\|\lim_{n\to\infty} \sum_{i=0}^{n}\langle e_i|\psi\rangle_{\mathcal{H}}e_i \biggr\|_{\mathcal{H}}^2 \\
-\pagebreak
-& = & \lim_{n\to\infty} \biggl\| \sum_{i=0}^{n}\langle e_i|\psi\rangle_{\mathcal{H}}e_i \biggr\|_{\mathcal{H}}^2 \\
-& = & \lim_{n\to\infty}\sum_{i=0}^{n}\| \langle e_i|\psi\rangle_{\mathcal{H}}e_i\|_{\mathcal{H}}^2 \\
-& = & \lim_{n\to\infty}\sum_{i=0}^{n} |\langle e_i|\psi\rangle_{\mathcal{H}}|^2 \|e_i\|_{\mathcal{H}}^2 \\
-& = &\sum_{i=0}^{\infty}|\langle e_i|\psi\rangle_{\mathcal{H}}|^2,
-\ei
-where we have used Pythagoras' theorem and the orthonormality  of the basis. Hence, since $\|\psi\|_{\mathcal{H}}$ is finite, we have 
 \bse
-\sum_{i=0}^{\infty}|\langle e_i|\psi\rangle_{\mathcal{H}}|^2 < \infty.
+\sum_{i=0}^{\infty}|\langle e_i|\psi\rangle_{\mathcal{H}}|^2 = \|\psi \|_{\mathcal{H}}^2 < \infty.
 \ese
 
 By our previous proposition, in order to show that $U$ is a unitary map, it suffices to show that it is surjective and preserves the inner product. For surjectivity, let $\{a_n\}_{n\in \N}$ be a complex square-summable sequence. Then, by elementary analysis, we know that $\displaystyle\lim_{n\to\infty}|a_n|=0$. This implies that, for any $\varepsilon>0$, there exists $N\in\N$ such that
@@ -668,9 +676,9 @@ By our previous proposition, in order to show that $U$ is a unitary map, it suff
 \ese
 Then, for all $n,m\geq N$ (without loss of generality, assume $n> m$), we have
 \bi{c}
-\biggl\|\sum_{i=0}^{n}a_ie_i-\sum_{j=0}^{m}a_je_j \biggr\|_{\mathcal{H}}^2  =  \biggl\|\sum_{i=m}^{n}a_ie_i\biggr\|_{\mathcal{H}}^2
- =  \sum_{i=m}^{n}|a_i|^2\|e_i\|_{\mathcal{H}}^2
- =  \sum_{i=m}^{n}|a_i|^2 < \varepsilon.
+\biggl\|\sum_{i=0}^{n}a_ie_i-\sum_{j=0}^{m}a_je_j \biggr\|_{\mathcal{H}}^2  =  \biggl\|\sum_{i=m+1}^{n}a_ie_i\biggr\|_{\mathcal{H}}^2
+ =  \sum_{i=m+1}^{n}|a_i|^2\|e_i\|_{\mathcal{H}}^2
+ =  \sum_{i=m+1}^{n}|a_i|^2 < \varepsilon.
 \ei
 That is, $\bigl\{\sum_{i=0}^{n}a_ie_i\bigr\}_{n\in \N}$ is a Cauchy sequence in $\mathcal{H}$. Hence, by completeness, there exists $\psi\in\mathcal{H}$ such that
 \bse
@@ -691,7 +699,7 @@ and we have $U\psi = \{a_n\}_{n\in \N}$, so $U$ is surjective. Moreover, we have
 & =: & 
 \langle U\psi | U \varphi \rangle_{\ell^2} .
 \ei
-Hence $U$ preserves the inner product, and it is therefore a unitary map.
+Hence, $U$ preserves the inner product, and it is therefore a unitary map.
 \eq
 
 

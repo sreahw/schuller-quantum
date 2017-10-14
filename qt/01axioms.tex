@@ -333,11 +333,11 @@ This is the infinite-dimensional analogue of the diagonalisation theorem for sym
 \begin{axiom}[Unitary dynamics]
 In a time interval $(t_1,t_2)\subseteq \R$ in which no measurement occurs, the state $\rho$ at time $t_1$, denoted $\rho(t_1)$, is related to the state $\rho$ at time $t_2$, denoted $\rho(t_2)$, by
 \bse
-\rho(t_2) = \mathcal{U}(t_2-t_1)\rho(t_1)\mathcal{U}^{-1}(t_2-t_1)
+\rho(t_2) = U(t_2-t_1)\rho(t_1) U^{-1}(t_2-t_1)
 \ese
-with the unitary evolution operator $\mathcal{U}$ defined as
+with the unitary evolution operator $U$ defined as
 \bse
-\mathcal{U}(t) := \exp(-\tfrac{\mathrm{i}}{\hbar}Ht),
+U(t) := \exp(-\tfrac{\mathrm{i}}{\hbar}Ht),
 \ese
 where $H$ is the energy observable and, for any observable $A$ and $f\cl \R\to \C$, we define
 \bse

@@ -10,6 +10,7 @@
 \usepackage{jheppub} % for details on the use of the package, please
                      % see the JHEP-author-manual
 \usepackage[T1]{fontenc} % if needed
+\usepackage[utf8]{inputenc}
 
 \usepackage{graphicx} % Required for including images
 \graphicspath{{Figures/}} % Set the default folder for images
@@ -30,10 +31,11 @@
 %\setlength{\parindent}{0pt}
 
 %fonts
-  %\usepackage[cm]{sfmath}
-  %\renewcommand{\familydefault}{\sfdefault}
-  %\usepackage{libertine}
-  %\usepackage[libertine]{newtxmath}
+%   \usepackage[cm]{sfmath}
+%   \renewcommand{\familydefault}{\sfdefault}
+%   \usepackage{libertine}
+%   \usepackage[libertine]{newtxmath}
+
 
 \usepackage{array,tabularx}
 \usepackage[retainorgcmds]{IEEEtrantools}
@@ -60,9 +62,35 @@
 \makeatother
 
 \usepackage{wrapfig}
+\usepackage{textcomp}
 
-\renewcommand\Re{\operatorname{Re}}
-\renewcommand\Im{\operatorname{Im}}
+
+
+
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\raggedright}{}{0em}{\colorsection}[\titlerule]
+\titleformat{name=\section,numberless}{\large\scshape\bfseries\raggedright}{}{0em}{\colorsectionnonumber}[\titlerule]
+
+\titleformat{\subsection}{\bfseries\raggedright}{}{0em}{\colorsubsection}
+\titleformat{name=\subsection,numberless}{\bfseries\raggedright}{}{0em}{\colorsubsectionnonumber}
+
+%\titlespacing{\subsection}{0em}{0.5em}{0.75em}
+
+\newcommand{\colorsection}[1]{%
+    \colorbox{lightergray}{\parbox{\dimexpr\textwidth-2\fboxsep}{\thesection\ \ #1}}}
+\newcommand{\colorsectionnonumber}[1]{%
+    \colorbox{lightergray}{\parbox{\dimexpr\textwidth-2\fboxsep}{#1}}}
+    
+\newcommand{\colorsubsection}[1]{%
+    \colorbox{lightergray}{\parbox{\dimexpr\textwidth-2\fboxsep}{\thesubsection\ #1}}}
+\newcommand{\colorsubsectionnonumber}[1]{%
+    \colorbox{lightergray}{\parbox{\dimexpr\textwidth-2\fboxsep}{#1}}}
+
+
+
+
+
+
 
 %\usepackage[upright]{fourier}
 %\newcommand{\tikzmark}[3][]{\tikz[overlay,remember picture,baseline] \node [anchor=base,#1](#2) {#3};}
@@ -203,24 +231,41 @@ pdfcreator={pdfLaTeX/Overleaf}, % PDF Creator
 \includegraphics[width=14cm]{graphics/faulogo}
 \maketitle 
 
-% \section*{Introduction}
-% \addcontentsline{toc}{section}{Introduction}
-% \markright{Introduction}
-% \input{qt/00intro}
-% \newpage
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+\markright{Introduction}
+\input{qt/00intro}
+\newpage
 
-% \section{Axioms of quantum mechanics}
-% \input{qt/01axioms}
-% \newpage
+\section{Axioms of quantum mechanics}
+\input{qt/01axioms}
+\newpage
 
-% \section{Banach spaces}
-% \input{qt/02banach}
-% \newpage
+\section{Banach spaces}
+\input{qt/02banach}
+\newpage
 
-\setcounter{section}{2}
 \section{Separable Hilbert Spaces}
 \input{qt/03separable}
 \newpage
+
+\section{Projectors, bras and kets}
+\input{qt/04projectors}
+\newpage
+
+\setcounter{section}{4}
+\section{Measure theory}
+\input{qt/05measure}
+\newpage
+
+%\section{Integration of measurable functions}
+%\input{qt/06integration}
+%\newpage
+
+%\section{Self adjoint and essentially self-adjoint operators}
+%\input{qt/07self-adjoint}
+%\newpage
+
 
 \section*{Further readings}
 \addcontentsline{toc}{section}{Further readings}
