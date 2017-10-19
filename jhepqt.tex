@@ -63,8 +63,8 @@
 
 \usepackage{wrapfig}
 \usepackage{textcomp}
-
-
+%\usepackage{unicode-math}
+\usepackage{scalerel}
 
 
 \usepackage{titlesec}
@@ -92,7 +92,6 @@
 
 
 
-%\usepackage[upright]{fourier}
 %\newcommand{\tikzmark}[3][]{\tikz[overlay,remember picture,baseline] \node [anchor=base,#1](#2) {#3};}
 
 
@@ -227,51 +226,51 @@ pdfcreator={pdfLaTeX/Overleaf}, % PDF Creator
 
 \begin{document} 
 
-\rule{0cm}{2cm}\\
-\includegraphics[width=14cm]{graphics/faulogo}
-\maketitle 
+% \rule{0cm}{2cm}\\
+% \includegraphics[width=14cm]{graphics/faulogo}
+% \maketitle 
 
-\section*{Introduction}
-\addcontentsline{toc}{section}{Introduction}
-\markright{Introduction}
-\input{qt/00intro}
+% \section*{Introduction}
+% \addcontentsline{toc}{section}{Introduction}
+% \markright{Introduction}
+% \input{qt/00intro}
+% \newpage
+
+% \section{Axioms of quantum mechanics}
+% \input{qt/01axioms}
+% \newpage
+
+% \section{Banach spaces}
+% \input{qt/02banach}
+% \newpage
+
+% \section{Separable Hilbert Spaces}
+% \input{qt/03separable}
+% \newpage
+
+% \section{Projectors, bras and kets}
+% \input{qt/04projectors}
+% \newpage
+
+% \section{Measure theory}
+% \input{qt/05measure}
+% \newpage
+
+\setcounter{section}{5}
+\section{Integration of measurable functions}
+\input{qt/06integration}
 \newpage
 
-\section{Axioms of quantum mechanics}
-\input{qt/01axioms}
-\newpage
-
-\section{Banach spaces}
-\input{qt/02banach}
-\newpage
-
-\section{Separable Hilbert Spaces}
-\input{qt/03separable}
-\newpage
-
-\section{Projectors, bras and kets}
-\input{qt/04projectors}
-\newpage
-
-\setcounter{section}{4}
-\section{Measure theory}
-\input{qt/05measure}
-\newpage
-
-%\section{Integration of measurable functions}
-%\input{qt/06integration}
-%\newpage
-
-%\section{Self adjoint and essentially self-adjoint operators}
-%\input{qt/07self-adjoint}
-%\newpage
+% \section{Self adjoint and essentially self-adjoint operators}
+% \input{qt/07self-adjoint}
+% \newpage
 
 
-\section*{Further readings}
-\addcontentsline{toc}{section}{Further readings}
-\input{biblio}
-\newpage
+% \section*{Further readings}
+% \addcontentsline{toc}{section}{Further readings}
+% \input{biblio}
+% \newpage
 
-\printindex
+% \printindex
 
 \end{document}

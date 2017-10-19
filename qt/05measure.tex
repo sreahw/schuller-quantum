@@ -490,9 +490,14 @@ Let $A\in \Sigma_P$. As $g$ is measurable, we have $\preim_g(A)\in\Sigma_N$. The
 Hence, $g\circ f$ is measurable.
 \eq
 
-
-%add something here
-
+\bp
+Let $(M,\Sigma_M)$ and $(N,\Sigma_N)$ be measurable spaces and let $\{f_n\}_{n\in\N}$ be a sequence of measurable maps from $M$ to $N$ whose pointwise limit is $f$. Then, $f$ is measurable.
+\ep
+Recall that $\{f_n\}_{n\in\N}$ converges pointwise to $f\cl M\to N$ if
+\bse
+\forall \, m\in M : \ \lim_{n\to \infty}f_n(m)=f(m).
+\ese
+This is in contrast with continuity, as pointwise convergence of a sequence of continuous maps is not a sufficient condition for the continuity of the pointwise limit. In the case of real or complex-valued maps, a sufficient condition is convergence with respect to the supremum norm. 
 
 \subsection{Push-forward of a measure}
 
