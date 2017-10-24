@@ -128,7 +128,7 @@ We need to check that this satisfies the defining properties of a sesqui-linear 
 & =: & \langle g | f \rangle
 \ei
 
-\item We will now show linearity in the second argument. This is fairly non-trivial and quite lengthy.%\footnote{We adapt and take inspiration from answers to a question on \href{https://math.stackexchange.com/questions/21792/norms-induced-by-inner-products-and-the-parallelogram-law}{Math.StackExhange}.}
+\item We will now show linearity in the second argument. This is fairly non-trivial and quite lengthy. %\footnote{We adapt and take inspiration from answers to a question on \href{https://math.stackexchange.com/questions/21792/norms-induced-by-inner-products-and-the-parallelogram-law}{Math.StackExhange}.}
 We will focus on additivity first. We have
 \bi{c}
 \langle f | g+h \rangle  :=  \frac{1}{4} (\|f+g+h\|^2-\|f-g-h\|^2+\mathrm{i}\|f-\mathrm{i}g-\mathrm{i}h\|^2-\mathrm{i}\|f+\mathrm{i}g+\mathrm{i}h\|^2).
@@ -200,7 +200,7 @@ and hence
 \bse
 \forall \, r \in \Q : \ \langle f | rg \rangle = r\langle f | g \rangle.
 \ese
-\item Before we turn to $\R$, we need to show that $|\langle f | g \rangle | \leq \sqrt{2}\|f\|\|g\|$. Note that here we \emph{cannot} invoke the Cauchy-Schwarz inequality (which would provide a better estimate) since we don't know that $\langle \cdot | \cdot \rangle$ is an inner product yet. First, consider the real part of $\langle f | g \rangle$.
+\item Before we turn to $\R$, we need to show that $|\langle f | g \rangle | \leq \sqrt{2}\|f\|\|g\|$. Note that here we \emph{cannot} invoke the Cauchy-Schwarz inequality (which would also provide a better estimate) since we don't know that $\langle \cdot | \cdot \rangle$ is an inner product yet. First, consider the real part of $\langle f | g \rangle$.
 \bi{rCl}
 \Re \langle f | g \rangle & = & \tfrac{1}{4} (\|f+g\|^2-\|f-g\|^2)\\
 & = &  \tfrac{1}{4} (2\|f+g\|^2-\|f+g\|^2-\|f-g\|^2)\\
@@ -287,10 +287,11 @@ That is, the inner product $\langle \cdot| \cdot \rangle$ does induce the norm f
 \eq
 
 \br
-Our proof of linearity is based on the hints given in Section 6.1, Exercise 27, from \textit{Linear Algebra} (4th Edition) by Friedberg, Insel, Spence. Other proofs of the Jordan-von Neumann theorem can by found in
+Our proof of linearity is based on the hints given in Section 6.1, Exercise 27, from \textit{Linear Algebra} (4th Edition) by Friedberg, Insel, Spence. Other proofs of the Jordan-von Neumann theorem can be found in
 \begin{itemize}
 \item Kadison, Ringrose, \textit{Fundamentals of the Theory of Operator Algebras: Volume I: Elementary Theory}, American Mathematical Society 1997
 \item Kutateladze, \textit{Fundamentals of Functional Analysis}, Springer 1996.
+\item Day, \textit{Normed Linear Spaces}, Springer 1973.
 \end{itemize}
 \er
 
@@ -324,12 +325,12 @@ We already know that $\mathcal{H}^*:=\mathcal{L}(\mathcal{H},\C)$ is a Banach sp
 \ese
 where, admittedly somewhat perversely, we have reversed our previous notation for the dual elements. Since the modulus is induced by the standard inner product on $\C$, i.e.\ $|z|=\sqrt{z\overline{z}}$, it satisfies the parallelogram identity. Hence, we have
 \bi{rCl}
-\|f_1+f_2\|^2_{\mathcal{H}^*}+\|f_1-f_2\|^2_{\mathcal{H}^*} & := &\biggl(\sup_{\,\varphi\in\mathcal{H}}\frac{|(f_1+f_2)(\varphi)|}{\|\varphi\|_{\mathcal{H}}}\biggr)^{\negmedspace 2} +\biggl(\sup_{\,\varphi\in\mathcal{H}}\frac{|(f_1-f_2)(\varphi)|}{\|\varphi\|_{\mathcal{H}}}\biggr)^{\negmedspace 2} \\
- & = &\sup_{\varphi\in\mathcal{H}}\frac{|(f_1+f_2)(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} +\sup_{\varphi\in\mathcal{H}}\frac{|(f_1-f_2)(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} \\
-& = & \sup_{\varphi\in\mathcal{H}}\frac{|f_1(\varphi)+f_2(\varphi)|^2+|f_1(\varphi)-f_2(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} \\
-& = & \sup_{\varphi\in\mathcal{H}}\frac{2|f_1(\varphi)|^2+2|f_2(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} \\
- & = & 2\sup_{\varphi\in\mathcal{H}}\frac{|f_1(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} +2\sup_{\varphi\in\mathcal{H}}\frac{|f_2(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} \\
- & =: & 2\|f_1\|^2_{\mathcal{H}^*}+2\|f_2\|^2_{\mathcal{H}^*},
+\|f+g\|^2_{\mathcal{H}^*}+\|f-g\|^2_{\mathcal{H}^*} & := &\biggl(\sup_{\,\varphi\in\mathcal{H}}\frac{|(f+g)(\varphi)|}{\|\varphi\|_{\mathcal{H}}}\biggr)^{\negmedspace 2} +\biggl(\sup_{\,\varphi\in\mathcal{H}}\frac{|(f-g)(\varphi)|}{\|\varphi\|_{\mathcal{H}}}\biggr)^{\negmedspace 2} \\
+ & = &\sup_{\varphi\in\mathcal{H}}\frac{|(f+g)(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} +\sup_{\varphi\in\mathcal{H}}\frac{|(f-g)(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} \\
+& = & \sup_{\varphi\in\mathcal{H}}\frac{|f(\varphi)+g(\varphi)|^2+|f(\varphi)-g(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} \\
+& = & \sup_{\varphi\in\mathcal{H}}\frac{2|f(\varphi)|^2+2|g(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} \\
+ & = & 2\sup_{\varphi\in\mathcal{H}}\frac{|f(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} +2\sup_{\varphi\in\mathcal{H}}\frac{|g(\varphi)|^2}{\|\varphi\|^2_{\mathcal{H}}} \\
+ & =: & 2\|f\|^2_{\mathcal{H}^*}+2\|g\|^2_{\mathcal{H}^*},
 \ei
 where several steps are justified by the fact that the quantities involved are non-negative. Hence, by the Jordan-von Neumann theorem, the inner product on $\mathcal{H}^*$ defined by the polarisation identity induces $\|\cdot\|_{\mathcal{H}^*}$. Hence, $\mathcal{H}^*$ is a Hilbert space.
 \eq
@@ -360,7 +361,7 @@ A \emph{Hamel basis}\index{Hamel basis} of a vector space $V$ is a subset $\math
 \ben[label=(\roman*)]
 \item any finite subset $\{e_1,\ldots,e_n\}\subseteq \mathcal{B}$ is \emph{linearly independent}, i.e.\
 \bse
-\sum_{i=1}^n\lambda^ie_i = 0 \ \Rightarrow \ \lambda^1=\cdots = \lambda^n=0
+\sum_{i=1}^n\lambda^ie_i = 0 \quad \Rightarrow \quad \lambda^1=\cdots = \lambda^n=0
 \ese
 \item the set $\mathcal{B}$ is a \emph{generating} (or \emph{spanning}) \emph{set} for $V$. That is, for any element $v\in V$, there exist a finite subset $\{e_1,\ldots,e_n\}\subseteq \mathcal{B}$ and $\lambda^1,\ldots,\lambda^n\in\C$ such that
 \bse
@@ -398,7 +399,7 @@ f = \lim_{n\to \infty} \sum_{i=0}^n\lambda^ie_i =: \sum_{i=0}^{\infty}\lambda^ie
 \ese
 or, by explicitly using the definition of limit in $W$,
 \bse
-\lim_{n\to \infty} \, \biggl\|f-\sum_{i=0}^n\lambda^ie_i\biggr\|.
+\lim_{n\to \infty} \, \biggl\|f-\sum_{i=0}^n\lambda^ie_i\biggr\| = 0.
 \ese
 \ed
 
@@ -525,7 +526,7 @@ Typically, there are infinitely many concrete instances of any given structure. 
 In linear algebra, the structure of interest is that of vector space over some field $\mathbb{F}$. The structure-preserving maps are just the linear maps and the isomorphisms are the linear bijections (whose inverses are automatically linear). Finite-dimensional vector spaces over $\mathbb{F}$ are completely classified by their dimension, i.e.\ there is essentially only one vector space over $\mathbb{F}$ for each $n\in \N$, and $\mathbb{F}^n$ is everyone's favourite.  Assuming the axiom of choice,
 infinite-dimensional vector spaces over $\mathbb{F}$ are classified in the  same way, namely, there is, up to linear isomorphism, only one vector space over $\mathbb{F}$ for each infinite cardinal.
 
-Of course, one could do better and also classify the base fields themselves. The classification of finite fields (i.e.\ fields with a finite number of elements) was achieved in 1893 by Moore, who proved that the order (i.e.\ cardinality) of a finite field is necessarily a power of some prime number, and there is only one finite field of each order, up to appropriate notion of isomorphism. The classification of infinite fields remains an open problem.
+Of course, one could do better and also classify the base fields themselves. The classification of finite fields (i.e.\ fields with a finite number of elements) was achieved in 1893 by Moore, who proved that the order (i.e.\ cardinality) of a finite field is necessarily a power of some prime number, and there is only one finite field of each order, up to the appropriate notion of isomorphism. The classification of infinite fields remains an open problem.
 
 A classification with far-reaching implications in physics is that of finite-dimensional, semi-simple, complex Lie algebras, which is discussed in some detail in Dr Schuller's \textit{Lectures on the Geometric Anatomy of Theoretical Physics.}
 

@@ -1,9 +1,298 @@
 
 
+While we have already given some of the following definitions in the introductory section on the axioms of quantum mechanics, we reproduce them here for completeness. 
+
+\subsection{Adjoint operators}
+
+\bd
+A linear map or operator $A\cl\mathcal{D}_A\to\mathcal{H}$ is said to be \emph{densely defined} if $\mathcal{D}_A$ is dense in $\mathcal{H}$, i.e.
+\bse
+\forall \, \varepsilon > 0 : \forall \, \psi\in \mathcal{H} : \exists \, \alpha \in \mathcal{D}_A : \ \|\alpha - \psi\|< \varepsilon.
+\ese
+\ed
+Equivalently, $\overline{\mathcal{D}_A}=\mathcal{H}$, i.e.\ for every $\psi\in\mathcal{H}$ there exists a sequence $\{\alpha_n\}_{n\in\N}$ in $\mathcal{D}_A$ whose limit is $\psi$.
+\bd
+Let $A\cl \mathcal{D}_A\to \mathcal{H}$ be a densely defined operator on $\mathcal{H}$. The \emph{adjoint}\index{adjoint} of $A$ is the operator $A^*\cl\mathcal{D}_{A^*}\to\mathcal{H}$ defined by
+\ben[label=(\roman*)]
+\item $\mathcal{D}_{A^*}:=\{\psi\in\mathcal{H} \mid \exists \, \eta\in \mathcal{H} : \forall \, \alpha \in \mathcal{D}_A : \, \langle \psi | A\alpha \rangle = \langle \eta | \alpha \rangle\}$
+\item $A^*\psi:=\eta$.
+\een
+\ed
+
+\bp
+The adjoint operator $A^*\cl\mathcal{D}_{A^*}\to\mathcal{H}$ is well-defined.
+\ep
+
+\bq
+Let $\psi\in \mathcal{H}$ and let $\eta,\widetilde\eta \in \mathcal{H}$ be such that
+\bse
+\forall \, \alpha\in \mathcal{D}_A : \quad \langle \psi | A\alpha \rangle = \langle \eta | \alpha \rangle \ \text{ and } \ \langle \psi | A\alpha \rangle = \langle \widetilde \eta | \alpha \rangle.
+\ese
+Then, for all $\alpha$ in $\mathcal{D}_A$, we have
+\bse
+\langle \eta - \widetilde \eta | \alpha \rangle
+ =  \langle  \eta | \alpha \rangle - \langle \widetilde \eta | \alpha \rangle  =    \langle \psi | A\alpha \rangle- \langle \psi | A\alpha \rangle  =  0
+\ese
+and hence, by positive-definiteness, $\eta = \widetilde \eta$.
+\eq
+
+\bd
+Let $A\cl \mathcal{D}_A\to \mathcal{H}$ be a linear operator. The \emph{kernel}\index{kernel} and \emph{range}\index{range} of $A$ are
+\bse
+\ker (A)  :=  \{\alpha \in \mathcal{D}_A \mid A\alpha = 0\},\quad\qquad\ran (A)  :=  \{A\alpha \mid \alpha \in \mathcal{D}_A \}.
+\ese
+The range is also called \emph{image}\index{image} and $\im (A)$ and $A(\mathcal{D}_A)$ are alternative notations.
+\ed
+
+\bp
+An operator $A\cl \mathcal{D}_A\to \mathcal{H}$ is
+\ben[label=(\roman*)]
+\item injective if, and only if, $\ker(A)=\{0\}$
+\item surjective if, and only if, $\ran(A)=\mathcal{H}$.
+\een
+\ep
+
+\bd
+An operator $A\cl \mathcal{D}_A\to \mathcal{H}$ is \emph{invertible}\index{invertible operator} if there exists an operator $B\cl\mathcal{H}\to \mathcal{D}_A$ such that $A\circ B = \id_{\mathcal{H}}$ and $B\circ A = \id_{\mathcal{D}_A}$.
+\ed
+
+\bp
+An operator $A$ is invertible if, and only if, 
+\bse
+\ker(A)=\{0\}\quad \text{ and }\quad \overline{\ran(A)}=\mathcal{H}.
+\ese
+\ep
+
+\bp
+Let $A$ be densely defined. Then, $\ker(A^*)=\ran(A)^{\perp}$.
+\ep
+
+\bq
+We have
+\bse
+\psi\in\ker(A^*)\ \Leftrightarrow \ A^*\psi =0\ \Leftrightarrow \ \forall \, \alpha \in \mathcal{D}_A : \langle \psi | A\alpha \rangle = 0 \ \Leftrightarrow \ \psi \in \ran(A)^{\perp} .\qedhere
+\ese
+\eq
+
+\bd
+Let $A\cl \mathcal{D}_A \to \mathcal{H}$ and $B\cl \mathcal{D}_B \to \mathcal{H}$ be operators. We say that $B$ is an \emph{extension}\index{extension} of $A$, and we write $A\subseteq B$, if
+\ben[label=(\roman*)]
+\item $\mathcal{D}_{A}\subseteq \mathcal{D}_{B}$
+\item $\forall \, \alpha \in \mathcal{D}_{A} : \ A\alpha = B \alpha$.
+\een
+\ed
+
+\bp
+\label{prp:adjointreverse}
+Let $A,B$ be densely defined. If $A\subseteq B$, then $B^*\subseteq A^*$.
+\ep
+
+\bq
+\ben[label=(\roman*)]
+\item Let $\psi \in \mathcal{D}_{B^*}$. Then, there exists $\eta\in\mathcal{H}$ such that
+\bse
+\forall \, \beta \in \mathcal{D}_B : \ \langle \psi | B\beta \rangle = \langle \eta | \beta \rangle.
+\ese
+In particular, as $A\subseteq B$, we have $\mathcal{D}_A\subseteq\mathcal{D}_B$ and thus
+\bse
+\forall \, \alpha \in \mathcal{D}_A\subseteq\mathcal{D}_B : \ \langle \psi | B\alpha \rangle = \langle \psi | A\alpha \rangle =\langle \eta | \alpha \rangle.
+\ese
+Therefore, $\psi \in \mathcal{D}_{A^*}$ and hence, $\mathcal{D}_{B^*}\subseteq \mathcal{D}_{A^*}$.
+\item From the above, we also have $B^*\psi := \eta =: A^*\psi$ for all $\psi \in \mathcal{D}_{B^*}$.\qedhere
+\een
+\eq
 
 
+\subsection{The adjoint of a symmetric operator}
 
-a
+
+\bd
+A densely defined operator $A\cl\mathcal{D}_A\to\mathcal{H}$ is called \emph{symmetric}\index{symmetric operator} if
+\bse
+\forall \, \alpha,\beta \in \mathcal{D}_A : \ \langle\alpha|A\beta\rangle = \langle A\alpha|\beta\rangle.
+\ese
+\ed
+
+\br
+In the physics literature, symmetric operators are usually referred to as \emph{Hermitian}\index{Hermitian operator} operators. However, this notion is then confused with the that of self-adjointness when physicists say that observables in quantum mechanics correspond to Hermitian operators, which is not the case. On the other hand, if one decides to use Hermitian as a synonym of self-adjoint, it is then not true that all symmetric operators are Hermitian. In order to prevent confusion, we will avoid the term Hermitian altogether. 
+\er
+
+\bp
+If $A$ is symmetric, then $A\subseteq A^*$.
+\ep
+
+\bq
+Let $\psi\in\mathcal{D}_A$ and let $\eta:=A\psi$. Then, by symmetry, we have
+\bse
+\forall \, \alpha\in \mathcal{D}_A : \ \langle\psi|A\alpha\rangle = \langle \eta|\alpha\rangle
+\ese
+and hence $\psi\in\mathcal{D}_{A^*}$. Therefore, $\mathcal{D}_A\subseteq \mathcal{D}_{A^*}$ and $A^*\psi:=\eta = A\psi$.
+\eq
+
+\bd
+A densely defined operator $A\cl\mathcal{D}_A\to\mathcal{H}$ is \emph{self-adjoint}\index{self-adjoint operator} if $A=A^*$. That is,
+\ben[label=(\roman*)]
+\item $\mathcal{D}_A = \mathcal{D}_{A^*}$
+\item $\forall \, \alpha \in \mathcal{D}_A : \ A\alpha = A^*\alpha$.
+\een
+\ed
+
+\br
+Observe that any self-adjoint operator is also symmetric, but a symmetric operator need not be self-adjoint. 
+\er
+
+\bc
+\label{cor:selfasdjext}
+A self-adjoint operator is maximal with respect to self-adjoint extension.
+\ec
+
+\bq
+Let $A,B$ be self-adjoint and suppose that $A\subseteq B$. Then
+\bse
+A \subseteq B = B^* \subseteq A^* = A
+\ese
+and hence, $B=A$.
+\eq
+In fact, self-adjoint operators are maximal even with respect to symmetric extension, for we would have $B\subseteq B^*$ instead of $B=B^*$ in the above equation. 
+
+\subsection{Closability, closure, closedness}
+
+
+\bd
+\ben[label=(\roman*)]
+\item A densely defined operator $A$ is called \emph{closable} if its adjoint $A^*$ is also densely defined.
+\item The \emph{closure} of a closable operator is $\overline{A}:=A^{**}=(A^*)^*$.
+\item An operator is called \emph{closed}\index{closed operator} if $A=\overline{A}$.
+\een
+\ed
+
+\br
+Note that we have used the overline notation in several contexts with different meanings. When applied to complex numbers, it denotes complex conjugation. When applied to subsets of a topological space, it denotes their topological closure. Finally, when applied to (closable) operators, it denotes their closure as defined above.
+\er
+
+\bp
+A symmetric operator is necessarily closable.
+\ep
+
+\bq
+Let $A$ be symmetric. Then, $A\subseteq A^*$ and hence, $\mathcal{D}_A\subseteq \mathcal{D}_{A^*}$. Since a symmetric operators are densely defined, we have
+\bse
+\mathcal{H}=\overline{\mathcal{D}_A}\subseteq \overline{\mathcal{D}_{A^*}} \subseteq \mathcal{H}.
+\ese
+Hence, $\overline{\mathcal{D}_{A^*}} = \mathcal{H}$.
+\eq
+
+Note carefully that the adjoint of a symmetric operator need \emph{not} be symmetric. In particular, we cannot conclude that $A^*\subseteq A^{**}$. In fact, the reversed inclusion holds.
+
+\bp
+If $A$ is symmetric, then $A^{**}\subseteq A^*$.
+\ep
+
+\bq
+Since $A$ is symmetric, we have $A\subseteq A^*$. Hence, $A^{**}\subseteq A^*$ by \Cref{prp:adjointreverse}.
+\eq
+
+\bl
+\label{lem:closableext}
+For any closable operator $A$, we have $A\subseteq A^{**}$.
+\el
+
+\bq
+Recall that $\mathcal{D}_{A^*}:=\{\psi\in \mathcal{H}\mid \forall\, \alpha\in \mathcal{D}_{A} : \langle \psi | A\alpha \rangle=\langle \eta | \alpha \rangle\}$. Then
+\bse
+\forall \, \psi \in\mathcal{D}_{A^*} : \forall \, \alpha \in \mathcal{D}_{A} : \  \langle \psi | A\alpha \rangle =  \langle A^* \psi | \alpha \rangle.
+\ese
+Since $\psi$ and $\alpha$ above are ``dummy variables'', and the order of quantifiers of the same type is immaterial, we have
+\bse
+\forall \, \psi \in\mathcal{D}_{A} : \forall \, \alpha \in \mathcal{D}_{A^*} : \  \langle \alpha | A\psi \rangle =  \langle A^* \alpha | \psi \rangle.
+\ese
+By letting $\eta:=A^*\psi$ in the definition of $\mathcal{D}_{A^{**}}$, we see that $\mathcal{D}_{A}\subseteq\mathcal{D}_{A^{**}}$. Moreover, by definition, $A^{**}\psi:=\eta := A\psi$, and thus $A\subseteq A^{**}$.
+\eq
+
+\bc
+If $A$ is symmetric, then $A\subseteq \overline{A}\subseteq A^*$.
+\ec
+
+
+\bc
+If $A$ is symmetric, then $\overline{A}$ is symmetric.
+\ec
+
+\bt
+Let $A$ be a densely defined operator.
+\ben[label=(\roman*)]
+\item The operator $A^*$ is closed
+\item If $A$ is invertible, we have $(A^{-1})^*=(A^*)^{-1}$
+\item If $A$ is invertible and closable and $\overline{A}$ is injective, then $\overline{A^{-1}}=\overline{A}^{\,-1}$.
+\een
+\et
+
+\subsection{Essentially self-adjoint operators}
+
+Usually, checking that an operator is symmetric is easy. By contrast, checking that an operator is self-adjoint (directly from the definition) requires the construction of the adjoint, which is not always easy. However, since every self-adjoint operator is symmetric, we can first check the symmetry property, and then determine criteria for when a symmetric operator is self-adjoint, or for when a self-adjoint extension exists.
+
+Two complications with the extension approach are that, given a symmetric operator, there could be \emph{no} self-adjoint extension at all, or there may be \emph{several} different self-adjoint extensions. There is, however, a class of operators for which the situation is much nicer.
+
+\bd
+A symmetric operator $A$ is called \emph{essentially self-adjoint}\index{essentially self-adjoint operator} if $\overline{A}$ is self-adjoint.
+\ed
+
+This is weaker than the self-adjointness condition.
+
+\bp
+If $A$ is self-adjoint, then it is essentially self-adjoint. 
+\ep
+
+\bq
+If $A = A^*$, then $A\subseteq A^*$ and $A^* \subseteq A$. Hence, $A^{**}\subseteq A^*$ and $A^*\subseteq A^{**}$, so $A^* = A^{**}$. Similarly, we have $A^{**} = A^{***}$, which is just $\overline{A}=\overline{A}^{\,*}$.
+\eq
+
+\bt
+If $A$ is essentially self-adjoint, then there exists a unique self-adjoint extension of $A$, namely $\overline{A}$.
+\et
+
+\bq
+\ben[label=(\roman*)]
+\item Since $A$ is symmetric, it is closable and hence $\overline{A}$ exists.
+\item By \Cref{lem:closableext}, we have $A\subseteq \overline{A}$, so $\overline{A}$ is an extension of $A$. 
+\item Suppose that $B$ is another self-adjoint extension of $A$. Then, $A\subseteq B = B^*$, hence $B^{**}\subseteq A^*$, and thus $A^{**}\subseteq B^{***}=B$. This means that $\overline{A}\subseteq B$, i.e.\ $B$ is a self-adjoint extension of the self-adjoint operator $\overline{A}$. Hence, $B=\overline{A}$ by \Cref{cor:selfasdjext}.\qedhere
+\een
+\eq
+
+\br
+One may get the feeling at this point that checking for essential self-adjointness of an operator $A$, i.e.\ checking that $A^{**}=A^{***}$, is hardly easier than checking whether $A$ is self-adjoint, that is, whether $A=A^*$. However, this is not so. While we will show below that there is a sufficient criterion for self-adjointness which does not require to calculate the adjoint, we will see that there is, in fact, a necessary and sufficient criterion to check for essential self-adjointness of an operator without calculating a single adjoint.
+\er
+
+\br
+If a symmetric operator $A$ fails to even be essentially self-adjoint, then there is either no self-adjoint extension of $A$ or there are several. 
+\er
+
+\bd
+Let $A$ be a densely defined operator. The \emph{defect indices}\index{defect indices} of $A$ are
+\bse
+d_+:=\dim (\ker(A^*-\mathrm{i})) , \qquad \quad d_- :=\dim (\ker (A^*+\mathrm{i})),
+\ese
+where by $A^*\pm\mathrm{i}$ we mean, of course, $A^*\pm\mathrm{i}\cdot\id_{\mathcal{D}_A}$.
+\ed
+
+\bt
+A symmetric operator has a self-adjoint extension if its defect indices coincide. Otherwise, there exist no self-adjoint extension.
+\et
+
+\br
+We will later see that if $d_+=d_-=0$, then $A$ is essentially self-adjoint.
+\er
+
+\subsection{Criteria for self-adjointness and essential self-adjointness}
+
+
+\bt
+A symmetric operator $A$ is self-adjoint if (but not only if) there exists $z\in\C$ such that $\ran(A+z)=\ran(A+\overline{z})=\mathcal{H}$.
+\et
+
+\bq
+Since $A$ is symmetric, we have $A\subseteq A^*$. Hence, it remains to show that $A^*\subseteq A$. 
+\eq
 
 
 
