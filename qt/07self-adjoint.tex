@@ -35,6 +35,15 @@ Then, for all $\alpha$ in $\mathcal{D}_A$, we have
 \ese
 and hence, by positive-definiteness, $\eta = \widetilde \eta$.
 \eq
+If $A$ and $B$ are densely defined and $\mathcal{D}_A=\mathcal{D}_B$, then the pointwise sum $A+B$ is clearly densely defined and hence, $(A+B)^*$ exists. However, we do \emph{not} have $(A+B)^*=A^*+B^*$ in general, unless one of $A$ and $B$ is bounded, but we do have the following result.
+\bp
+If $A$ is densely defined, then 
+\bse
+(A+z\id_{\mathcal{D}_A})^*=A^*+\overline{z}\id_{\mathcal{D}_A}
+\ese
+for any $z\in\C$.
+\ep
+The identity operator $\id_{\mathcal{D}_A}$ is usually suppressed in the notation, so that the above equation reads $(A+z)^*=A^*+\overline{z}$.
 
 \bd
 Let $A\cl \mathcal{D}_A\to \mathcal{H}$ be a linear operator. The \emph{kernel}\index{kernel} and \emph{range}\index{range} of $A$ are
@@ -59,18 +68,19 @@ An operator $A\cl \mathcal{D}_A\to \mathcal{H}$ is \emph{invertible}\index{inver
 \bp
 An operator $A$ is invertible if, and only if, 
 \bse
-\ker(A)=\{0\}\quad \text{ and }\quad \overline{\ran(A)}=\mathcal{H}.
+\ker(A)=\{0\}\quad \text{ and }\quad\, \overline{\ran(A)}=\mathcal{H}.
 \ese
 \ep
 
 \bp
+\label{prp:kerran}
 Let $A$ be densely defined. Then, $\ker(A^*)=\ran(A)^{\perp}$.
 \ep
 
 \bq
 We have
 \bse
-\psi\in\ker(A^*)\ \Leftrightarrow \ A^*\psi =0\ \Leftrightarrow \ \forall \, \alpha \in \mathcal{D}_A : \langle \psi | A\alpha \rangle = 0 \ \Leftrightarrow \ \psi \in \ran(A)^{\perp} .\qedhere
+\psi\in\ker(A^*)\ \ \Leftrightarrow\ \ A^*\psi =0\ \ \Leftrightarrow\ \ \forall \, \alpha \in \mathcal{D}_A : \langle \psi | A\alpha \rangle = 0 \ \ \Leftrightarrow\ \ \psi \in \ran(A)^{\perp} .\qedhere
 \ese
 \eq
 
@@ -118,6 +128,7 @@ In the physics literature, symmetric operators are usually referred to as \emph{
 \er
 
 \bp
+\label{prp:symext}
 If $A$ is symmetric, then $A\subseteq A^*$.
 \ep
 
@@ -287,18 +298,68 @@ We will later see that if $d_+=d_-=0$, then $A$ is essentially self-adjoint.
 
 
 \bt
-A symmetric operator $A$ is self-adjoint if (but not only if) there exists $z\in\C$ such that $\ran(A+z)=\ran(A+\overline{z})=\mathcal{H}$.
+A symmetric operator $A$ is self-adjoint if (but not only if)
+\bse
+\exists \, z\in\C :\ \ran(A+z)=\mathcal{H}=\ran(A+\overline{z}).
+\ese
 \et
 
 \bq
-Since $A$ is symmetric, we have $A\subseteq A^*$. Hence, it remains to show that $A^*\subseteq A$. 
+Since $A$ is symmetric, by \Cref{prp:symext}, we have $A\subseteq A^*$. Hence, it remains to be shown that $A^*\subseteq A$. To that end, let $\psi\in \mathcal{D}_{A^*}$ and let $z\in \C$. Clearly, 
+\bse
+A^*\psi+\overline{z}\psi\in\mathcal{H}.
+\ese
+Now suppose that $z$ satisfies the hypothesis of the theorem. Then, as $\ran(A+\overline{z})=\mathcal{H}$,
+\bse
+\exists \, \alpha\in\mathcal{D}_{A} : \ A^*\psi+\overline{z}\psi = (A+\overline{z})\alpha.
+\ese
+By using the symmetry of $A$, we have that, for any $\beta\in\mathcal{D}_A$,
+\bi{rCl}
+\langle \psi| (A+z)\beta \rangle & = & \langle (A+z)^*\psi| \beta \rangle \\
+ & = & \langle A^*\psi+\overline{z}\psi| \beta \rangle \\
+ & = & \langle (A+\overline{z})\alpha | \beta \rangle  \\
+ & = & \langle A\alpha | \beta \rangle +z\langle \alpha | \beta \rangle \\
+ & = & \langle \alpha | A\beta \rangle +\langle \alpha | z\beta \rangle \\
+ & = & \langle \alpha | (A+z)\beta \rangle.
+\ei
+Since $\beta\in\mathcal{D}_A$ was arbitrary and $\ran(A+z)=\mathcal{H}$, we have
+\bse
+\forall \, \varphi \in \mathcal{H} : \quad \langle \psi | \varphi\rangle= \langle \alpha | \varphi \rangle.
+\ese
+Hence, by positive-definiteness of the inner product, we have $\psi\in\alpha$, thus $\psi\in\mathcal{D}_A$ and therefore, $A^*\subseteq A$.
 \eq
 
 
+\bt
+A symmetric operator $A$ is essentially self-adjoint if, and only if, 
+\bse
+\exists \, z\in \C\setminus \R : \ \overline{\ran(A+z)}=\mathcal{H}=\overline{\ran(A+\overline{z})}. 
+\ese
+\et
 
+The following criterion for essential self-adjointness, which does require the calculation of $A^*$, is equivalent to the previous result and, in some situations, it can be easier to check.
 
+\bt
+A symmetric operator $A$ is essentially self-adjoint if, and only if,
+\bse
+\exists \, z\in \C\setminus \R : \ \ker(A^*+z)=\{0\}=\ker(A^*+\overline{z}). 
+\ese
+\et
 
-
+\bq
+We show that this is equivalent to the previous condition. Recall that if $\mathcal{M}$ is a linear subspace of $\mathcal{H}$, then $\mathcal{M}^{\perp}$ is closed and hence, $\mathcal{M}^{\perp\perp}=\overline{M}$. Thus, by \Cref{prp:kerran}, we have
+\bse
+\overline{\ran(A+z)}  =  \ran(A+z)^{\perp\perp}
+ =  \ker(A^*+\overline{z})^{\perp}
+\ese
+and, similarly,
+\bse
+\overline{\ran(A+z)} = \ker(A^*+z).
+\ese
+Since $\mathcal{H}^{\perp}=\{0\}$, the above condition is equivalent to
+\bse\overline{\ran(A+z)}=\mathcal{H}=\overline{\ran(A+\overline{z})}.\qedhere
+\ese
+\eq
 
 
 

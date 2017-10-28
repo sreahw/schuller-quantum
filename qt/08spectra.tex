@@ -1,0 +1,231 @@
+
+
+
+We will now focus on the spectra of operators and on the decomposition of the spectra of self-adjoint operators. The significance of spectra is that the axioms of quantum mechanics prescribe that the possible measurement values of an observable (which is, in particular, a self-adjoint operator) are those in the so-called spectrum of the operator.
+
+A common task in almost any quantum mechanical problem that you might wish to solve is to determine the spectrum of some observable. This is usually the Hamiltonian, or energy operator, since the time evolution of a quantum system is governed by the exponential of the Hamiltonian, which is more practically determined by first determining its spectrum.
+
+More often than not, it is not possible to determine the spectrum of an operator exactly (i.e.\ analytically). One then resorts to perturbation theory which consists in expressing the operator whose spectrum we want to determine as the sum of an operator whose spectrum can be determined analytically and another whose contribution is ``small'' in some sense to be made precise.
+
+
+
+\subsection{Resolvent map and spectrum}
+
+\bd
+The \emph{resolvent map}\index{resolvent map} of an operator $A$ is the map
+\bi{rrCl}
+R_A\cl & \rho(A)& \to & \mathcal{L}(\mathcal{H})\\
+& z & \mapsto & (A-z)^{-1},
+\ei
+where $\mathcal{L}(\mathcal{H})\equiv \mathcal{L}(\mathcal{H},\mathcal{H})$ and $\rho(A)$ is the \emph{resolvent set} of $A$, defined as
+\bse
+\rho(A):=\{z\in\C \mid (A-z)^{-1}\in \mathcal{L}(\mathcal{H})\}.
+\ese
+\ed
+
+\br
+Checking whether a complex number $z$ belongs to $\rho(A)$ may seem like a daunting task and, in general, it is. However, we will almost exclusively be interested in closed operators, and the closed graph theorem states that if $A$ is closed, then $(A-z)^{-1}\in \mathcal{L}(\mathcal{H})$ if, and only if, $A-z$ is bijective.
+\er
+
+\bd
+The \emph{spectrum}\index{spectrum} of an operator $A$ is $\sigma(A):=\C\setminus\rho(A)$.
+\ed
+
+\bd
+A complex number $\lambda\in\C$ is said to be an \emph{eigenvalue}\index{eigenvalue} of $A\cl\mathcal{D}_A\to\mathcal{H}$ if
+\bse
+\exists\, \psi \in \mathcal{D}_A\setminus \{0\} : \ A\psi = \lambda \psi.
+\ese
+Such an element $\psi$ is called an \emph{eigenvector}\index{eigenvector} of $A$ associated to the eigenvalue $\lambda$.
+\ed
+
+\bc
+Let $\lambda\in\C$ be an eigenvalue of $A$. Then, $\lambda\in\sigma(A)$.
+\ec
+
+\bq
+If $\lambda$ is an eigenvalue of $A$, then there exists $\psi\in\mathcal{D}_A\setminus\{0\}$ such that $A\psi = \lambda \psi$, i.e.\ \bse
+(A-\lambda)\psi = 0.
+\ese
+Thus, $\psi\in\ker(A-\lambda)$ and hence, since $\psi\neq 0$, we have
+\bse
+\ker(A-\lambda)\neq\{0\}.
+\ese
+This means that $A-\lambda$ is not injective, hence not invertible and thus, $\lambda\notin\rho(A)$. Then, by definition, $\lambda\in\sigma(A)$.
+\eq
+
+\br
+If $\mathcal{H}$ is finite-dimensional, then the converse of the above corollary holds ad hence, the spectrum coincides with the set of eigenvalues. However, in infinite-dimensional spaces, the spectrum of an operator contains more than just the eigenvalues of the operator.
+\er
+
+\subsection{The spectrum of a self-adjoint operator}
+
+Recall that a self-adjoint operator is necessarily closed since $A=A^*$ implies $A=A^{**}$. While the following refinement of the notion of spectrum can be made in greater generality, we will primarily be interested in the case of self-adjoint operators.
+
+\bd
+Let $A$ be a self-adjoint operator. Then, we define
+\ben[label=(\roman*)]
+\item the \emph{pure point spectrum} of $A$
+\bse
+\sigma_{\mathrm{pp}}(A) := \{z\in\C\mid \ran(A-z)=\overline{\ran(A-z)}\neq\mathcal{H}\}
+\ese
+\item the \emph{point embedded in continuum spectrum} of $A$
+\bse
+\sigma_{\mathrm{pec}}(A) := \{z\in\C\mid \ran(A-z)\neq\overline{\ran(A-z)}\neq\mathcal{H}\}
+\ese
+\item the \emph{purely continuous spectrum} of $A$
+\bse
+\sigma_{\mathrm{pc}}(A) := \{z\in\C\mid \ran(A-z)\neq\overline{\ran(A-z)}=\mathcal{H}\}.
+\ese
+\een
+\ed
+These form a partition of $\sigma(A)$, i.e.\ they are pairwise disjoint and their union is $\sigma(A)$.
+\bd
+Let $A$ be a self-adjoint operator. Then, we further define
+\ben[label=(\roman*)]
+\item the \emph{point spectrum}\index{point spectrum} of $A$
+\bse
+\sigma_{\mathrm{p}}(A) := \sigma_{\mathrm{pp}}(A)\cup \sigma_{\mathrm{pec}}(A) = \{z\in\C\mid \overline{\ran(A-z)}\neq\mathcal{H}\}
+\ese
+\item the \emph{continuous spectrum}\index{continuous spectrum} of $A$
+\bse
+\sigma_{\mathrm{c}}(A) :=  \sigma_{\mathrm{pec}}(A)\cup  \sigma_{\mathrm{pc}}(A)=\{z\in\C\mid \ran(A-z)\neq\overline{\ran(A-z)}\}.
+\ese
+\een
+\ed
+Clearly, $\sigma_{\mathrm{p}}(A) \cup\sigma_{\mathrm{c}}(A) =\sigma(A)$ but, since $\sigma_{\mathrm{p}}(A) \cap\sigma_{\mathrm{c}}(A) = \sigma_{\mathrm{pec}}(A)$ is not necessarily empty, the point and continuous spectra do not form a partition of the spectrum in general.
+
+\bl
+Let $A$ be self-adjoint and let $\lambda$ be an eigenvalue of $A$. Then, $\lambda\in\R$.
+\el
+
+\bq
+Let $\psi\in\mathcal{D}_A\setminus\{0\}$ be an eigenvector of $A$ associated to $\lambda$. By self-adjointness of $A$,
+\bse
+\lambda \langle \psi|\psi\rangle  =   \langle \psi|\lambda\psi\rangle = \langle \psi|A\psi\rangle = \langle A\psi|\psi\rangle =  \langle\lambda \psi|\psi\rangle= \overline{\lambda} \langle \psi|\psi\rangle.
+\ese
+Thus, we have
+\bse
+(\lambda-\overline{\lambda})\langle \psi|\psi\rangle =0 
+\ese
+and since $\psi\neq 0$, it follows that $\lambda=\overline{\lambda}$. That is, $\lambda\in\R$. 
+\eq
+
+\bt
+If $A$ is a self-adjoint operator, then the elements of $\sigma_{\mathrm{p}}(A)$ are precisely the eigenvalues of $A$.
+\et
+
+\bq
+\begin{itemize}
+\item[($\Leftarrow$)] Suppose that $\lambda$ is an eigenvalue of $A$. Then, by self-adjointness of $A$,
+\bse
+\{0\}\neq \ker(A-\lambda)=\ker(A^*-\lambda) = \ker((A-\overline{\lambda})^*) = \ran(A-\overline{\lambda})^{\perp} = \ran(A-\lambda)^{\perp},
+\ese
+where we made use of our previous lemma. Hence, we have
+\bse
+\overline{ \ran(A-\lambda)} =  \ran(A-\lambda)^{\perp\perp} \neq \{0\}^{\perp} = \mathcal{H}
+\ese
+and thus, $\lambda\in\sigma_{\mathrm{p}}(A)$.
+
+\item[($\Rightarrow$)] We now need to show that if $\lambda\in\sigma_{\mathrm{p}}(A)$, then $\lambda$ is an eigenvalue of $A$. By contraposition, suppose that $\lambda\in\C$ is not an eigenvalue of $A$. Note that if $\lambda$ is real, then $\lambda = \overline{\lambda}$ while if $\lambda$ is not real, then $\overline{\lambda}$ is not real. Hence, if $\lambda$ is not an eigenvalue of $A$, then neither is $\overline{\lambda}$. Therefore, there exists no non-zero $\psi$ in $\mathcal{D}_A$ such that $A\psi=\overline{\lambda}\psi$. Thus, we have
+\bse
+\{0\} = \ker(A-\overline{\lambda})= \ker(A^*-\overline{\lambda})= \ker((A-\lambda)^*) = \ran(A-\lambda)^{\perp}
+\ese
+and hence
+\bse
+\overline{\ran(A-\lambda)}=\ran(A-\lambda)^{\perp\perp} = \{0\}^{\perp}=\mathcal{H}.
+\ese
+Therefore, $\lambda\notin\sigma_{\mathrm{p}}(A)$.\qedhere
+\end{itemize}
+\eq
+
+\br
+The \emph{contrapositive}\index{contrapositive} of the statement $P\Rightarrow Q$ is the statement $\neg Q\Rightarrow \neg P$, where the symbol $\neg$ denotes logical negation. A statement and its contrapositive are logically equivalent and ``proof by contraposition'' simply means ``proof of the contrapositive''.
+\er
+
+\subsection{Perturbation theory for point spectra of self-adjoint operators}
+
+Before we move on to perturbation theory, we will need some preliminary definitions. First, note that if $\psi$ and $\varphi$ are both eigenvectors of an operator $A$ associated to some eigenvalue $\lambda$, then, for any $z\in \C$, the vector $z\psi+\varphi$ is either zero or it is again an eigenvector of $A$ associated to $\lambda$. 
+
+\bd
+Let $A$ be an operator and let $\lambda$ be an eigenvalue of $A$.
+\ben[label=(\roman*)]
+\item The \emph{eigenspace}\index{eigenspace} of $A$ associated to $\lambda$ is
+\bse
+\Eig_A(\lambda) := \{\psi \in \mathcal{D}_A\mid A\psi = \lambda \psi\}.
+\ese
+\item The eigenvalue $\lambda$ is said to be \emph{non-degenerate} if $\dim \Eig_A(\lambda)=1$, and \emph{degenerate} if $\dim \Eig_A(\lambda)>1$.  
+\item The \emph{degeneracy}\index{degeneracy} of $\lambda$ is $\dim \Eig_A(\lambda)$.
+\een
+\ed
+\br
+Of course, it is possible that $\dim \Eig_A(\lambda)=\infty$ in general. However, in this section, we will only consider operators whose eigenspaces are finite-dimensional. 
+\er
+
+\bl
+Eigenvectors associated to distinct eigenvalues of a self-adjoint operator are orthogonal. 
+\el
+
+\bq
+Let $\lambda,\lambda'$ be distinct eigenvalues of a self-adjoint operator $A$ and let $\psi,\varphi\in\mathcal{D}_A\setminus\{0\}$ be eigenvectors associated to $\lambda$ and $\lambda'$, respectively. As $A$ is self-adjoint, we already know that $\lambda,\lambda'\in\R$. Then, note that
+\bi{rCl}
+(\lambda-\lambda')\langle \psi|\varphi\rangle & = & \lambda\langle \psi|\varphi\rangle-\lambda'\langle \psi|\varphi\rangle\\
+& = & \langle \lambda\psi|\varphi\rangle-\langle \psi|\lambda'\varphi\rangle\\
+& = & \langle A\psi|\varphi\rangle-\langle \psi|A\varphi\rangle \\
+& = & \langle \psi|A\varphi\rangle-\langle \psi|A\varphi\rangle \\
+& = & 0.
+\ei
+Since $\lambda-\lambda'\neq 0$, we must have $\langle \psi|\varphi\rangle =0$.
+\eq
+
+\subsubsection*{8.3.A\ Unperturbed spectrum}
+
+Let $H_0$ be a self-adjoint operator whose eigenvalues and eigenvectors are known and satisfy
+\bse
+H_0e_{n\delta}=h_ne_{n\delta},
+\ese
+where
+\begin{itemize}
+\item the index $n$ varies either over $\N$ or some finite range $1,2,\ldots,N$
+\item the complex numbers $h_n$ are the eigenvalues of $H_0$
+\item for each fixed $n$, the set 
+\bse
+\{e_{n\delta}\mid 1\leq \delta\leq \dim \Eig_{H_0}(h_n)\}
+\ese
+is a linearly independent subset (in fact, a Hamel basis) of $\Eig_{H_0}(h_n)$.
+\end{itemize}
+Note that, since we are assuming that all eigenspaces of $H_0$ are finite-dimensional, $\Eig_{H_0}(h_n)$ is a sub-Hilbert space of $\mathcal{H}$ and hence, for each fixed $n$, we can choose the $e_{n\delta}$ so that
+\bse
+\langle e_{n\alpha}|e_{n\beta}\rangle = \delta_{\alpha\beta}.
+\ese
+In fact, thanks to our previous lemma, we can choose the eigenvectors of $H_0$ so that
+\bse
+\langle e_{n\alpha}|e_{m\beta}\rangle = \delta_{nm}\delta_{\alpha\beta}.
+\ese
+
+Let $W\cl\mathcal{D}_{H_0}\to\mathcal{H}$ be a not necessarily self-adjoint operator. Let $\lambda\in(-\varepsilon,\varepsilon)\subseteq \R$ and consider the real one-parameter family of operators $\{H_{\lambda}\mid\lambda\in(-\varepsilon,\varepsilon)\}$, where
+\bse
+H_{\lambda} := H_0+\lambda W.
+\ese
+Further assume that $H_{\lambda}$ is self-adjoint for all $\lambda\in(-\varepsilon,\varepsilon)$. Recall, however, that this assumption does \emph{not} force $W$ to be self-adjoint.
+
+We seek to understand the eigenvalue equation for $H_{\lambda}$,
+\bse
+H_{\lambda} e_{n\delta}(\lambda)=h_{n\delta}(\lambda)e_{n\delta}(\lambda),
+\ese
+by exploiting the fact that it coincides with the eigenvalue equation for $H_0$ when $\lambda=0$. In particular, we will be interested in the lifting of the degeneracy of $h_n$ (for some fixed $n$) once the perturbation $W$ is ``switched on'', i.e.\ when $\lambda\neq 0$. 
+
+
+\subsubsection*{8.3.B\ Power series ansatz\footnote{German for ``educated guess''.}}
+
+
+
+
+
+
+
+
+
+
+
+
