@@ -178,7 +178,7 @@ Let $\lambda,\lambda'$ be distinct eigenvalues of a self-adjoint operator $A$ an
 Since $\lambda-\lambda'\neq 0$, we must have $\langle \psi|\varphi\rangle =0$.
 \eq
 
-\subsubsection*{8.3.A\ Unperturbed spectrum}
+\subsubsection*{A. \ Unperturbed spectrum}
 
 Let $H_0$ be a self-adjoint operator whose eigenvalues and eigenvectors are known and satisfy
 \bse
@@ -187,10 +187,11 @@ H_0e_{n\delta}=h_ne_{n\delta},
 where
 \begin{itemize}
 \item the index $n$ varies either over $\N$ or some finite range $1,2,\ldots,N$
-\item the complex numbers $h_n$ are the eigenvalues of $H_0$
+\item the real numbers $h_n$ are the eigenvalues of $H_0$
+\item the index $\delta$ varies over the range $1,2,\ldots,d(n)$, with $d(n):=\dim \Eig_{H_0}(h_n)$
 \item for each fixed $n$, the set 
 \bse
-\{e_{n\delta}\mid 1\leq \delta\leq \dim \Eig_{H_0}(h_n)\}
+\{e_{n\delta}\in\mathcal{D}_{H_0}\mid 1\leq \delta\leq d(n)\}
 \ese
 is a linearly independent subset (in fact, a Hamel basis) of $\Eig_{H_0}(h_n)$.
 \end{itemize}
@@ -213,10 +214,173 @@ We seek to understand the eigenvalue equation for $H_{\lambda}$,
 \bse
 H_{\lambda} e_{n\delta}(\lambda)=h_{n\delta}(\lambda)e_{n\delta}(\lambda),
 \ese
-by exploiting the fact that it coincides with the eigenvalue equation for $H_0$ when $\lambda=0$. In particular, we will be interested in the lifting of the degeneracy of $h_n$ (for some fixed $n$) once the perturbation $W$ is ``switched on'', i.e.\ when $\lambda\neq 0$. 
+by exploiting the fact that it coincides with the eigenvalue equation for $H_0$ when $\lambda=0$. In particular, we will be interested in the lifting of the degeneracy of $h_n$ (for some fixed $n$) once the perturbation $W$ is ``switched on'', i.e.\ when $\lambda\neq 0$. Indeed, it is possible, for instance, that while the two eigenvectors $e_{n1}$ and $e_{n2}$ are associated to the same (degenerate) eigenvalue $h_n$ of $H_0$, the ``perturbed'' eigenvectors $e_{n1}(\lambda)$ and $e_{n2}(\lambda)$ may be associated to \emph{different} eigenvalues of $H_{\lambda}$. Hence the reason why added a $\delta$-index to the eigenvalue in the above equation. Of course, when $\lambda =0$, we have $h_{n\delta}(\lambda)=h_n$ for all $\delta$.
 
 
-\subsubsection*{8.3.B\ Power series ansatz\footnote{German for ``educated guess''.}}
+\subsubsection*{B. \ Formal power series ansatz\footnote{German for ``educated guess''.}}
+
+In order to determine $h_{n\delta}(\lambda)$ and $e_{n\delta}(\lambda)$, we make, for both, the following ansatz
+\bi{rCl}
+h_{n\delta}(\lambda) & =: & h_n + \lambda\theta_{n\delta}^{(1)} + \lambda^2\theta_{n\delta}^{(2)}+\mathcal{O}(\lambda^3)\\
+e_{n\delta}(\lambda) & =: & e_{n\delta} + \lambda\epsilon_{n\delta}^{(1)} + \lambda^2\epsilon_{n\delta}^{(2)}+\mathcal{O}(\lambda^3),
+\ei
+where $\theta_{n\delta}^{(1)},\theta_{n\delta}^{(2)}\in \R$ and $\epsilon_{n\delta}^{(1)},\epsilon_{n\delta}^{(2)}\in\mathcal{D}_{H_0}$.
+
+\br
+Recall that the \emph{Big $\mathcal{O}$ notation} is defined as follows. If $f$ and $g$ are functions $I\subseteq\R\to\R$ and $a\in I$, then we write
+\bse
+f(x)=\mathcal{O}(g(x)) \quad \text{as }x\to a
+\ese
+to mean
+\bse
+\exists \, k,M>0 : \forall \, x\in I : \ 0<|x-a|<k \ \Rightarrow \ |f(x)|<M|g(x)|.
+\ese
+The qualifier ``as $x\to a$'' can be omitted when the value of $a$ is clear from the context. In our expressions above, we obviously have ``as $\lambda \to 0$''.
+\er
+
+\subsubsection*{C. \ Fixing phase and normalisation of perturbed eigenvectors}
+
+Eigenvectors in a complex vector space are only defined up to a complex scalar or, alternatively, up to phase and magnitude. Hence, we impose the following conditions relating the perturbed eigenvalues and eigenvectors to the unperturbed ones.
+
+We require, for all $\lambda\in(-\varepsilon,\varepsilon)$, all $n$ and all $\delta$,
+\ben[label=(\roman*)]
+\item $\Im\langle e_{n\delta}|e_{n\delta}(\lambda)\rangle = 0$
+\item $\|e_{n\delta}(\lambda)\|^2=1$.
+\een
+Inserting the formal power series ansatz into these conditions yields
+\ben[label=(\roman*)]
+\item $\Im\langle e_{n\delta}|\epsilon^{(k)}_{n\delta}\rangle = 0$ for $k=1,2,\ldots$
+\item $0 = 2\lambda\Re\langle e_{n\delta}|\epsilon^{(1)}_{n\delta}\rangle +\lambda^2\bigl(2\Re\langle e_{n\delta}|\epsilon^{(2)}_{n\delta}\rangle +\|\epsilon^{(1)}_{n\delta}\|^2\bigr)+ \mathcal{O}(\lambda^3)$.
+\een
+Since (ii) holds for all $\lambda\in(-\varepsilon,\varepsilon)$, we must have 
+\bse
+\Re\langle e_{n\delta}|\epsilon^{(1)}_{n\delta}\rangle=0, \qquad 2\Re\langle e_{n\delta}|\epsilon^{(2)}_{n\delta}\rangle +\|\epsilon^{(1)}_{n\delta}\|^2=0. 
+\ese
+Since we know from (i) that $\Im\langle e_{n\delta}|\epsilon^{(1)}_{n\delta}\rangle = 0$ and $\Im\langle e_{n\delta}|\epsilon^{(2)}_{n\delta}\rangle = 0$, we can conclude
+\bse
+\langle e_{n\delta}|\epsilon^{(1)}_{n\delta}\rangle=0, \qquad  \langle e_{n\delta}|\epsilon^{(2)}_{n\delta}\rangle =-\tfrac{1}{2}\|\epsilon^{(1)}_{n\delta}\|^2. 
+\ese
+That is, $\epsilon^{(1)}_{n\delta}$ is orthogonal to $e_{n\delta}$ and
+\bse
+\epsilon^{(2)}_{n\delta} = -\tfrac{1}{2}\|\epsilon^{(1)}_{n\delta}\|^2e_{n\delta} + e
+\ese
+for some $e\in \lspan(\{e_{n\delta}\})^{\perp}$.
+
+\subsubsection*{D. \ Order-by-order decomposition of the perturbed eigenvalue problem}
+
+Let us insert our formal power series ansatz into the perturbed eigenvalue equation. On the left-hand side, we find
+\bi{rCl}
+H_{\lambda}e_{n\delta}(\lambda) & = & (H_0+\lambda W)(e_{n\delta} + \lambda\epsilon_{n\delta}^{(1)} + \lambda^2\epsilon_{n\delta}^{(2)}+\mathcal{O}(\lambda^3))\\
+& = & H_0e_{n\delta} + \lambda (We_{n\delta}+H_0\epsilon_{n\delta}^{(1)} ) + \lambda^2 (W\epsilon_{n\delta}^{(1)} +H_0\epsilon_{n\delta}^{(2)} )+\mathcal{O}(\lambda^3),
+\ei
+while, on the right-hand side, we have
+\bi{rCl}
+h_{n\delta}(\lambda)e_{n\delta}(\lambda) & = & (h_n + \lambda\theta_{n\delta}^{(1)} + \lambda^2\theta_{n\delta}^{(2)}+\mathcal{O}(\lambda^3)) (e_{n\delta} + \lambda\epsilon_{n\delta}^{(1)} + \lambda^2\epsilon_{n\delta}^{(2)}+\mathcal{O}(\lambda^3))\\
+& = & h_ne_{n\delta}+ \lambda (h_n\epsilon_{n\delta}^{(1)}+\theta_{n\delta}^{(1)}e_{n\delta})+\lambda^2(h_n\epsilon_{n\delta}^{(2)}+\theta_{n\delta}^{(1)}\epsilon_{n\delta}^{(1)}+\theta_{n\delta}^{(2)}e_{n\delta})+ \mathcal{O}(\lambda^3).
+\ei
+Comparing terms order-by-order yields
+\bi{rCl}
+(H_0-h_n)e_{n\delta} & = & 0 \\
+(H_0-h_n)\epsilon_{n\delta}^{(1)} & = & -(W -\theta_{n\delta}^{(1)}) e_{n\delta}\\
+(H_0-h_n)\epsilon_{n\delta}^{(2)} & = & -(W -\theta_{n\delta}^{(1)}) \epsilon_{n\delta}^{(1)}+\theta_{n\delta}^{(2)}e_{n\delta}.
+\ei
+Of course, one may continue this expansion up to the desired order. Note that the zeroth order equation is just our unperturbed eigenvalue equation. 
+
+\subsubsection*{E. \ First-order correction}
+To extract information from the first-order equation, let us project both sides onto the unperturbed eigenvectors $e_{n\alpha}$ (i.e.\ apply $\langle e_{n\alpha}|\,\cdot\,\rangle$ to both sides). This yields
+\bse
+\langle e_{n\alpha}|(H_0-h_n)\epsilon_{n\delta}^{(1)} \rangle = -\langle e_{n\alpha}|(W -\theta_{n\delta}^{(1)}) e_{n\delta}\rangle.
+\ese
+By self-adjointness of $H_0$, we have
+\bse
+\langle e_{n\alpha}|(H_0-h_n)\epsilon_{n\delta}^{(1)} \rangle =\langle (H_0-h_n)^*e_{n\alpha}|\epsilon_{n\delta}^{(1)} \rangle =  \langle (H_0-h_n)e_{n\alpha}|\epsilon_{n\delta}^{(1)} \rangle = 0.
+\ese
+Therefore,
+\bse
+0 = -\langle e_{n\alpha}|W e_{n\delta}\rangle + \langle e_{n\alpha}|\theta_{n\delta}^{(1)} e_{n\delta}\rangle = -\langle e_{n\alpha}|W e_{n\delta}\rangle + \theta_{n\delta}^{(1)} \delta_{\alpha\delta} 
+\ese
+and thus, the first-order eigenvalue correction is 
+\bse
+\theta_{n\delta}^{(1)} = \langle e_{n\delta}|W e_{n\delta}\rangle .
+\ese
+
+Note that the right-hand side of the first-order equation is now completely known and hence, if $H_0-h_n$ were invertible, we could determine $\epsilon_{n\delta}^{(1)}$ immediately. However, this is only possible if the unperturbed eigenvalue $h_n$ is non-degenerate. More generally, we proceed as follows. Let $E:=\Eig_{H_0}(h_n)$. Then, we can rewrite the right-hand side of the first-order equation as
+\bi{rCl}
+-(W -\theta_{n\delta}^{(1)}) e_{n\delta} & = & -\id_{\mathcal{H}}(W -\theta_{n\delta}^{(1)}) e_{n\delta}\\
+& = & -(\mathrm{P}_{\! E}+\mathrm{P}_{\! E^{\perp}})(W -\theta_{n\delta}^{(1)}) e_{n\delta}\\
+& = & -\sum_{\beta=1}^{d(n)}\langle e_{n\beta}|(W -\theta_{n\delta}^{(1)}) e_{n\delta}\rangle e_{n\beta} -\mathrm{P}_{\! E^{\perp}}We_{n\delta} +\theta_{n\delta}^{(1)}\mathrm{P}_{\! E^{\perp}} e_{n\delta}\\
+& = &  -\mathrm{P}_{\! E^{\perp}}W e_{n\delta}
+\ei
+so that we have $(H_0-h_n)\epsilon_{n\delta}^{(1)}\in E^{\perp}$. Note that the operator
+\bse
+\mathrm{P}_{\! E^{\perp}}\circ(H_0-h_n)\cl E^{\perp} \to E^{\perp} 
+\ese
+is invertible. Hence, the equation
+\bse
+\mathrm{P}_{\! E^{\perp}}(H_0-h_n)\mathrm{P}_{\! E^{\perp}}\epsilon_{n\delta}^{(1)}  =  -\mathrm{P}_{\! E^{\perp}}W e_{n\delta} 
+\ese
+is solved by
+\bse
+\mathrm{P}_{\! E^{\perp}}\epsilon_{n\delta}^{(1)} = -\mathrm{P}_{\! E^{\perp}}(H_0-h_n)^{-1}\mathrm{P}_{\! E^{\perp}}W e_{n\delta} .
+\ese
+The ``full'' eigenvector correction $\epsilon_{n\delta}^{(1)}$ is given by
+\bse
+\id_{\mathcal{H}}\epsilon_{n\delta}^{(1)} = (\mathrm{P}_{\! E}+\mathrm{P}_{\! E^{\perp}})\epsilon_{n\delta}^{(1)} = \sum_{\beta=1}^{d(n)}c_{\delta\beta}e_{n\beta} -\mathrm{P}_{\! E^{\perp}}(H_0-h_n)^{-1}\mathrm{P}_{\! E^{\perp}}W e_{n\delta} ,
+\ese
+where the coefficients $c_{\delta\beta}$ cannot be fully determined at this order in the perturbation. What we do know is that our previous fixing of the phase and normalisation of the perturbed eigenvectors implies that $\epsilon_{n\delta}^{(1)}$ is orthogonal to $e_{n\delta}$, and hence we must have $c_{\delta\delta}=0$.
+
+\subsubsection*{F. \ Second-order eigenvalue correction}
+
+Here we will content ourselves with calculating the second-order correction to the eigenvalues only, since that is the physically interesting formula. As before, we proceed by projecting both sides of the second-order equation onto an unperturbed eigenvector, this time specifically $e_{n\delta}$. We find
+
+\bse
+\langle e_{n\delta}|(H_0-h_n)\epsilon_{n\delta}^{(2)} \rangle = -\langle e_{n\delta}| W\epsilon_{n\delta}^{(1)}\rangle -\theta_{n\delta}^{(1)} \langle e_{n\delta}| \epsilon_{n\delta}^{(1)}\rangle+\theta_{n\delta}^{(2)}\langle e_{n\delta}| e_{n\delta}\rangle.
+\ese
+Noting, as before, that
+\bse
+\langle e_{n\delta}|(H_0-h_n)\epsilon_{n\delta}^{(2)} \rangle = 0
+\ese
+and recalling that $\langle e_{n\delta}| \epsilon_{n\delta}^{(1)}\rangle=0$ and $\langle e_{n\delta}| e_{n\delta}\rangle=1$, we have
+\bse
+\theta_{n\delta}^{(2)} = \langle e_{n\delta}| W\epsilon_{n\delta}^{(1)}\rangle .
+\ese
+Plugging in our previous expression for $\epsilon_{n\delta}^{(1)}$ yields
+\bi{rCl}
+\theta_{n\delta}^{(2)} & = & \biggl\langle e_{n\delta}\ \bigg| \ W \sum_{\beta=1}^{d(n)}c_{\delta\beta}e_{n\beta} -W\mathrm{P}_{\! E^{\perp}}(H_0-h_n)^{-1}\mathrm{P}_{\! E^{\perp}}W e_{n\delta}\biggr\rangle \\
+& = & \sum_{\beta=1}^{d(n)} c_{\delta\beta}\langle e_{n\delta}|We_{n\beta}\rangle  -\langle e_{n\delta}|W\mathrm{P}_{\! E^{\perp}}(H_0-h_n)^{-1}\mathrm{P}_{\! E^{\perp}}W e_{n\delta}\rangle \\
+& = & \sum_{\beta=1}^{d(n)} c_{\delta\beta}\theta_{n\beta}^{(1)}\delta_{\delta\beta}  -\langle e_{n\delta}|W\mathrm{P}_{\! E^{\perp}}(H_0-h_n)^{-1}\mathrm{P}_{\! E^{\perp}}W e_{n\delta}\rangle\\
+& = & -\langle e_{n\delta}|W\mathrm{P}_{\! E^{\perp}}(H_0-h_n)^{-1}\mathrm{P}_{\! E^{\perp}}W e_{n\delta}\rangle
+\ei
+since $c_{\delta\delta}=0$. One can show that the eigenvectors of $H_0$ (or any other self-adjoint operator) form an orthonormal basis of $\mathcal{H}$. In particular, this implies than we can decompose the identity operator on $\mathcal{H}$ as
+\bse
+\id_{\mathcal{H}} = \sum_{n=1}^{\infty}\sum_{\beta=1}^{d(n)}\langle e_{n\beta}|\,\cdot\,\rangle e_{n\beta}.
+\ese
+By inserting this appropriately into our previous expression for $\theta_{n\delta}^{(2)}$, we obtain
+\bse
+\theta_{n\delta}^{(2)} = - \sum_{\substack{m=1\\m\neq n}}^{\infty}\sum_{\beta=1}^{d(m)}\frac{|\langle e_{m\beta}|We_{n\delta}\rangle|}{h_m-h_n}.
+\ese
+Putting everything together, we have the following second-order expansion of the perturbed eigenvalues
+\bi{rCl}
+h_{n\delta}(\lambda) & = & h_n + \lambda \theta_{n\delta}^{(1)}+\lambda^2\theta_{n\delta}^{(2)} +\mathcal{O}(\lambda^3)\\
+& = & h_n +\lambda \langle e_{n\delta}|We_{n\delta}\rangle - \lambda^2\sum_{\substack{m=1\\m\neq n}}^{\infty}\sum_{\beta=1}^{d(m)}\frac{|\langle e_{m\beta}|We_{n\delta}\rangle|}{h_m-h_n}+\mathcal{O}(\lambda^3).
+\ei
+
+\br
+Note that, while the first-order correction to the perturbed $n\delta$ eigenvalue only depends on the unperturbed $n\delta$ eigenvalue and eigenvector, the second-order correction draws information from \emph{all} the unperturbed eigenvalues and eigenvectors. Hence, if we try to approximate a relativistic system as a perturbation of a non-relativistic system, then the second-order corrections may be unreliable.
+\er
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
