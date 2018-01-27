@@ -1,4 +1,4 @@
-# schuller-quantum
+# Frederic Schuller's Lectures on Quantum Theory
 
 This is the LaTeX source code for my lecture notes to accompany Frederic Schuller's course on Quantum Theory, taught in the summer of 2015 at the Friedrich-Alexander-Universität Erlangen-Nürnberg as part of the Elite Graduate Programme.
 
